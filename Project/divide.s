@@ -1,6 +1,6 @@
-/*divide*/
+/*divide inputs a and b*/
 	.global _start
 _start:
-	mov r0, #49
-	mov r7, #1
+	mov r0, #11
+	mov r7, #5
 	swi 0

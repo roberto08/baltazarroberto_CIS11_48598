@@ -1,5 +1,3 @@
-/* Assignment 2 divides inputs a/b and a%b without flag set */
-
 	.global _start
 
 _start:

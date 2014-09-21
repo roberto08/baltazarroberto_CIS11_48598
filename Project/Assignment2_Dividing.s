@@ -7,6 +7,10 @@ _start:
 	mov r0, #11
 	mov r1, #5
 	
+	cmp r0, r1
+	bneq subtract_inputs
+
+subtract_inputs
 	sub r0, r0, r1
 
 swi 0

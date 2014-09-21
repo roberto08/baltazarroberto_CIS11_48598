@@ -1,3 +1,4 @@
+/*divide*/
 	.global _start
 _start:
 	mov r0, #49

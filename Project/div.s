@@ -2,7 +2,7 @@
 	.global _start
 	
 _start:
-	mov r0, #26				/*input a*/
+	mov r0, #9				/*input a*/
 	mov r1, #3				/*input b*/
 	mov r2, #0 				/*clear the counter register*/
 

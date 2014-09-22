@@ -1,7 +1,7 @@
-/*divide input a and b */
-		.global _start
-		
+/* divide input a and input b */
+			.global _start
+
 _start:
-			mov r0, #11		/*input a*/
-			mov r1, #5		/*input b*/
+			mov r0, #11
+			mov r1, #5
 			swi 0

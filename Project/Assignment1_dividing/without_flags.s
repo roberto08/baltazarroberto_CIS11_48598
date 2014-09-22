@@ -4,8 +4,8 @@
 	
 _start:
 	mov r0, #0				/*clear the register*/
-	mov r1, #3				/*input a*/
-	mov r2, #37				/*input b*/
+	mov r1, #24				/*input a*/
+	mov r2, #7				/*input b*/
 
 compare:
 	cmp r1, r2				/*compare input a and b*/

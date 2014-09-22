@@ -1,9 +1,9 @@
-/* divide input a and b */
+/* divide input a and b without the flag a/b*/
 	.global _start
 	
 _start:
-	mov r0, #111			/*input a*/
-	mov r1, #5				/*input b*/
+	mov r0, #17				/*input a*/
+	mov r1, #3				/*input b*/
 	mov r2, #0 				/*clear the counter register*/
 
 compare:

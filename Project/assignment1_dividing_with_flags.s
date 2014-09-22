@@ -1,9 +1,10 @@
-/* divide input a and b without the flag a%b*/
+/* divide input a and b with the flag a/b*/
 	.global _start
 	
 _start:
-	mov r1, #9				/*input a*/
-	mov r2, #3				/*input b*/
+	mov r0, #0				/*clear the counter register*/
+	mov r1, #11				/*input a*/
+	mov r2, #5 				/*input b*/
 
 compare:
 	cmp r1, r2				/*compare input a and b*/
@@ -12,8 +13,10 @@ compare:
 	
 subtract:	
 	sub r1, r1, r2			/*subtract input a from b and update register 0*/
+	add r0, r0, #1			/*update the counter or answer of the division*/
 	b compare				/*branch back to compare*/
 	
 exit:
+	
 	mov r7, #1
 	swi 0

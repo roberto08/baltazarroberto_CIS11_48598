@@ -8,8 +8,8 @@ _start:
 
 compare:
 	cmp r0, r1				/*compare input a and b*/
-	bpl subtract			/*branch to subtract if positive integer or greater than input b*/
-	bmi counter				/*if less than input b or negative branch to exit*/
+	bpl subtract			/*branch to subtract, if positive integer or greater than input b*/
+	bmi counter				/*if less than input b or negative, branch to exit*/
 	
 subtract:	
 	sub r0, r0, r1			/*subtract input a from b and update register 0*/

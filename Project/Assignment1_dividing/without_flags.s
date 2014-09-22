@@ -16,5 +16,7 @@ subtract:
 	b compare				/*branch back to compare*/
 	
 exit:
+	mov r0, r1 				/* swap register 1 with register 0, r1 -> r0 */
+	
 	mov r7, #1
 	swi 0

@@ -1,8 +1,7 @@
-/* divide input a and input b */
-			.global _start
-
+@ prog3a.s - a simple assembler file
+/* This comment will be ignored by the assembler */
+	.global _start
 _start:
-			mov r0, #11
-			mov r1, #5
-			swi 0
-			
+	MOV R0, #49 
+	MOV R7, #1
+	SWI 0

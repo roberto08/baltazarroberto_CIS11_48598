@@ -5,5 +5,5 @@ _start:
 	mov r2, #60
 	adds r0, r1, r2
 	
-	mov r7, #1
+	mov r7, #2
 	swi 0

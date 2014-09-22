@@ -13,7 +13,7 @@ compare:
 subtract:	
 	sub r0, r0, r1
 	add r2, r2, #1	
-	return compare
+	ret compare
 	
 counter:
     mov r0, r2	

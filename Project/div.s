@@ -17,7 +17,7 @@ subtract:
 	b compare				/*branch back to compare*/
 	
 counter:
-    mov r0, r1				/*moves the counter or answer to register 0*/
+@    mov r0, r1				/*moves the counter or answer to register 0*/
 	
 	mov r7, #1
 	swi 0

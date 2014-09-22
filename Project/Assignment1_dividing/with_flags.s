@@ -4,7 +4,7 @@
 	
 _start:
 	mov r0, #0				/*clear the counter register*/
-	mov r1, #11				/*input a*/
+	mov r1, #5				/*input a*/
 	mov r2, #5 				/*input b*/
 
 compare:
@@ -18,6 +18,5 @@ subtract:
 	b compare				/*branch back to compare*/
 	
 exit:
-	
 	mov r7, #1
 	swi 0

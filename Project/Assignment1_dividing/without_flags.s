@@ -3,7 +3,8 @@
 	.global _start
 	
 _start:
-	mov r1, #11				/*input a*/
+	mov r0, #0				/*clear the register*/
+	mov r1, #5				/*input a*/
 	mov r2, #5				/*input b*/
 
 compare:

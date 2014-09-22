@@ -2,8 +2,8 @@
 	.global _start
 	
 _start:
-	mov r1, #9				/*input a*/
-	mov r2, #3				/*input b*/
+	mov r1, #11				/*input a*/
+	mov r2, #5				/*input b*/
 
 compare:
 	cmp r1, r2				/*compare input a and b*/

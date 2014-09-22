@@ -2,5 +2,5 @@
 	.global _start
 _start:
 	mov r0, #11
-	mov r7, #5
+	mov r8, #5
 	swi 0

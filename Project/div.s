@@ -7,7 +7,7 @@ _start:
 
 compare:
 	cmp r0, r1				/*compare input a and b*/
-	bneq subtract
+	bpl subtract
 	bmi counter
 	
 subtract:	

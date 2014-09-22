@@ -5,7 +5,7 @@ _start:
 	mov r1, #5				/*input b*/
 	
 	cmp r0, r1
-	sub r0, ro, r1
+	sub r0, r0, r1
 	
 	mov r7, #1
 	swi 0

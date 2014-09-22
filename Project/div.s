@@ -5,3 +5,4 @@ _start:
 			mov r0, #11
 			mov r1, #5
 			swi 0
+			

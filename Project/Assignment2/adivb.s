@@ -3,7 +3,7 @@
 	.global _start
 	
 _start:
-	mov r0, #0				/*answer of a/b*/
+@mov r0, #0				/*answer of a/b*/
 @mov r1, r2 				/*remainder of 1%b*/
 	mov r2, #11				/*input a*/
 	mov r3, #5 				/*input b*/
@@ -14,6 +14,7 @@ _start:
 	mov r8, #10 			/*shift factor 10*/
 	mov r9, #0 				/*shift test r7*r8*/
 	mov r1, r2 				/*remainder of 1%b*/
+	mov r0, #0				/*answer of a/b*/
 
 	
 compare:

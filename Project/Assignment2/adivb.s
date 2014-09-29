@@ -4,8 +4,8 @@
 	.global main
 	
 main:
-	mov r2, #173			/*input a*/
-	mov r3, #4 				/*input b*/
+	mov r2, #232			/*input a*/
+	mov r3, #17 				/*input b*/
 	mov r4, #0 
 	mov r5, #0 
 	mov r6, #0 				/*present scale of 10^*/

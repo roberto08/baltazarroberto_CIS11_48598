@@ -3,7 +3,7 @@
 	.global _start
 	
 _start:
-	mov r2, #65			/*input a*/
+	mov r2, #63			/*input a*/
 	mov r3, #138 			/*input b*/
 	mov r4, #0 
 	mov r5, #0 

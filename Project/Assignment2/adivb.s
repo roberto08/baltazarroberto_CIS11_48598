@@ -41,7 +41,7 @@ subtract:
 	cmp r6, #1
 	bgt scale
 	
-end:
+exit:
 	mov r7, #1
 	swi 0
 

@@ -1,8 +1,8 @@
 /* divide input a and b with the flag a/b*/
 /*outputs r0 -> a/b*/
-	.global _start
+	.global main
 	
-_start:
+main:
 	mov r2, #84			/*input a*/
 	mov r3, #5 			/*input b*/
 	mov r4, #0 
@@ -39,6 +39,6 @@ subtract:
 	cmp r1, r7
 	bge subtract
 	
-exit:
-	mov r7, #1
-	swi 0
+end:
+	bx lr
+	

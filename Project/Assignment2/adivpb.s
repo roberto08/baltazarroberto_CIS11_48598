@@ -4,7 +4,7 @@
 	.global main
 	
 main:
-	mov r2, #225			/*input a*/
+	mov r2, #111			/*input a*/
 	mov r3, #5 			/*input b*/
 	mov r4, #0 
 	mov r5, #0 

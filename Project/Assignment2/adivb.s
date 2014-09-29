@@ -1,8 +1,8 @@
 /* divide input a and b with the flag a/b*/
 /*outputs r0 -> a/b*/
-	.global _start
+	.global main
 	
-_start:
+main:
 	mov r2, #683			/*input a*/
 	mov r3, #165 			/*input b*/
 	mov r4, #0 
@@ -17,7 +17,7 @@ _start:
 compare:
 	cmp r2, r3				/*compare input a and b*/
 	bge scale				/*branch to scale, if greater than input b*/
-	ble exit				/*if less than input b branch to exit*/
+	ble end				/*if less than input b branch to exit*/
 	
 scale:
 	mov r6, #1 				/*present scale of 10^*/
@@ -41,7 +41,7 @@ subtract:
 	cmp r6, #1
 	bgt scale
 	
-exit:
+end:
 	mov r7, #1
 	swi 0
 

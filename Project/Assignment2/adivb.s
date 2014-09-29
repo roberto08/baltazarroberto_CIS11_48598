@@ -1,10 +1,11 @@
-/* divide input a and b with the flag a/b*/
+/* divide input a and b without the flag a/b*/
 /*outputs r0 -> a/b*/
+
 	.global main
 	
 main:
-	mov r2, #236			/*input a*/
-	mov r3, #69 			/*input b*/
+	mov r2, #173			/*input a*/
+	mov r3, #4 			/*input b*/
 	mov r4, #0 
 	mov r5, #0 
 	mov r6, #0 				/*present scale of 10^*/

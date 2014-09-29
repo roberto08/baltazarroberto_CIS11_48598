@@ -4,7 +4,7 @@
 	
 _start:
 	mov r2, #47			/*input a*/
-	mov r3, #5 				/*input b*/
+	mov r3, #12 				/*input b*/
 	mov r4, #0 
 	mov r5, #0 
 	mov r6, #0 				/*present scale of 10^*/

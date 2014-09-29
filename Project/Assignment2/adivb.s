@@ -3,8 +3,8 @@
 	.global _start
 	
 _start:
-	mov r2, #63			/*input a*/
-	mov r3, #138 			/*input b*/
+	mov r2, #138			/*input a*/
+	mov r3, #13 			/*input b*/
 	mov r4, #0 
 	mov r5, #0 
 	mov r6, #0 				/*present scale of 10^*/

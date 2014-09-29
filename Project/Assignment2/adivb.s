@@ -5,7 +5,7 @@
 	
 main:
 	mov r2, #173			/*input a*/
-	mov r3, #4 			/*input b*/
+	mov r3, #4 				/*input b*/
 	mov r4, #0 
 	mov r5, #0 
 	mov r6, #0 				/*present scale of 10^*/
@@ -18,7 +18,7 @@ main:
 compare:
 	cmp r2, r3				/*compare input a and b*/
 	bge scale				/*branch to scale, if greater than input b*/
-	ble end				/*if less than input b branch to exit*/
+	ble end					/*if less than input b branch to exit*/
 	
 scale:
 	mov r6, #1 				/*present scale of 10^*/
@@ -32,7 +32,7 @@ scale_update:
 	mul r7, r3, r6 			/*subtraction factor*/
 	mul r9, r7, r8 			/*test subtraction factor*/
 	cmp r1, r9
-	bge scale_update 			/*branch back to scale*/
+	bge scale_update 		/*branch back to scale*/
 
 subtract:
 	add r0, r0, r6			/*update the counter/answer by scale */

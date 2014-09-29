@@ -1,6 +1,6 @@
 /* divide input a and b with the flag a/b*/
 /*outputs r0 -> a/b*/
-	.global start
+	.global _start
 	
 _start:
 	mov r2, #11				/*input a*/

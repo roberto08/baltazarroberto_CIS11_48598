@@ -43,8 +43,8 @@ subtract:
 	bgt scale
 	
 check_flag:
-	cmp r1, r4
-	ble end
+	cmp r4, r1
+	bgt end
 	
 	mov r5, r0
 	mov r0, r1

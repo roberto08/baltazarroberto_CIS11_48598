@@ -3,7 +3,7 @@
 	.global main
 	
 main:
-	mov r2, #649			/*input a*/
+	mov r2, #650			/*input a*/
 	mov r3, #165 			/*input b*/
 	mov r4, #0 
 	mov r5, #0 

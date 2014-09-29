@@ -4,7 +4,7 @@
 	
 main:
 	mov r2, #650			/*input a*/
-	mov r3, #165 			/*input b*/
+	mov r3, #25 			/*input b*/
 	mov r4, #0 
 	mov r5, #0 
 	mov r6, #0 				/*present scale of 10^*/

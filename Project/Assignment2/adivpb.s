@@ -44,7 +44,7 @@ subtract:
 	
 check_flag:
 	cmp r1, #0
-	bgt end
+	ble end
 	
 	mov r5, r0
 	mov r0, r1

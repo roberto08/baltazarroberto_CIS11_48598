@@ -3,7 +3,7 @@
 	.global main
 	
 main:
-	mov r2, #683			/*input a*/
+	mov r2, #649			/*input a*/
 	mov r3, #165 			/*input b*/
 	mov r4, #0 
 	mov r5, #0 
@@ -26,7 +26,7 @@ scale:
 	cmp r1, r9 				/*test to shift scale by 10*/
 	blt subtract 			/*branch to subtract if remainder greater than shift test*/
 	
-scale_update:	/*mov r5, r6*/
+scale_update:
 	mul r6, r8, r6 			/*update scale factor*/
 	mul r7, r3, r6 			/*subtraction factor*/
 	mul r9, r7, r8 			/*test subtraction factor*/

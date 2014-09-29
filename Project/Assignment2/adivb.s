@@ -4,7 +4,7 @@
 	
 _start:
 	mov r2, #84			/*input a*/
-	mov r3, #20 			/*input b*/
+	mov r3, #5 			/*input b*/
 	mov r4, #0 
 	mov r5, #0 
 	mov r6, #0 				/*present scale of 10^*/
@@ -26,11 +26,12 @@ scale:
 	cmp r1, r9 				/*test to shift scale by 10*/
 	blt subtract 			/*branch to subtract if remainder greater than shift test*/
 	
-	/*mov r5, r6*/
+scale_update:	/*mov r5, r6*/
 	mul r6, r8, r6 			/*update scale factor*/
 	mul r7, r3, r6 			/*subtraction factor*/
 	mul r9, r7, r8 			/*test subtraction factor*/
-	bal scale 				/*branch back to scale*/
+	cmp r1, r9
+	bge scale_update 			/*branch back to scale*/
 
 subtract:
 	add r0, r0, r6			/*update the counter/answer by scale */

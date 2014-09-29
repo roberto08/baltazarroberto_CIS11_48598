@@ -38,7 +38,8 @@ subtract:
 	sub r1, r1, r7			/*subtract input by scale*/
 	cmp r1, r7
 	bge subtract
-	
+	cmp r6, #1
+	bgt scale
 end:
 	bx lr
 	

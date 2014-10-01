@@ -4,8 +4,8 @@
 	.global _start
 	
 _start:
-	mov r1, #60 		/*get 50 into r1*/
-	mov r2, #60 		/*get 50 into r2*/
+	mov r1, #50 		/*get 50 into r1*/
+	mov r2, #60 		/*get 60 into r2*/
 	adds r0, r1, r2 	/*add the two, result in r0*/
 	
 	mov r7, #1 			/*exit through syscall*/

@@ -57,13 +57,13 @@ divide:
 	
   check_flag:
 	cmp r4, r1 				/*check for a%b*/
-	bgt end 				/*if no remainder branch to end*/
+	bgt outputs 				/*if no remainder branch to end*/
 	
 	mov r5, r0 				/*move a/b to temporary register*/
 	mov r0, r1				/*move to r0 a%b*/
 	mov r1, r5				/*move a/b to r1 and complete switch*/
-	bx lr
-		
+
+outputs	
 	ldr r1, address_of_return
 	str lr, [r1]
 	

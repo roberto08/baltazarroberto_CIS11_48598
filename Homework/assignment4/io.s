@@ -57,13 +57,13 @@ divide:
 	cmp r6, #1				/*if scale greater than 1 branch back to scale*/
 	bgt scale
 	
-@  check_flag:
-@	cmp r4, r1 				/*check for a%b*/
-@	bgt end 				/*if no remainder branch to end*/
+  check_flag:
+	cmp r4, r1 				/*check for a%b*/
+	bgt end 				/*if no remainder branch to end*/
 	
-@	mov r5, r0 				/*move a/b to temporary register*/
-@	mov r0, r1				/*move to r0 a%b*/
-@	mov r1, r5				/*move a/b to r1 and complete switch*/
+	mov r5, r0 				/*move a/b to temporary register*/
+	mov r0, r1				/*move to r0 a%b*/
+	mov r1, r5				/*move a/b to r1 and complete switch*/
 	bx lr
 address_of_return2: .word return2
 		

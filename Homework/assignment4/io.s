@@ -4,7 +4,7 @@
 .data
 
 .balign 4				/*First Message*/
-message1: .asciz "The quotient is:"
+message1: .asciz "The quotient is %d\n:"
 
 .balign 4				/*Second Message*/
 message2: .asciz "The numerator is:"
@@ -31,7 +31,7 @@ divide:
   compare:
 	cmp r2, r3				/*compare input a and b*/
 	bge scale				/*branch to scale, if greater than input b*/
-	ble check_flag			/*if less than input b branch to check_flag*/
+	ble move answers			/*if less than input b branch to check_flag*/
 	
   scale:
 	mov r6, #1 				/*present scale of 10^*/
@@ -55,21 +55,25 @@ divide:
 	cmp r6, #1				/*if scale greater than 1 branch back to scale*/
 	bgt screen_out
 	
-  check_flag:
-	cmp r4, r1 				/*check for a%b*/
-	bgt screen_out 				/*if no remainder branch to end*/
+@  check_flag:
+@	cmp r4, r1 				/*check for a%b*/
+@	bgt screen_out 				/*if no remainder branch to end*/
 	
-	mov r5, r0 				/*move a/b to temporary register*/
-	mov r0, r1				/*move to r0 a%b*/
-	mov r1, r5				/*move a/b to r1 and complete switch*/
+@	mov r5, r0 				/*move a/b to temporary register*/
+@	mov r0, r1				/*move to r0 a%b*/
+@	mov r1, r5				/*move a/b to r1 and complete switch*/
 
+   move_answers:
+   mov r10, r0
+   mov r11, r1
+   
 screen_out:
 	ldr r1, address_of_return
 	str lr, [r1]
 	
 	ldr r0, address_of_message1
 	bl puts
-	
+
 	ldr r0, address_of_message2
 	bl puts
 	
@@ -82,5 +86,7 @@ end:
 address_of_message1: .word message1
 address_of_message2: .word message2
 address_of_return: .word return
+address_of_input1: .word input1
+address_of_input2: .word input2
 
 .global puts

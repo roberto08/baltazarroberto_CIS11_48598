@@ -4,10 +4,10 @@
 .data
 
 .balign 4				/*First Message*/
-message1: .asciz "The quotient is %d"
+message1: .asciz "The quotient is: %d"
 
 .balign 4				/*Second Message*/
-message2: .asciz "The numerator is %d"
+message2: .asciz "The remainder is: %d"
 
 .balign 4
 return: .word 0
@@ -15,10 +15,10 @@ return: .word 0
 .text
 
 .global main
-divide:	
-  main:
-	mov r2, #143			/*input a*/
-	mov r3, #9	 			/*input b*/
+
+main:
+	mov r2, #73			/*input a*/
+	mov r3, #18	 			/*input b*/
 	mov r4, #0 				/*use to flag a%b*/
 	mov r5, #0 				/*use to swap ro <-> r1*/
 	mov r6, #0 				/*present scale of 10^*/
@@ -31,7 +31,7 @@ divide:
 compare:
 	cmp r2, r3				/*compare input a and b*/
 	bge scale				/*branch to scale, if greater than input b*/
-	ble move_answers			/*if less than input b branch to check_flag*/
+	ble move_answers		/*if less than input b branch to check_flag*/
 	
 scale:
 	mov r6, #1 				/*present scale of 10^*/
@@ -55,29 +55,21 @@ subtract:
 	cmp r6, #1				/*if scale greater than 1 branch back to scale*/
 	bgt scale
 	
-@  check_flag:
-@	cmp r4, r1 				/*check for a%b*/
-@	bgt screen_out 				/*if no remainder branch to end*/
-	
-@	mov r5, r0 				/*move a/b to temporary register*/
-@	mov r0, r1				/*move to r0 a%b*/
-@	mov r1, r5				/*move a/b to r1 and complete switch*/
-
-move_answers:
-   mov r10, r0
-   mov r11, r1
+move_answers:  				/*move answers to use link register*/
+   mov r10, r0 				/*move quotient to r10*/
+   mov r11, r1 				/*move remainder to r11*/
    
 screen_out:
-	ldr r1, address_of_return
-	str lr, [r1]
+	ldr r1, address_of_return /*address of return in r1*/
+	str lr, [r1] 			/*move link register in r1*/
 	
-	mov r1, r10
-	ldr r0, address_of_message1
-	bl printf
+	mov r1, r10 			/*move quotient into r1 to display*/
+	ldr r0, address_of_message1 /*move message into r0*/
+	bl printf 				/*call to print*/
 
-	mov r1, r11
-	ldr r0, address_of_message2
-	bl printf
+	mov r1, r11 			/*move remainder to r1 to display*/
+	ldr r0, address_of_message2 /*move message into r0*/
+	bl printf 				/*call to print*/
 	
 	ldr lr, address_of_return
 	ldr lr, [lr]
@@ -88,8 +80,5 @@ end:
 address_of_message1: .word message1
 address_of_message2: .word message2
 address_of_return: .word return
-@address_of_input1: .word input1
-@address_of_input2: .word input2
 
 .global printf
-

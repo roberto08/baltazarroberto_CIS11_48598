@@ -64,8 +64,8 @@ divide:
 @	mov r1, r5				/*move a/b to r1 and complete switch*/
 
    move_answers:
-   mov r2, r0
-   mov r2, r1
+   mov r10, r0
+   mov r11, r1
    
 screen_out:
 	ldr r1, address_of_return

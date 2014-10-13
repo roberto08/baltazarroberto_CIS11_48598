@@ -16,9 +16,9 @@ return: .word 0
 return2: .word 0
 
 .text
-
+.global main
 divide:	
-@  main:
+  main:
 	mov r2, #24				/*input a*/
 	mov r3, #3	 			/*input b*/
 	mov r4, #0 				/*use to flag a%b*/
@@ -66,8 +66,7 @@ divide:
 @	mov r1, r5				/*move a/b to r1 and complete switch*/
 	bx lr
 address_of_return2: .word return2
-	
-.global main	
+		
 	ldr r1, address_of_return
 	str lr, [r1]
 	
@@ -79,8 +78,6 @@ address_of_return2: .word return2
 	
 	ldr r1, address_of_return
 	ldr lr, [r1]
-	
-	bl divide
 	
 end:
 	bx lr

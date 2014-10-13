@@ -12,11 +12,15 @@ message2: .asciz "The remainder is: %d"
 .balign 4
 return: .word 0
 
+.balign 4
+return2: .word 0
+
 .text
 
-.global main
-
-main:
+divide:
+	ldr r1, address_of_return2
+	str lr, [r1]
+	
 	mov r2, #239			/*input a*/
 	mov r3, #7	 			/*input b*/
 	mov r4, #0 				/*use to flag a%b*/
@@ -56,12 +60,20 @@ subtract:
 	bgt scale
 	
 move_answers:  				/*move answers to use link register*/
-   mov r10, r0 				/*move quotient to r10*/
-   mov r11, r1 				/*move remainder to r11*/
+	mov r10, r0 				/*move quotient to r10*/
+	mov r11, r1 				/*move remainder to r11*/
    
+	ldr lr, address_of_return2
+	ldr lr, [lr]
+    bx lr
+address_of_return2: .word return2
+
+.global main   
+main:   
 screen_out:
 	ldr r1, address_of_return /*address of return in r1*/
 	str lr, [r1] 			/*move link register in r1*/
+	bl divide
 	
 	mov r1, r10 			/*move quotient into r1 to display*/
 	ldr r0, address_of_message1 /*move message into r0*/

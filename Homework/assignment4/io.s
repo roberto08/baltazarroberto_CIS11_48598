@@ -7,7 +7,7 @@
 message1: .asciz "The quotient is %d"
 
 .balign 4				/*Second Message*/
-message2: .asciz "The numerator is %d\n"
+message2: .asciz "The numerator is %d"
 
 .balign 4
 return: .word 0
@@ -72,13 +72,13 @@ screen_out:
 	str lr, [r1]
 	
 	ldr r0, address_of_message1
-	bl puts
+	bl printf
 
 	ldr r0, address_of_message2
 	bl printf
 	
-	ldr r1, address_of_return
-	ldr lr, [r1]
+	ldr lr, address_of_return
+	ldr lr, [lr]
 	
 end:
 	bx lr
@@ -90,4 +90,4 @@ address_of_return: .word return
 @address_of_input2: .word input2
 
 .global printf
-.global puts
+

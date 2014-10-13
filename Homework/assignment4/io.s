@@ -31,7 +31,7 @@ divide:
   compare:
 	cmp r2, r3				/*compare input a and b*/
 	bge scale				/*branch to scale, if greater than input b*/
-	ble move answers			/*if less than input b branch to check_flag*/
+	ble move_answers			/*if less than input b branch to check_flag*/
 	
   scale:
 	mov r6, #1 				/*present scale of 10^*/

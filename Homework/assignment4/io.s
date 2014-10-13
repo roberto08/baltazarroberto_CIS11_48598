@@ -4,10 +4,10 @@
 .data
 
 .balign 4				/*First Message*/
-message1: .asciz "The quotient is "
+message1: .asciz "The quotient is"
 
 .balign 4				/*Second Message*/
-message2: .asciz "The numerator is "
+message2: .asciz "The numerator is"
 
 .balign 4
 return: .word 0

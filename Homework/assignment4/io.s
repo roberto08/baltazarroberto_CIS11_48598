@@ -7,7 +7,7 @@
 message1: .asciz "The quotient is %d"
 
 .balign 4				/*Second Message*/
-message2: .asciz "The numerator is %d/n"
+message2: .asciz "The numerator is %d"
 
 .balign 4
 return: .word 0

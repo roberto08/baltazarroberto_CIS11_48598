@@ -72,7 +72,7 @@ screen_out:
 	str lr, [r1]
 	
 	ldr r0, address_of_message1
-	bl puts
+	bl printf
 
 	ldr r0, address_of_message2
 	bl puts

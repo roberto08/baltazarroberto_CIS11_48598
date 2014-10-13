@@ -6,8 +6,8 @@
 .balign 4				/*First Message*/
 message1: .asciz "The quotient is:"
 
-@.blign4				/*Second Message*/
-@message2: .asciz "The numerator is:"
+.balign 4				/*Second Message*/
+message2: .asciz "The numerator is:"
 
 .balign 4
 return: .word 0
@@ -18,8 +18,8 @@ return: .word 0
 		
 divide:	
   main:
-	mov r2, #232			/*input a*/
-	mov r3, #17 			/*input b*/
+	mov r2, #24				/*input a*/
+	mov r3, #3	 			/*input b*/
 	mov r4, #0 				/*use to flag a%b*/
 	mov r5, #0 				/*use to swap ro <-> r1*/
 	mov r6, #0 				/*present scale of 10^*/
@@ -70,6 +70,9 @@ divide:
 	ldr r0, address_of_message1
 	bl puts
 	
+	ldr r0, address_of_message2
+	bl puts
+	
 	ldr r1, address_of_return
 	ldr lr, [r1]
 	
@@ -77,6 +80,7 @@ end:
 	bx lr
 
 address_of_message1: .word message1
+address_of_message2: .word message2
 address_of_return: .word return
 
 .global puts

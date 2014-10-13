@@ -53,7 +53,7 @@ divide:
 	cmp r1, r7				/*if subtraction scale factor greater than a%b branch to subtract*/
 	bge subtract
 	cmp r6, #1				/*if scale greater than 1 branch back to scale*/
-	bgt screen_out
+	bgt move_answers
 	
 @  check_flag:
 @	cmp r4, r1 				/*check for a%b*/

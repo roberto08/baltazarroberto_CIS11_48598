@@ -89,4 +89,4 @@ address_of_return: .word return
 @address_of_input1: .word input1
 @address_of_input2: .word input2
 
-.global puts
+.global printf

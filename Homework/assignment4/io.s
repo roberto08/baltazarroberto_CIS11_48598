@@ -63,7 +63,7 @@ divide:
 	mov r0, r1				/*move to r0 a%b*/
 	mov r1, r5				/*move a/b to r1 and complete switch*/
 
-screen_out
+screen_out:
 	ldr r1, address_of_return
 	str lr, [r1]
 	

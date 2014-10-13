@@ -86,7 +86,7 @@ end:
 address_of_message1: .word message1
 address_of_message2: .word message2
 address_of_return: .word return
-address_of_input1: .word input1
-address_of_input2: .word input2
+@address_of_input1: .word input1
+@address_of_input2: .word input2
 
 .global puts

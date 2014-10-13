@@ -3,14 +3,14 @@
 
 .data
 
-.balign4				/*First Message*/
+.balign 4				/*First Message*/
 message1: .asciz "The quotient is:"
 
-@.balign4				/*Second Message*/
+@.blign4				/*Second Message*/
 @message2: .asciz "The numerator is:"
 
-.balign4
-return: .word0
+.balign 4
+return: .word 0
 
 .text
 

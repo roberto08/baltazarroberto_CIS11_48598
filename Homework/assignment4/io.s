@@ -80,6 +80,8 @@ address_of_return2: .word return2
 	ldr r1, address_of_return
 	ldr lr, [r1]
 	
+	bl divide
+	
 end:
 	bx lr
 

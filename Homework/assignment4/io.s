@@ -13,7 +13,7 @@ message2: .asciz "The numerator is:"
 return: .word 0
 
 .balign 4
-return2: word 0
+return2: .word 0
 
 .text
 

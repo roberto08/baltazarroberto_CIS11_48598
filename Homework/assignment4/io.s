@@ -14,7 +14,7 @@ return: .word 0
 
 .text
 
-.global main:
+.global main
 main:
 
 divide:

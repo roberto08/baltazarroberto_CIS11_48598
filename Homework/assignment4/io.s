@@ -7,7 +7,7 @@
 message1: .asciz "The quotient is %d"
 
 .balign 4				/*Second Message*/
-message2: .asciz "The numerator is %d"
+message2: .asciz "The numerator is %d/n"
 
 .balign 4
 return: .word 0
@@ -28,26 +28,26 @@ divide:
 	mov r0, #0				/*answer of a/b*/
 	mov r1, r2 				/*remainder of 1%b*/
 	
-  compare:
+compare:
 	cmp r2, r3				/*compare input a and b*/
 	bge scale				/*branch to scale, if greater than input b*/
 	ble move_answers			/*if less than input b branch to check_flag*/
 	
-  scale:
+scale:
 	mov r6, #1 				/*present scale of 10^*/
 	mul r7, r3, r6 			/*subtraction factor*/ 
 	mul r9, r7, r8 			/*test subtraction factor*/
 	cmp r1, r9 				/*test to shift scale by 10*/
 	blt subtract 			/*branch to subtract if remainder greater than shift test*/
 	
-  scale_update:
+scale_update:
 	mul r6, r8, r6 			/*update scale factor*/
 	mul r7, r3, r6 			/*subtraction factor*/
 	mul r9, r7, r8 			/*test subtraction factor*/
 	cmp r1, r9
 	bge scale_update 		/*branch back to scale*/
 
-  subtract:
+subtract:
 	add r0, r0, r6			/*update the counter/answer by scale */
 	sub r1, r1, r7			/*subtract input by scale*/
 	cmp r1, r7				/*if subtraction scale factor greater than a%b branch to subtract*/
@@ -63,17 +63,19 @@ divide:
 @	mov r0, r1				/*move to r0 a%b*/
 @	mov r1, r5				/*move a/b to r1 and complete switch*/
 
-   move_answers:
-   mov r2, r1
-   mov r1, r0
+move_answers:
+   mov r10, r0
+   mov r11, r1
    
 screen_out:
 	ldr r1, address_of_return
 	str lr, [r1]
 	
+	mov r1, r10
 	ldr r0, address_of_message1
 	bl printf
 
+	mov r1, r11
 	ldr r0, address_of_message2
 	bl printf
 	

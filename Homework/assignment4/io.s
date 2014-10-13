@@ -72,7 +72,7 @@ screen_out:
 	str lr, [r1]
 	
 	ldr r0, address_of_message1
-	bl printf
+	bl puts
 
 	ldr r0, address_of_message2
 	bl printf
@@ -90,3 +90,4 @@ address_of_return: .word return
 @address_of_input2: .word input2
 
 .global printf
+.global puts

@@ -4,10 +4,10 @@
 .data
 
 .balign 4				/*First Message*/
-message1: .asciz "The quotient is %d"
+message1: .asciz "The quotient is %d\n"
 
 .balign 4				/*Second Message*/
-message2: .asciz "The numerator is %d\n"
+message2: .asciz "The numerator is "
 
 .balign 4
 return: .word 0
@@ -64,7 +64,7 @@ divide:
 @	mov r1, r5				/*move a/b to r1 and complete switch*/
 
    move_answers:
-   mov r1, r0
+   mov r2, r0
    mov r2, r1
    
 screen_out:

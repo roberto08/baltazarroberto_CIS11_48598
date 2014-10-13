@@ -17,8 +17,8 @@ return: .word 0
 .global main
 
 main:
-	mov r2, #73			/*input a*/
-	mov r3, #18	 			/*input b*/
+	mov r2, #239			/*input a*/
+	mov r3, #7	 			/*input b*/
 	mov r4, #0 				/*use to flag a%b*/
 	mov r5, #0 				/*use to swap ro <-> r1*/
 	mov r6, #0 				/*present scale of 10^*/

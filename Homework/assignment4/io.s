@@ -4,7 +4,7 @@
 .data
 
 .balign 4				/*First Message*/
-message1: .asciz "The quotient is %d\n"
+message1: .asciz "The quotient is "
 
 .balign 4				/*Second Message*/
 message2: .asciz "The numerator is "

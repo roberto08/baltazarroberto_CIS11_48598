@@ -70,6 +70,9 @@ screen_out:
 	ldr r0, address_of_message1
 	bl puts
 	
+	ldr r0, address_of_message2
+	bl puts
+	
 	ldr r1, address_of_return
 	ldr lr, [r1]
 	

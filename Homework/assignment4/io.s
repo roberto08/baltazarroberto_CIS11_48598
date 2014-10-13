@@ -12,12 +12,13 @@ message2: .asciz "The numerator is:"
 .balign 4
 return: .word 0
 
+.balign 4
+return2: word 0
+
 .text
 
-.global main
-		
 divide:	
-  main:
+@  main:
 	mov r2, #24				/*input a*/
 	mov r3, #3	 			/*input b*/
 	mov r4, #0 				/*use to flag a%b*/
@@ -56,14 +57,17 @@ divide:
 	cmp r6, #1				/*if scale greater than 1 branch back to scale*/
 	bgt scale
 	
-  check_flag:
-	cmp r4, r1 				/*check for a%b*/
-	bgt end 				/*if no remainder branch to end*/
+@  check_flag:
+@	cmp r4, r1 				/*check for a%b*/
+@	bgt end 				/*if no remainder branch to end*/
 	
-	mov r5, r0 				/*move a/b to temporary register*/
-	mov r0, r1				/*move to r0 a%b*/
-	mov r1, r5				/*move a/b to r1 and complete switch*/
+@	mov r5, r0 				/*move a/b to temporary register*/
+@	mov r0, r1				/*move to r0 a%b*/
+@	mov r1, r5				/*move a/b to r1 and complete switch*/
+	bx lr
+address_of_return2: .word return2
 	
+.global main	
 	ldr r1, address_of_return
 	str lr, [r1]
 	

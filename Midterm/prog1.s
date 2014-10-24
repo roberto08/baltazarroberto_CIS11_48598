@@ -15,13 +15,12 @@ message2: .asciz "Your rate pay is $%d \n"
 
 .global main
 main: 
-	push {lr}
+	push {r1, lr}
 	
 	ldr r0, address_of_message1
 	bl printf
 	
-	ldr r0, address_of_input_hours 
-	push {r1}
+	ldr r1, address_of_input_hours 
 	bl scanf
 	
 	ldr r0, address_of_message2

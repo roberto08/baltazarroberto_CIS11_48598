@@ -24,6 +24,8 @@ main:
 	mov r1, sp
 	bl scanf
 	
+	ldr r1, [sp]
+	
 	ldr r0, address_of_message2
 	bl printf
 	

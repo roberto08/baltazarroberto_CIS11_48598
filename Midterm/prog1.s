@@ -9,18 +9,19 @@ message1: .asciz "How many hours did you worked this week? \n"
 
 input_hours: .asciz "%d"
 
-message2: .asciz "Your rate pay is $ \n"
+message2: .asciz "Your rate pay is $%d \n"
 
 .text
 
 .global main
 main: 
-	push {r1, lr}
+	push {lr}
 	
 	ldr r0, address_of_message1
 	bl printf
 	
 	ldr r0, address_of_input_hours 
+	push {r1}
 	bl scanf
 	
 	ldr r0, address_of_message2

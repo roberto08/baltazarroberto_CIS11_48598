@@ -20,7 +20,8 @@ main:
 	ldr r0, address_of_message1
 	bl printf
 	
-	ldr r1, address_of_input_hours 
+	ldr r0, address_of_input_hours 
+	mov r1, sp
 	bl scanf
 	
 	ldr r0, address_of_message2

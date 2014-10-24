@@ -5,9 +5,9 @@
 
 .data 
  
-message1: .asciz "How many hours did you worked this week? %\n"
+message1: .asciz "How many hours did you worked this week? \n"
 
-message2: .asciz "Your rate pay is $ %\n"
+message2: .asciz "Your rate pay is $ \n"
 
 .text
 

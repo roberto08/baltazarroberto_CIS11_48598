@@ -22,7 +22,7 @@ multiplication:
 	
 	mul r0, r1, r0 					/*Multiply hours * pay into r0 = gross pay*/
 	
-	pop {r0, r1, lr} 				/*Discard r0, r1 and pop lr to the top*/
+	pop {r1, lr} 				/*Discard r0, r1 and pop lr to the top*/
 	bx lr 							/*Leave multiplication*/
 
 .global main
@@ -40,7 +40,7 @@ main:
 	bl printf 						/*Call printf*/
 	
 	ldr r0, address_of_pay_rate 	/*Load address_of_pay_rate to r0 as first parameter of scanf*/
-	mov r1, sp 						/*Move pay rate read (second parameter) r1 into r2*/
+	mov r1, sp 						/*Move pay rate read (second parameter) r1 into top of stack*/
 	@mov r2, sp						/*Move r2 to top of the stack as second parameter of scanf*/
 	bl scanf 						/*Call to scanf*/
 

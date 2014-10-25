@@ -44,7 +44,7 @@ main:
 @	mov r1, sp						/*Move r2 to top of the stack as second parameter of scanf*/
 	bl scanf 						/*Call to scanf*/
 
-	mov r1, r2
+	mov r1, [r2]
 	ldr r0, [sp]					/*Load into r0 the Pay rate read by scanf*/
 @	ldr r1, [sp] 					/*Load into r1 the hours read by scanf*/
 	
@@ -55,7 +55,6 @@ main:
 	ldr r0, address_of_message3  	/*Load address_of_message3 to r0 as first parameter of printf*/
 	bl printf 						/*Call printf*/
 	
-	add sp, sp, #+4
 	pop {r1, lr} 					/*Discard integer read and pop lr to top of the stack*/
 	bx lr 							/*Leave main*/
 	

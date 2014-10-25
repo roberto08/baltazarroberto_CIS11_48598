@@ -36,6 +36,9 @@ main:
 	mov r1, sp						/*Move top of the stack as second parameter of scanf*/
 	bl scanf 						/*Call scanf*/
 	
+	ldr r2, [sp]
+	mov sp, r2
+	
 	ldr r0, address_of_message2 	/*Load message2 to r0 as parameter of printf*/
 	bl printf 						/*Call printf*/
 	

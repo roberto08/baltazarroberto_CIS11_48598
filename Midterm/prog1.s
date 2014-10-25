@@ -54,7 +54,7 @@ main:
 	ldr r0, address_of_message3  	/*Load address_of_message2 to r0 as first parameter of printf*/
 	bl printf 						/*Call printf*/
 	
-	pop {r1, lr} 					/*Discard integer read and pop lr to top of the stack*/
+	pop {r1, r2, lr} 				/*Discard integer read and pop lr to top of the stack*/
 	bx lr 							/*Leave main*/
 	
 address_of_message1: .word message1

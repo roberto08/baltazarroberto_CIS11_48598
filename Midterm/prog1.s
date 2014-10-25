@@ -26,7 +26,7 @@ multiplication:
 	bx lr 							/*Leave multiplication*/
 	
 rate:
-	push {r0, lr}
+	push {lr}
 
 	cmp r0, #20
 	ble straight
@@ -49,19 +49,17 @@ triple:
 	mov r1, #3
 	
 end:	
-	pop {r0, lr}
+	pop {lr}
 	bx lr
-	
-final_rate:
-
 	
 .global main
 main: 
-	push {r1, lr}					/*Push lr, r1 to the stack*/
+	push {lr}					/*Push lr, r1 to the stack*/
 	
 	ldr r0, address_of_message1 	/*Load message1 to r0 as parameter of printf*/
 	bl printf						/*Call printf*/
 	
+	sub sp, sp, #4 					/*Make room in the stack for hours input*/
 	ldr r0, address_of_input_hours 	/*Load address_of_input_hours to r0 as first parameter of scanf*/
 	mov r1, sp						/*Move top of the stack as second parameter of scanf (hours)*/
 	bl scanf 						/*Call scanf*/
@@ -86,9 +84,12 @@ main:
 	add sp, sp, #+4
 	bl multiplication
 	
+	mov r1, r0
+	
 @	ldr r0, [sp]					/*Load into r0 the Pay rate read by scanf*/
 @	add sp, sp, #+4 				/*Discard the pay rate read by scanf*/
-	ldr r1, [sp] 					/*Load into r1 the hours read by scanf*/
+	ldr r0, [sp] 					/*Load into r1 the hours read by scanf*/
+	add sp, sp, #+4
 	
 	bl multiplication 				/*Call multiplication*/
 	
@@ -97,7 +98,7 @@ main:
 	ldr r0, address_of_message3  	/*Load address_of_message3 to r0 as first parameter of printf*/
 	bl printf 						/*Call printf*/
 	
-	pop {r1, lr} 					/*Discard integer read (hours) and pop lr to top of the stack*/
+	pop {lr} 					/*Discard integer read (hours) and pop lr to top of the stack*/
 	bx lr 							/*Leave main*/
 	
 address_of_message1: .word message1

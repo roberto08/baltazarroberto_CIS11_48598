@@ -65,9 +65,11 @@ main:
 	bl scanf 						/*Call scanf*/
 		
 	ldr r0, [sp] 
-	sub sp, sp, #4
-	mov r1, sp
+@	sub sp, sp, #4
+@	mov r1, sp
 	bl rate
+	sub sp, sp, #4
+	str r1, [sp]
 	
 	ldr r0, address_of_message2 	/*Load message2 to r0 as parameter of printf*/
 	bl printf 						/*Call printf*/

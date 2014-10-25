@@ -22,7 +22,7 @@ multiplication:
 	
 	mul r0, r1, r0 					/*Multiply hours * pay into r0 = gross pay*/
 	
-	pop {r1, lr} 				/*Discard r0, r1 and pop lr to the top*/
+	pop {r0, r1, lr} 				/*Discard r0, r1 and pop lr to the top*/
 	bx lr 							/*Leave multiplication*/
 
 .global main

@@ -11,7 +11,7 @@ input_hours: .asciz "%d"
 
 message2: .asciz "What is your pay rate? \n"
 
-input_pay_rate: .asciz "%d"
+pay_rate: .asciz "%d"
 
 message3: .asciz "Your gross pay is $%d \n"
 
@@ -39,7 +39,7 @@ main:
 	ldr r0, address_of_message2 	/*Load message2 to r0 as parameter of printf*/
 	bl printf 						/*Call printf*/
 	
-	ldr r0, address_of_pay_rate 	/*Load address_of_pay_rate to r0 as first parameter of scanf*/
+	ldr r0, address_of_pay_rate		/*Load address_of_pay_rate to r0 as first parameter of scanf*/
 	ldr r1, [r0]
 @	mov r1, sp 						/*Move pay rate read (second parameter) r1 into top of stack*/
 @	mov r2, sp						/*Move r2 to top of the stack as second parameter of scanf*/
@@ -62,4 +62,4 @@ address_of_message1: .word message1
 address_of_message2: .word message2
 address_of_message3: .word message3
 address_of_input_hours: .word input_hours
-address_of_pay_rate: .word input_pay_rate
+address_of_pay_rate: .word pay_rate

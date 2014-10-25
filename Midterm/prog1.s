@@ -24,7 +24,37 @@ multiplication:
 	
 	pop {lr} 						/*Pop lr from the stack*/
 	bx lr 							/*Leave multiplication*/
+	
+rate:
+	push {r0, lr}
 
+	cmp r0, #20
+	ble straight
+	
+	cmp r0, #40
+	ble double
+	
+	cmp r0, #60
+	ble triple
+
+straight:
+	mov r1, #1
+	ble end
+	
+double:
+    mov r1, #2
+	ble end
+	
+triple:
+	mov r1, #3
+	
+end:	
+	pop {r0, lr}
+	bx lr
+	
+final_rate:
+
+	
 .global main
 main: 
 	push {r1, lr}					/*Push lr, r1 to the stack*/
@@ -36,6 +66,12 @@ main:
 	mov r1, sp						/*Move top of the stack as second parameter of scanf (hours)*/
 	bl scanf 						/*Call scanf*/
 	
+	sub sp, sp, #4
+	
+	ldr r0, [sp] 
+	mov r1, sp
+	bl rate
+	
 	ldr r0, address_of_message2 	/*Load message2 to r0 as parameter of printf*/
 	bl printf 						/*Call printf*/
 	
@@ -45,8 +81,14 @@ main:
 	mov r1, sp 						/*Move top of the stack as second parameter of scanf (pay rate)*/
 	bl scanf 						/*Call to scanf*/
 
-	ldr r0, [sp]					/*Load into r0 the Pay rate read by scanf*/
-	add sp, sp, #+4 				/*Discard the pay rate read by scanf*/
+	ldr r0, [sp] 
+	add sp, sp, #+4 
+	ldr r1, [sp] 
+	add sp, sp, #+4
+	bl multiplication
+	
+@	ldr r0, [sp]					/*Load into r0 the Pay rate read by scanf*/
+@	add sp, sp, #+4 				/*Discard the pay rate read by scanf*/
 	ldr r1, [sp] 					/*Load into r1 the hours read by scanf*/
 	
 	bl multiplication 				/*Call multiplication*/

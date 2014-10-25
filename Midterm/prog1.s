@@ -54,7 +54,7 @@ end:
 	
 .global main
 main: 
-	push {lr}					/*Push lr, r1 to the stack*/
+	push {lr}						/*Push lr to the stack*/
 	
 	ldr r0, address_of_message1 	/*Load message1 to r0 as parameter of printf*/
 	bl printf						/*Call printf*/
@@ -64,12 +64,10 @@ main:
 	mov r1, sp						/*Move top of the stack as second parameter of scanf (hours)*/
 	bl scanf 						/*Call scanf*/
 		
-	ldr r0, [sp] 
-@	sub sp, sp, #4
-@	mov r1, sp
-	bl rate
-	sub sp, sp, #4
-	str r1, [sp]
+	ldr r0, [sp]  					/*load r0 with hours inputed*/
+	bl rate 						/*Call rate*/
+	sub sp, sp, #4 					/*Make room in stack for type of rate*/
+	str r1, [sp] 					/*Push type of rate to stack*/
 	
 	ldr r0, address_of_message2 	/*Load message2 to r0 as parameter of printf*/
 	bl printf 						/*Call printf*/
@@ -80,18 +78,16 @@ main:
 	mov r1, sp 						/*Move top of the stack as second parameter of scanf (pay rate)*/
 	bl scanf 						/*Call to scanf*/
 
-	ldr r0, [sp] 
-	add sp, sp, #+4 
-	ldr r1, [sp] 
-	add sp, sp, #+4
-	bl multiplication
+	ldr r0, [sp]					/*Load into r0 the Pay rate read by scanf*/
+	add sp, sp, #+4 				/*Discard the pay rate read by scanf*/
+	ldr r1, [sp]  					/*Load r1 with type of rate*/
+	add sp, sp, #+4 				/*Discard type of rate*/
+	bl multiplication 				/*Call multiplication*/
 	
-	mov r1, r0
+	mov r1, r0 						/*Move final pay rate to r1*/
 	
-@	ldr r0, [sp]					/*Load into r0 the Pay rate read by scanf*/
-@	add sp, sp, #+4 				/*Discard the pay rate read by scanf*/
-	ldr r0, [sp] 					/*Load into r1 the hours read by scanf*/
-	add sp, sp, #+4
+	ldr r0, [sp] 					/*Load into r0 the hours read by scanf*/
+	add sp, sp, #+4 				/*Discard hours read by scanf*/
 	
 	bl multiplication 				/*Call multiplication*/
 	
@@ -100,7 +96,7 @@ main:
 	ldr r0, address_of_message3  	/*Load address_of_message3 to r0 as first parameter of printf*/
 	bl printf 						/*Call printf*/
 	
-	pop {lr} 					/*Discard integer read (hours) and pop lr to top of the stack*/
+	pop {lr} 						/*Pop lr to top of the stack*/
 	bx lr 							/*Leave main*/
 	
 address_of_message1: .word message1

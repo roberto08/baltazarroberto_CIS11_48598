@@ -40,6 +40,7 @@ main:
 	bl printf 						/*Call printf*/
 	
 	ldr r0, address_of_pay_rate 	/*Load address_of_pay_rate to r0 as first parameter of scanf*/
+	ldr r1, [r0]
 @	mov r1, sp 						/*Move pay rate read (second parameter) r1 into top of stack*/
 @	mov r2, sp						/*Move r2 to top of the stack as second parameter of scanf*/
 	bl scanf 						/*Call to scanf*/

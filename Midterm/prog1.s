@@ -27,14 +27,14 @@ multiplication:
 
 .global main
 main: 
-	push {r1, r2, lr}						/*Move lr to the top of the stack*/
+	push {r2, lr}						/*Move lr to the top of the stack*/
 	
 	ldr r0, address_of_message1 	/*Load message1 to r0 as parameter of printf*/
 	bl printf						/*Call printf*/
 	
 	ldr r0, address_of_input_hours 	/*Load address_of_input_hours to r0 as first parameter of scanf*/
-	mov r1, sp
-@	push {r1} 						/*Move r1 to top of the stack as second parameter of scanf*/
+@	mov r1, sp
+	push {r1} 						/*Move r1 to top of the stack as second parameter of scanf*/
 	bl scanf 						/*Call scanf*/
 	
 	ldr r0, address_of_message2 	/*Load message2 to r0 as parameter of printf*/

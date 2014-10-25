@@ -27,20 +27,20 @@ multiplication:
 
 .global main
 main: 
-	push {lr}						/*Move lr to the top of the stack*/
+	push {r1, r1, lr}						/*Move lr to the top of the stack*/
 	
 	ldr r0, address_of_message1 	/*Load message1 to r0 as parameter of printf*/
 	bl printf						/*Call printf*/
 	
 	ldr r0, address_of_input_hours 	/*Load address_of_input_hours to r0 as first parameter of scanf*/
-	push {r1} 						/*Move r1 to top of the stack as second parameter of scanf*/
+@	push {r1} 						/*Move r1 to top of the stack as second parameter of scanf*/
 	bl scanf 						/*Call scanf*/
 	
 	ldr r0, address_of_message2 	/*Load message2 to r0 as parameter of printf*/
 	bl printf 						/*Call printf*/
 	
 	ldr r0, address_of_pay_rate 	/*Load address_of_pay_rate to r0 as first parameter of scanf*/
-	push {r1}						/*Move r1 to top of the stack as second parameter of scanf*/
+@	push {r1}						/*Move r1 to top of the stack as second parameter of scanf*/
 	bl scanf 						/*Call to scanf*/
 	
 	ldr r0, [sp]					/*Load into r0 the Pay rate read by scanf*/
@@ -53,7 +53,7 @@ main:
 	ldr r0, address_of_message3  	/*Load address_of_message2 to r0 as first parameter of printf*/
 	bl printf 						/*Call printf*/
 	
-	pop {r1, lr} 					/*Discard integer read and pop lr to top of the stack*/
+	pop {r1, r1, lr} 					/*Discard integer read and pop lr to top of the stack*/
 	bx lr 							/*Leave main*/
 	
 address_of_message1: .word message1

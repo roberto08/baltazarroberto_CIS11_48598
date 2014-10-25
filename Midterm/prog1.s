@@ -49,7 +49,7 @@ main:
 	
 	bl multiplication 				/*Call multiplication*/
 	
-	mov r1, r0 						/*Move gross pay into r1 as second parameter of printf*/
+	mov r0, r1 						/*Move gross pay into r1 as second parameter of printf*/
 	
 	ldr r0, address_of_message3  	/*Load address_of_message2 to r0 as first parameter of printf*/
 	bl printf 						/*Call printf*/

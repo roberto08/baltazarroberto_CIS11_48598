@@ -18,11 +18,11 @@ message3: .asciz "Your gross pay is $%d \n"
 .text
 
 multiplication:
-	push {r0, r1, lr} 				/*Push lr, r1, r0 to the stack*/
+	push {lr} 				/*Push lr, r1, r0 to the stack*/
 	
 	mul r0, r1, r0 					/*Multiply hours * pay into r0 = gross pay*/
 	
-	pop {r0, r1, lr} 				/*Discard r0, r1 and pop lr to the top*/
+	pop {lr} 				/*Discard r0, r1 and pop lr to the top*/
 	bx lr 							/*Leave multiplication*/
 
 .global main
@@ -39,14 +39,14 @@ main:
 	ldr r0, address_of_message2 	/*Load message2 to r0 as parameter of printf*/
 	bl printf 						/*Call printf*/
 	
-	sub sp, sp, #8
+	sub sp, sp, #4
 	ldr r0, address_of_pay_rate		/*Load address_of_pay_rate to r0 as first parameter of scanf*/
 @	mov r1, r2 						/*Move pay rate read (second parameter) r1 into top of stack*/
 	mov r1, sp						/*Move r2 to top of the stack as second parameter of scanf*/
 	bl scanf 						/*Call to scanf*/
 
 	ldr r0, [sp]					/*Load into r0 the Pay rate read by scanf*/
-	add sp, sp, #+8
+	add sp, sp, #+4
 	ldr r1, [sp] 					/*Load into r1 the hours read by scanf*/
 	
 	bl multiplication 				/*Call multiplication*/

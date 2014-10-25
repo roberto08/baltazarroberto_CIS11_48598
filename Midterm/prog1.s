@@ -18,36 +18,39 @@ message3: .asciz "Your gross pay is $%d \n"
 .text
 
 multiplication:
-	push {lr} 				/*Push lr, r1, r0 to the stack*/
+	push {lr} 						/*Push lr, r1, r0 to the stack*/
 	
 	mul r0, r1, r0 					/*Multiply hours * pay into r0 = gross pay*/
 	
-	pop {lr} 				/*Discard r0, r1 and pop lr to the top*/
+	pop {lr} 						/*Discard r0, r1 and pop lr to the top*/
 	bx lr 							/*Leave multiplication*/
 
 .global main
 main: 
-	push {r1, lr}					/*Move lr, r1, r2 to the stack*/
+	push {lr}						/*Move lr, r1, r2 to the stack*/
 	
 	ldr r0, address_of_message1 	/*Load message1 to r0 as parameter of printf*/
 	bl printf						/*Call printf*/
 	
 	ldr r0, address_of_input_hours 	/*Load address_of_input_hours to r0 as first parameter of scanf*/
-	mov r1, sp						/*Move top of the stack as second parameter of scanf*/
+	push {r1}						/*Move top of the stack as second parameter of scanf*/
 	bl scanf 						/*Call scanf*/
 	
 	ldr r0, address_of_message2 	/*Load message2 to r0 as parameter of printf*/
 	bl printf 						/*Call printf*/
 	
-	sub sp, sp, #4
+@	sub sp, sp, #4
 	ldr r0, address_of_pay_rate		/*Load address_of_pay_rate to r0 as first parameter of scanf*/
 @	mov r1, r2 						/*Move pay rate read (second parameter) r1 into top of stack*/
-	mov r1, sp						/*Move r2 to top of the stack as second parameter of scanf*/
+@	mov r1, sp						/*Move r2 to top of the stack as second parameter of scanf*/
+	push {r1}
 	bl scanf 						/*Call to scanf*/
 
 	ldr r0, [sp]					/*Load into r0 the Pay rate read by scanf*/
-	add sp, sp, #+4
+@	add sp, sp, #+4
+	pop {r1}
 	ldr r1, [sp] 					/*Load into r1 the hours read by scanf*/
+	pop {r1}
 	
 	bl multiplication 				/*Call multiplication*/
 	

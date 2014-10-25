@@ -33,6 +33,7 @@ main:
 	bl printf						/*Call printf*/
 	
 	ldr r0, address_of_input_hours 	/*Load address_of_input_hours to r0 as first parameter of scanf*/
+	mov r1, sp
 @	push {r1} 						/*Move r1 to top of the stack as second parameter of scanf*/
 	bl scanf 						/*Call scanf*/
 	
@@ -41,6 +42,7 @@ main:
 	
 	ldr r0, address_of_pay_rate 	/*Load address_of_pay_rate to r0 as first parameter of scanf*/
 	mov r2, r1 						/*Move pay rate read (second parameter) r1 into r2*/
+	mov r2, sp
 @	push {r2}						/*Move r2 to top of the stack as second parameter of scanf*/
 	bl scanf 						/*Call to scanf*/
 	

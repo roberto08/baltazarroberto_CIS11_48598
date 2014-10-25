@@ -49,14 +49,14 @@ straight:
 	
 double:
 	sub r6, r6, #20 	@double hours to be paid
-    mul r1, r5, #2 		@double pay rate
+    mov r1, lsl#1 		@double pay rate
 	mul r8, r1, r6 		@calculate overtime pay
 	mov r6, #20 		@restore first 20 hours
 	b straight
 	
 triple:
 	sub r6, r6, #40 	@triple hours to be paid
-    mul r1, r5, #3 		@triple pay rate
+    add r1, r1, r1, lsl#1 		@triple pay rate
 	mul r9, r1, r6 		@calculate overtime pay
 	mov r6, #40 		@restore first 40 hours
     b double

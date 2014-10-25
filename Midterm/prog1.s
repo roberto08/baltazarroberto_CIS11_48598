@@ -65,10 +65,9 @@ main:
 	ldr r0, address_of_input_hours 	/*Load address_of_input_hours to r0 as first parameter of scanf*/
 	mov r1, sp						/*Move top of the stack as second parameter of scanf (hours)*/
 	bl scanf 						/*Call scanf*/
-	
-	sub sp, sp, #4
-	
+		
 	ldr r0, [sp] 
+	sub sp, sp, #4
 	mov r1, sp
 	bl rate
 	

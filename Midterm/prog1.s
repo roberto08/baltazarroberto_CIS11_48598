@@ -44,7 +44,7 @@ rate:
 	ble triple
 
 straight:
-	mul r7, r1, r6 		@calculate overtime pay
+	mul r7, r6, r5 		@calculate overtime pay
 	bl add_pay
 	
 double:

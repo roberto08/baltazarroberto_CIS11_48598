@@ -5,7 +5,7 @@
 
 .data 
  
-message1: .asciz "How many hours did you worked this week? \n"
+message1: .asciz "How many hours did you worked this week? (note: 60 hours max) \n"
 
 input_hours: .asciz "%d"
 
@@ -28,7 +28,6 @@ multiplication:
 .global main
 main: 
 	push {r1, lr}					/*Push lr, r1 to the stack*/
-@	sub sp, sp, #4 					/*Make room in the stack for pay rate input*/
 	
 	ldr r0, address_of_message1 	/*Load message1 to r0 as parameter of printf*/
 	bl printf						/*Call printf*/

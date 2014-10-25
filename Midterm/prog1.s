@@ -28,7 +28,7 @@ multiplication:
 .global main
 main: 
 	push {r1, lr}					/*Push lr, r1 to the stack*/
-	sub sp, sp, #4 					/*Make room in the stack for pay rate input*/
+@	sub sp, sp, #4 					/*Make room in the stack for pay rate input*/
 	
 	ldr r0, address_of_message1 	/*Load message1 to r0 as parameter of printf*/
 	bl printf						/*Call printf*/
@@ -39,6 +39,8 @@ main:
 	
 	ldr r0, address_of_message2 	/*Load message2 to r0 as parameter of printf*/
 	bl printf 						/*Call printf*/
+	
+	sub sp, sp, #4 					/*Make room in the stack for pay rate input*/
 	
 	ldr r0, address_of_pay_rate		/*Load address_of_pay_rate to r0 as first parameter of scanf*/
 	mov r1, sp 						/*Move top of the stack as second parameter of scanf (pay rate)*/

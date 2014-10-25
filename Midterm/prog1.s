@@ -11,7 +11,7 @@ input_hours: .asciz "%d"
 
 message2: .asciz "What is your pay rate? \n"
 
-@input_pay_rate: .asciz "%d"
+input_pay_rate: .asciz "%d"
 
 message3: .asciz "Your gross pay is $%d \n"
 
@@ -27,20 +27,22 @@ multiplication:
 
 .global main
 main: 
-	push {r1, r2, lr}				/*Move lr, r1, r2 to the stack*/
+	push {lr}				/*Move lr, r1, r2 to the stack*/
 	
 	ldr r0, address_of_message1 	/*Load message1 to r0 as parameter of printf*/
 	bl printf						/*Call printf*/
 	
 	ldr r0, address_of_input_hours 	/*Load address_of_input_hours to r0 as first parameter of scanf*/
-	mov r1, sp						/*Move r1 to top of the stack as second parameter of scanf*/
+	push {r1}
+	@mov r1, sp						/*Move r1 to top of the stack as second parameter of scanf*/
 	bl scanf 						/*Call scanf*/
 	
 	ldr r0, address_of_message2 	/*Load message2 to r0 as parameter of printf*/
 	bl printf 						/*Call printf*/
 	
-	ldr r0, address_of_input_hours 	/*Load address_of_pay_rate to r0 as first parameter of scanf*/
-	mov r1, sp 						/*Move pay rate read (second parameter) r1 into top of stack*/
+	ldr r0, address_of_pay_rate 	/*Load address_of_pay_rate to r0 as first parameter of scanf*/
+	push {r1}
+@	mov r1, sp 						/*Move pay rate read (second parameter) r1 into top of stack*/
 @	mov r2, sp						/*Move r2 to top of the stack as second parameter of scanf*/
 	bl scanf 						/*Call to scanf*/
 
@@ -49,16 +51,16 @@ main:
 	
 	bl multiplication 				/*Call multiplication*/
 	
-	mov r0, r1 						/*Move gross pay into r1 as second parameter of printf*/
+	mov r1, r0 						/*Move gross pay into r1 as second parameter of printf*/
 	
 	ldr r0, address_of_message3  	/*Load address_of_message2 to r0 as first parameter of printf*/
 	bl printf 						/*Call printf*/
 	
-	pop {r1, r2, lr} 				/*Discard integer read and pop lr to top of the stack*/
+	pop {r1, r1, lr} 				/*Discard integer read and pop lr to top of the stack*/
 	bx lr 							/*Leave main*/
 	
 address_of_message1: .word message1
 address_of_message2: .word message2
 address_of_message3: .word message3
 address_of_input_hours: .word input_hours
-@address_of_pay_rate: .word input_pay_rate
+address_of_pay_rate: .word input_pay_rate

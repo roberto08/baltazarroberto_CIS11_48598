@@ -52,10 +52,10 @@ main:
 	
 	mov r1, r0 						/*Move gross pay into r1 as second parameter of printf*/
 	
-	ldr r0, address_of_message3  	/*Load address_of_message2 to r0 as first parameter of printf*/
+	ldr r0, address_of_message3  	/*Load address_of_message3 to r0 as first parameter of printf*/
 	bl printf 						/*Call printf*/
 	
-	add sp, sp, #4
+	add sp, sp, #+4
 	pop {r1, lr} 					/*Discard integer read and pop lr to top of the stack*/
 	bx lr 							/*Leave main*/
 	

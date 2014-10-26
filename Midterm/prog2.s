@@ -105,7 +105,7 @@ input_message:
 input_a:  							/*set parameters to call function*/ 
 	mov r0, #30  					/*Move $30 per month to r0*/
 	ldr r1, [sp] 	
-	add sp, sp, #+4
+	add sp, sp, #+4 
 @	mov r1, r11 						/*Move input hours by user to r1 saved in r5 earlier*/ 
 	mov r2, #11 					/*Move first 11 hours access*/ 
 	mov r3, #3 						/*Move $3 to r2 for additional hours*/ 
@@ -117,7 +117,9 @@ input_a:  							/*set parameters to call function*/
 	
 input_b: 							/*set parameters to call function*/ 
 	mov r0, #35  					/*Move $30 per month to r0*/
-	mov r1, r5 						/*Move input hours by user to r1 saved in r5 earlier*/ 
+	ldr r1, [sp] 	
+	add sp, sp, #+4 	
+@	mov r1, r5 						/*Move input hours by user to r1 saved in r5 earlier*/ 
 	mov r2, #22 					/*Move first 11 hours access*/ 
 	mov r3, #2 						/*Move $3 to r2 for additional hours*/ 
 	mov r4, #44 					/*Move 22 as max hours to r4*/ 
@@ -128,7 +130,9 @@ input_b: 							/*set parameters to call function*/
 	
 input_c: 							/*set parameters to call function*/ 
 	mov r0, #40  					/*Move $30 per month to r0*/
-	mov r1, r5 						/*Move input hours by user to r1 saved in r5 earlier*/ 
+	ldr r1, [sp] 	
+	add sp, sp, #+4 
+@	mov r1, r5 						/*Move input hours by user to r1 saved in r5 earlier*/ 
 	mov r2, #33 					/*Move first 11 hours access*/ 
 	mov r3, #1 						/*Move $3 to r2 for additional hours*/ 
 	mov r4, #66 					/*Move 22 as max hours to r4*/ 

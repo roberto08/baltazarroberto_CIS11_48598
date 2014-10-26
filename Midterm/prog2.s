@@ -137,7 +137,7 @@ input_c: 							/*set parameters to call function*/
 end: 
     mov r0, r1 						/*Move calculated bill to r1 as second parameter of printf*/ 
 	
-	lrd r0, address_of_message6 	/*Move address_of_message6 to r0 as first parameter of printf*/
+	ldr r0, address_of_message6 	/*Move address_of_message6 to r0 as first parameter of printf*/
 	bl printf 						/*Call printf*/
 
 	pop {lr} 						/*Pop lr to top of the stack*/ 

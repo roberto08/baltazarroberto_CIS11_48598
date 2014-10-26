@@ -47,7 +47,7 @@ max:
 	mov r1, r4  					/*Move r4 hours max to calculate secong extra charge*/ 
 	b extra   						/*branch to extra to calculate the full charge*/ 
 	
-end_bill  
+end_bill: 
 	pop {r4, r5, lr} 				/*Pop r4, r5 and lr back to its original values*/ 
 	bx lr 							/*Exit function bill*/
 	
@@ -69,8 +69,8 @@ main:
 	mov r1, sp 						/*Move the stack to r1 as second parameter of scanf*/ 
 	bl scanf 						/*Call scanf*/ 
 	
-	ldr r5, [sp] 					/Load into r1 the input of hours*/ 
-	add sp, sp #+4 					/*Discard the input of hours from the stack*/ 
+	ldr r5, [sp] 					/*Load into r1 the input of hours*/ 
+	add sp, sp, #+4 				/*Discard the input of hours from the stack*/ 
 
 input_message:	
 	ldr r0, address_of_message5 	/*Load into r0 address_of_message5 as first parameter of printf*/
@@ -86,7 +86,7 @@ input_message:
 	
 	add sp, sp, #4 					/*Discard user input from the stack*/
 	
-	cmp ro, #97 					/*Compare r0(user input) to a(97)*/
+	cmp r0, #97 					/*Compare r0(user input) to a(97)*/
 	beq input_a 					/*If equal branch to input_a*/
 	
 	cmp r0, #98 					/*Compare r0(user input) to b(98)*/
@@ -139,4 +139,4 @@ address_of_message3: .word message3
 address_of_message4: .word message4 
 address_of_message5: .word message5
 address_of_input_hours: .word input_hours 
-address_of_input_choice. .word input_choice 
+address_of_input_choice: .word input_choice 

@@ -13,6 +13,8 @@ message4: .asciz "Please input number of hours will be used: \n"
 
 message5: .asciz "Please Enter a, b, or c for the package you would like to subscribe: to. \n" 
 
+message6: .asciz "Your monthly bill is: $%d \n" 
+
 input_hours: .asciz "%d" 
 
 input_choice: .asciz "%d" 
@@ -132,7 +134,12 @@ input_c: 							/*set parameters to call function*/
 @	mov r6, #33 					/*move $33 for maximum charge*/ 
 	bl bill
 
-end:	
+end: 
+    mov r0, r1 						/*Move calculated bill to r1 as second parameter of printf*/ 
+	
+	lrd r0, address_of_message6 	/*Move address_of_message6 to r0 as first parameter of printf*/
+	bl printf 						/*Call printf*/
+
 	pop {lr} 						/*Pop lr to top of the stack*/ 
 	bx lr 							/*Leave main*/
 
@@ -141,5 +148,6 @@ address_of_message2: .word message2
 address_of_message3: .word message3 
 address_of_message4: .word message4 
 address_of_message5: .word message5
+address_of_message6: .word message6 
 address_of_input_hours: .word input_hours 
 address_of_input_choice: .word input_choice 

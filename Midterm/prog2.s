@@ -64,8 +64,11 @@ main:
 	ldr r0, address_of_message3 	/*Load into r0 address_of_message3 as first parameter of printf*/
 	bl printf						/*Call printf*/
 
+	ldr r0, address_of_message4 	/*Load into r0 address_of_message4 as first parameter of printf*/ 
+	bl printf 						/*Call printf*/ 
+	
 	sub sp, sp, #4 					/*Make room in the stack for user input hours*/ 
-	ldr r0, input 					/*Load input as first parameter of scanf*/ 
+	ldr r0, address_of_input_hours 	/*Load input as first parameter of scanf*/ 
 	mov r1, sp 						/*Move the stack to r1 as second parameter of scanf*/ 
 	bl scanf 						/*Call scanf*/ 
 	
@@ -78,7 +81,7 @@ input_message:
 	
 	sub sp, sp, #4 					/*Make room in the stack for user input a, b, or c*/
 	
-	ldr r0, address_of_input 		/*Move address_of_input to r0 as first parameter of scanf*/
+	ldr r0, address_of_input_choice /*Move address_of_input to r0 as first parameter of scanf*/
 	mov r1, sp 						/*Set the top of stack as second parameter of scanf*/ 
 	bl scanf 						/*Call scanf*/
 	

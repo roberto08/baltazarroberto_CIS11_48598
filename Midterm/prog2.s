@@ -135,7 +135,7 @@ input_c: 							/*set parameters to call function*/
 	bl bill
 
 end: 
-    mov r0, r1 						/*Move calculated bill to r1 as second parameter of printf*/ 
+    mov r1, r0 						/*Move calculated bill to r1 as second parameter of printf*/ 
 	
 	ldr r0, address_of_message6 	/*Move address_of_message6 to r0 as first parameter of printf*/
 	bl printf 						/*Call printf*/

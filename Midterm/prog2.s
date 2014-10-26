@@ -3,9 +3,9 @@
 
 .data 
 
-message1: .asciz "a) $30 per month, 11 hours access. Additional hours are $3 up to 22 hours then $6 for all additional hours. \n"
+@message1: .asciz "a) $30 per month, 11 hours access. Additional hours are $3 up to 22 hours then $6 for all additional hours. \n"
 
-message2: .asciz "b) $35 per month, 22 hours access. Additional hours are $2 up to 44 hours then $4 for each hour above this limit. \n"
+@message2: .asciz "b) $35 per month, 22 hours access. Additional hours are $2 up to 44 hours then $4 for each hour above this limit. \n"
 
 message3: .azciz "c) $40 per month, 33 hours access. Additional hours are $1 up to 66 hours then $2 for each hour above this limit. \n" 
 
@@ -16,6 +16,11 @@ message5: .azciz "Please Enter a, b, or c for the package you would like to subs
 input_hours: .azciz "%d" 
 
 input_choice: .azciz "%d" 
+
+message1: .asciz "a) $30 per month, 11 hours access. Additional hours are $3 up to 22 hours then $6 for all additional hours. \n"
+
+message2: .asciz "b) $35 per month, 22 hours access. Additional hours are $2 up to 44 hours then $4 for each hour above this limit. \n"
+
 
 .text
 

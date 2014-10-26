@@ -22,14 +22,14 @@ input_choice: .asciz "%d"
 .text
 
 @	mov r0, #30  					/*Move $30 per month to r0*/
-@	mov r1, r5 						/*Move input hours by user to r1 saved in r5 earlier*/ 
+@	mov r1, r11 						/*Move input hours by user to r1 saved in r5 earlier*/ 
 @	mov r2, #11 					/*Move first 11 hours access*/ 
 @	mov r3, #3 						/*Move $3 to r2 for additional hours*/ 
 @	mov r4, #22 					/*Move 22 as max hours to r4*/ 
 @	mov r5, #6  					/*Move $6 to r5 as max charge per hours*/ 
 	
 bill:
-	push {r4, r5, lr} 				/*Push lr, r5, and r5 to the stack*/ 
+	push {r1, r2, r3, r4, r5, lr} 				/*Push lr, r5, and r5 to the stack*/ 
 	
 	cmp r1, r2  					/*Compare r1 and r1 for normal rate
 	bge end_bill  					/*If normal rate end bill*/ 
@@ -50,7 +50,7 @@ max:
 	b extra   						/*branch to extra to calculate the full charge*/ 
 	
 end_bill: 
-	pop {r4, r5, lr} 				/*Pop r4, r5 and lr back to its original values*/ 
+	pop {r1, r2, r3, r4, r5, lr} 				/*Pop r4, r5 and lr back to its original values*/ 
 	bx lr 							/*Exit function bill*/
 	
 .global main
@@ -74,7 +74,7 @@ main:
 	mov r1, sp 						/*Move the stack to r1 as second parameter of scanf*/ 
 	bl scanf 						/*Call scanf*/ 
 	
-	ldr r5, [sp] 					/*Load into r1 the input of hours*/ 
+	ldr r11, [sp] 					/*Load into r1 the input of hours*/ 
 	add sp, sp, #+4 				/*Discard the input of hours from the stack*/ 
 
 input_message:	
@@ -104,7 +104,7 @@ input_message:
 
 input_a:  							/*set parameters to call function*/ 
 	mov r0, #30  					/*Move $30 per month to r0*/
-	mov r1, r5 						/*Move input hours by user to r1 saved in r5 earlier*/ 
+	mov r1, r11 						/*Move input hours by user to r1 saved in r5 earlier*/ 
 	mov r2, #11 					/*Move first 11 hours access*/ 
 	mov r3, #3 						/*Move $3 to r2 for additional hours*/ 
 	mov r4, #22 					/*Move 22 as max hours to r4*/ 

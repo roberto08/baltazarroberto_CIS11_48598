@@ -6,7 +6,7 @@
 
 message1: .asciz "Enter a number: \n" 
 
-message2: .asciz "The term in the sequence is: %d \n" 
+message2: .asciz "The term in the Fibonacci sequence is: %d \n" 
 
 input: .asciz "%d" 
 
@@ -35,11 +35,11 @@ main:
 update: 	
 	add r1, r1, r2 					/*Update the next term (first) in the sequence of r1*/ 
 	cmp r1, r0 						/*Compare number input to first number in sequence*/ 
-	bgt move1 						/*If greater or equal to input branch to output*/ 
+	bge move1 						/*If greater or equal to input branch to output*/ 
 	
 	add r2, r1, r2 					/*Update the next term (second) in the sequence of r2*/ 
 	cmp r2, r0 						/*Compare number input to second number in sequence*/ 
-	bgt output   					/*If greater or equal to input branch to move1*/ 
+	bge output   					/*If greater or equal to input branch to move1*/ 
 	b update 
 	
 move1: 

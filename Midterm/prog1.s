@@ -93,10 +93,7 @@ input_message:
 	add sp, sp, #+4 				/*Discard the pay rate read by scanf*/
 	
 	ldr r1, [sp] 					/*Load into r1 the hours read by scanf*/
-	add sp, sp, #+4 				/*Discard hours read by scanf*/
-	
-	cmp r1, #60 					/*Check if more than 60 hours*/ 
-	bgt 
+	add sp, sp, #+4 				/*Discard hours read by scanf*/ 
 	
 	bl gross_pay 
  

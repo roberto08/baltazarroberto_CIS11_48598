@@ -11,7 +11,7 @@ message3: .asciz "Press 3 for Program 3: Calculates term in Fibonacci sequence. 
 
 message4: .asciz "Press any key to terminate menu. \n" 
 
-input: .asciz "%d" 
+input: .asciz "%d %c" 
 
 .text 
 

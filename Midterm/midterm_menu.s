@@ -41,27 +41,28 @@ choice_input:
 	ldr r0, [sp] 					/*Load into r0 input read*/ 
 	add sp, sp, #+4 				/*Discard input from the stack*/ 
 	
-	cmp r0, #1
+	cmp r0, #1 						/*Check input choice for prog1*/ 
 	beq program1
 	
-	cmp r0, #2
+	cmp r0, #2 						/*Check input choice for prog2*/
 	beq program2
 	
-	cmp r0, #3 
+	cmp r0, #3 						/*Check input choice for prog3*/
 	beq program3
-	b end_main
+	
+	b end_main 						/*Any other choice ends the main program*/ 
 	
 program1:
-	bal prog1
-	b choice_input
+	bal prog1 						/*Branch to prog1*/
+	b choice_input 					/*Branch back to menu*/ 
 	
 program2: 
-	bal prog2
-	b choice_input
+	bal prog2						/*Branch to prog4*/
+	b choice_input 					/*Branch back to menu*/
 	
 program3:
-	bal prog3
-	b choice_input 
+	bal prog3 						/*Branch to prog3*/
+	b choice_input 					/*Branch back to menu*/
 
 end_main:
 	pop {lr} 						/*pop lr from the stack*/ 

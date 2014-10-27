@@ -49,7 +49,7 @@ choice_input:
 	
 	cmp r0, #3 
 	beq program3
-	bal end 
+	b end 
 	
 program1:
 	bal prog1

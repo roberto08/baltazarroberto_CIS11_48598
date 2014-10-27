@@ -99,7 +99,6 @@ prog1:
 	bl printf 						/*Call printf*/
 	
 	pop {lr} 						/*Pop lr to top of the stack*/
-@	bx lr 							/*Leave main*/
 	
 address_of_message1: .word message1
 address_of_message2: .word message2

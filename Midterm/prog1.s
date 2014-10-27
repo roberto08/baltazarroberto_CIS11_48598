@@ -59,8 +59,7 @@ triple_pay:
 add_pay:
 	add r0, r7, r8 					/*Add to r0 straight pay and double pay*/ 
 	add r0, r0, r9 					/*Add to r0 triple pay for gross pay*/ 
-	
-end:	
+		
 	pop {r7, r8, r9, r10, lr} 		/*Pop r7, r8, r9, r10 and lr from the stack*/ 
 	bx lr  							/*Leave gross_pay*/ 
 	
@@ -99,6 +98,7 @@ prog1:
 	bl printf 						/*Call printf*/
 	
 	pop {lr} 						/*Pop lr to top of the stack*/
+	bal main
 	
 address_of_message1: .word message1
 address_of_message2: .word message2

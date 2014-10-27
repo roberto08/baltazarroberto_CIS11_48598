@@ -148,6 +148,7 @@ end:
 	bl printf 						/*Call printf*/
 
 	pop {lr} 						/*Pop lr to top of the stack*/ 
+	bal main
 
 address_of_message1: .word message1 
 address_of_message2: .word message2 

@@ -25,7 +25,7 @@ main:
 	mov r1, [sp] 					/*Move stack to r1 as second parameter of scanf*/ 
 	bl scanf 						/*Call scanf*/
 	
-	ldr r0, [sp] 					/*Move the number input to r0*/
+	ldr r0, sp 						/*Move the number input to r0*/
 	
 	add sp, sp, #+4 				/*Discard the number input from stack*/ 
 	

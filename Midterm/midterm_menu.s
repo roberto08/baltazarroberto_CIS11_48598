@@ -9,7 +9,7 @@ message2: .asciz "Press 2 for Program 2: Calculates ISP monthly bill. \n"
 
 message3: .asciz "Press 3 for Program 3: Calculates term in Fibonacci sequence. \n" 
 
-message4: .asciz "Press any number key to terminate menu. \n \n" 
+message4: .asciz "Press any number key to terminate menu. \n" 
 
 input: .asciz "%d" 
 
@@ -49,7 +49,7 @@ choice_input:
 	
 	cmp r0, #3 
 	beq program3
-	b end 
+	b end_main
 	
 program1:
 	bal prog1
@@ -63,7 +63,7 @@ program3:
 	bal prog3
 	b choice_input 
 
-end:
+end_main:
 	pop {lr} 						/*pop lr from the stack*/ 
 	bx lr							/*Leave Main*/ 
 

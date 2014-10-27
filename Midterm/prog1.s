@@ -64,8 +64,8 @@ end:
 	pop {r7, r8, r9, r10, lr} 		/*Pop r7, r8, r9, r10 and lr from the stack*/ 
 	bx lr 							/*Leave gross_pay*/ 
 	
-.global main
-main: 
+.global prog1
+prog1: 
 	push {lr}						/*Push lr to the stack*/
 	
 	ldr r0, address_of_message1 	/*Load message1 to r0 as parameter of printf*/

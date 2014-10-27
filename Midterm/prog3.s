@@ -12,8 +12,8 @@ input: .asciz "%d"
 
 .text
 
-.global main
-main:
+.global prog3
+prog3:
 	push {lr} 						/*Push lr to the stack*/ 
 	
 	ldr r0, address_of_message1 	/*Load address_of_message1 to r0 as first parameter of printf*/

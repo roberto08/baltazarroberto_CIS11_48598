@@ -11,7 +11,7 @@ message3: .asciz "c) $40 per month, 33 hours access. Additional hours are $1 up 
 
 message4: .asciz "Please input number of hours will be used: \n" 
 
-message5: .asciz "Please Enter a, b, or c for the package you would like to subscribe: to. \n" 
+message5: .asciz "Please Enter a, b, or c for the package you would like to subscribe to: \n" 
 
 message6: .asciz "Your monthly bill is: $%d \n" 
 
@@ -53,8 +53,8 @@ end_bill:
 	pop {r1, r2, r3, r4, r5, lr} 	/*Pop r4, r5 and lr back to its original values*/ 
 	bx lr 							/*Exit function bill*/
 	
-.global main
-main:
+.global prog2
+prog2:
 	push {lr} 						/*Push lr to the stack*/ 
 	
 	ldr r0, address_of_message1		/*Load into r0 address_of_message1 as first parameter of printf*/

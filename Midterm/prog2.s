@@ -86,9 +86,7 @@ input_message:
 	
 	ldr r0, [sp] 					/*Load the the top of the stack(user input) to r0*/
 	
-	add sp, sp, #+4 				/*Discard user input from the stack*/
-	
-	sub r0, r0, #48 
+	add sp, sp, #+4 				/*Discard user input from the stack*/ 
 	
 	cmp r0, #1 						/*Compare r0(user input) to a(97)*/
 	beq input_a 					/*If equal branch to input_a*/

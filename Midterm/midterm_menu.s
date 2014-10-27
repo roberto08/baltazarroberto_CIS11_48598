@@ -30,8 +30,8 @@ main:
 	ldr r0, address_of_message4 	/*Load into r0 address_of_message4 as first parameter of printf*/ 
 	bl printf 						/*Call printf*/ 
 
-choice_input	
-	ldr ro, input 					/*Load into r0 input as first parameter of scanf*/ 
+choice_input:	
+	ldr r0, input 					/*Load into r0 input as first parameter of scanf*/ 
 	bl scanf 						/*Call scanf*/ 
 	
 	cmp r1, #1

@@ -53,15 +53,15 @@ choice_input:
 	
 program1:
 	bal prog1
-	bal choice_input
+	b choice_input
 	
 program2: 
 	bal prog2
-	bal choice_input
+	b choice_input
 	
 program3:
 	bal prog3
-	bal choice_input 
+	b choice_input 
 
 end:
 	pop {lr} 						/*pop lr from the stack*/ 

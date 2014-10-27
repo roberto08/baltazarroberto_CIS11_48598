@@ -16,7 +16,7 @@ message6: .asciz "Your monthly bill is: $%d \n"
 
 input_hours: .asciz "%d" 
 
-input_choice: .asciz "%d" 
+input_choice: .asciz "%c" 
 
 .text
 

@@ -14,7 +14,7 @@ input: .asciz "%d"
 
 .global prog3
 prog3:
-	push {lr} 						/*Push lr to the stack*/ 
+	push {r0, r1, r2, lr} 						/*Push lr to the stack*/ 
 	
 	ldr r0, address_of_message1 	/*Load address_of_message1 to r0 as first parameter of printf*/
 	bl printf 						/*Call printf*/ 
@@ -49,7 +49,7 @@ output:
 	ldr r0, address_of_message2 	/*Load address_of_message2 to r0 as first parameter*/ 
 	bl printf 						/*Call printf*/
 	
-	pop {lr} 						/*Pop lr to the top of the stack*/ 
+	pop {r0, r1, r2, lr} 						/*Pop lr to the top of the stack*/ 
 		
 address_of_message1: .word message1 
 address_of_message2: .word message2 

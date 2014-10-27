@@ -6,7 +6,7 @@
 
 message1: .asciz "Enter a number: \n" 
 
-message2: .asciz "The term in the Fibonacci sequence is: %d \n" 
+message2: .asciz "The term in the Fibonacci sequence is: %d \n \n" 
 
 input: .asciz "%d" 
 

@@ -12,7 +12,7 @@ message4: .asciz "Please input number of hours will be used: \n"
 
 message5: .asciz "Please Enter a, b, or c for the package you would like to subscribe to: \n" 
 
-message6: .asciz "Your monthly bill is: $%d \n" 
+message6: .asciz "Your monthly bill is: $%d \n \n" 
 
 input_hours: .asciz "%d" 
 

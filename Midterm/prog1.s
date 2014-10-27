@@ -13,7 +13,7 @@ message2: .asciz "What is your pay rate? \n"
 
 pay_rate: .asciz "%d"
 
-message3: .asciz "Your gross pay is $%d \n"
+message3: .asciz "Your gross pay is $%d \n \n"
 
 .text
 	

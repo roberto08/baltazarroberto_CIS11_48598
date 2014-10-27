@@ -3,7 +3,7 @@
 
 .data 
 
-message1: .asciz "a) $30 per month, 11 hours access. Additional hours are $3 up to 22 hours then $6 for all additional hours. \n"
+message1: .asciz "a) $30 per month, 11 hours access. Additional hours are $3 up to 22 hours then \n $6 for all additional hours. \n"
 
 message2: .asciz "b) $35 per month, 22 hours access. Additional hours are $2 up to 44 hours then $4 for each hour above this limit. \n"
 

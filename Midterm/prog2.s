@@ -1,5 +1,4 @@
 /*Program calculates a customers ISP monthly bill*/
-/*a=97, b=98, c=99*/
 
 .data 
 
@@ -17,7 +16,7 @@ message6: .asciz "Your monthly bill is: $%d \n"
 
 input_hours: .asciz "%d" 
 
-input_choice: .asciz "%d" 
+input_choice: .asciz "%c" 
 
 .text
 

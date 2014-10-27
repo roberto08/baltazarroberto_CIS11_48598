@@ -55,7 +55,7 @@ end_bill:
 	
 .global prog2
 prog2:
-	push {r0, r1, r2, r3, r4, r5, lr} 						/*Push lr to the stack*/ 
+	push {lr} 						/*Push lr to the stack*/ 
 	
 	ldr r0, address_of_message1		/*Load into r0 address_of_message1 as first parameter of printf*/
 	bl printf 						/*Call printf*/
@@ -147,7 +147,7 @@ end:
 	ldr r0, address_of_message6 	/*Move address_of_message6 to r0 as first parameter of printf*/
 	bl printf 						/*Call printf*/
 
-	pop {r0, r1, r2, r3, r4, r5, lr} 						/*Pop lr to top of the stack*/ 
+	pop {lr} 						/*Pop lr to top of the stack*/ 
 	bx lr 							/*Leave main*/
 
 address_of_message1: .word message1 

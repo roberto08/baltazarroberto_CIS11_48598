@@ -9,7 +9,7 @@ message2: .asciz "Press 2 for Program 2: Calculates ISP monthly bill. \n"
 
 message3: .asciz "Press 3 for Program 3: Calculates term in Fibonacci sequence. \n" 
 
-message4: .asciz "Press any number key to terminate menu. \n" 
+message4: .asciz "Press any number key to terminate menu. \n \n" 
 
 input: .asciz "%d" 
 

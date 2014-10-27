@@ -17,7 +17,7 @@ message6: .asciz "Your monthly bill is: $%d \n"
 
 input_hours: .asciz "%d" 
 
-input_choice: .asciz "%c" 
+input_choice: .asciz "%d" 
 
 .text
 
@@ -89,9 +89,9 @@ input_message:
 	
 	add sp, sp, #+4 				/*Discard user input from the stack*/
 	
-@	sub r0, r0, #48 
+	sub r0, r0, #96 
 	
-	cmp r0, #a 						/*Compare r0(user input) to a(97)*/
+	cmp r0, #1 						/*Compare r0(user input) to a(97)*/
 	beq input_a 					/*If equal branch to input_a*/
 	
 	cmp r0, #2 						/*Compare r0(user input) to b(98)*/

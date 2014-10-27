@@ -20,20 +20,21 @@ message3: .asciz "Your gross pay is $%d \n"
 /*first parameter r0 = pay rate*/ 
 /*second parameter r1 = hours*/ 
 gross_pay: 
-	push {r7, r8, r9, lr} 			/*Push lr, r9, r8, r7 to the stack*/ 
+	push {r7, r8, r9, r10, lr} 		/*Push lr, r10, r9, r8, and r7 to the stack*/ 
 
 	mov r7, #0 						/*Clear r7 for first 20 hours paid*/ 
 	mov r8, #0 						/*Clear r8 for second 20 hours paid*/ 
 	mov r9, #0 						/*Clear r9 for third 20 hours paid*/ 
+	mov r10, r0 					/*Move to r10 to keep original pay rate*/
 	
 	cmp r1, #20 					/*Compare hours input to first 20 hours*/ 
-	bge straight_pay 				/*If hours equal less than 20 branch to straight_pay*/
+	ble straight_pay 				/*If hours equal less than 20 branch to straight_pay*/
 	
 	cmp r1, #40 					/*Compare hours input to next 40 hours*/
-	bge double_pay 					/*If hours equal less than 40 branch to double_pay*/
+	ble double_pay 					/*If hours equal less than 40 branch to double_pay*/
 	
 	cmp r1, #60 					/*Compare hours input to next 60 hours*/ 
-	bge triple_pay 					/*If hours equal less than 60 hours branch to triple_pay*/
+	ble triple_pay 					/*If hours equal less than 60 hours branch to triple_pay*/
 
 straight_pay:
 	mul r7, r1, r0 					/*Calculate straight pay*/ 
@@ -44,6 +45,7 @@ double_pay:
     mov r0, r0, lsl#1 				/*Calculate double pay rate*/
 	mul r8, r0, r1 					/*Calculate Double pay to r8*/
 	mov r1, #20 					/*Restore first 20 hours*/
+	mov r0, r10 					/*Move to r0 original pay rate*/
 	b straight_pay 					/*Branch to straight_pay*/ 
 	
 triple_pay:
@@ -51,6 +53,7 @@ triple_pay:
     add r0, r0, r0, lsl#1 			/*Calculate triple pay rate*/ 
 	mul r9, r0, r1 					/*Calculate triple pay to r9*/ 
 	mov r1, #40 					/*restore first 40 hours*/ 
+	mov r0, r10 					/*Move to r0 original pay rate*/
     b double_pay					/*Branch to double_pay*/
 	
 add_pay:
@@ -58,7 +61,7 @@ add_pay:
 	add r0, r0, r9 					/*Add to r0 triple pay for gross pay*/ 
 	
 end:	
-	pop {r7, r8, r9, lr} 			/*Pop r7, r8, r9, lr from the stack*/ 
+	pop {r7, r8, r9, r10, lr} 		/*Pop r7, r8, r9, r10 and lr from the stack*/ 
 	bx lr 							/*Leave gross_pay*/ 
 	
 .global main

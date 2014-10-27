@@ -22,7 +22,7 @@ main:
 	sub sp, sp, #4 					/*Make room in the stack for the number input*/ 
 	
 	ldr r0, address_of_input 		/*Load address_of_input to r0 as first parameter of scanf*/ 
-	mov r1, [sp] 					/*Move stack to r1 as second parameter of scanf*/ 
+	mov r1, sp 					/*Move stack to r1 as second parameter of scanf*/ 
 	bl scanf 						/*Call scanf*/
 	
 	ldr r0, sp 						/*Move the number input to r0*/

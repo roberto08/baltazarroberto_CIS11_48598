@@ -5,7 +5,7 @@
 
 .data 
  
-message1: .asciz "\n How many hours did you worked this week? (note: 60 hours max) \n"
+message1: .asciz "\nHow many hours did you worked this week? (note: 60 hours max) \n"
 
 input_hours: .asciz "%d"
 

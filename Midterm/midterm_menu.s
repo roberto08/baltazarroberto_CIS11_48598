@@ -17,6 +17,7 @@ input: .asciz "%d"
 
 .global main
 main: 
+	push {lr} 						/*Push lr to the stack*/
 
 	ldr r0, address_of_message1 	/*Load into r0 address_of_message1 as first parameter of printf*/ 
 	bl printf 						/*Call printf*/ 
@@ -57,7 +58,8 @@ program3:
 	bal choice_input 
 
 end:
-	bx lr
+	pop {lr} 						/*pop lr from the stack*/ 
+	bx lr							/*Leave Main*/ 
 
 address_of_message1: .word message1
 address_of_message2: .word message2 

@@ -51,7 +51,7 @@ max:
 	
 end_bill: 
 	pop {r1, r2, r3, r4, r5, lr} 	/*Pop r4, r5 and lr back to its original values*/ 
-@	bx lr 							/*Exit function bill*/
+	b lr 							/*Exit function bill*/
 	
 .global prog2
 prog2:

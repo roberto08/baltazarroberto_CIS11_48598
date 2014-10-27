@@ -89,13 +89,15 @@ input_message:
 	
 	add sp, sp, #+4 				/*Discard user input from the stack*/
 	
-	cmp r0, #97 						/*Compare r0(user input) to a(97)*/
+	sub r0, r0, #48 
+	
+	cmp r0, #1 						/*Compare r0(user input) to a(97)*/
 	beq input_a 					/*If equal branch to input_a*/
 	
-	cmp r0, #98 						/*Compare r0(user input) to b(98)*/
+	cmp r0, #2 						/*Compare r0(user input) to b(98)*/
 	beq input_b 					/*If equal branch to input_b*/
 	
-	cmp r0, #99 						/*Compare r0(user input) to c(99)*/ 
+	cmp r0, #3 						/*Compare r0(user input) to c(99)*/ 
 	beq input_c 					/*If equal branch to input_c*/
 	
 	b input_message 				/*Other wise branch back to input_message*/

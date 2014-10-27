@@ -5,7 +5,7 @@
 
 .data 
  
-message1: .asciz "How many hours did you worked this week? (note: 60 hours max) \n"
+message1: .asciz "\n How many hours did you worked this week? (note: 60 hours max) \n"
 
 input_hours: .asciz "%d"
 
@@ -35,6 +35,7 @@ gross_pay:
 	
 	cmp r1, #60 					/*Compare hours input to next 60 hours*/ 
 	ble triple_pay 					/*If hours equal less than 60 hours branch to triple_pay*/
+	bgt restart 
 
 straight_pay:
 	mul r7, r1, r0 					/*Calculate straight pay*/ 
@@ -59,14 +60,15 @@ triple_pay:
 add_pay:
 	add r0, r7, r8 					/*Add to r0 straight pay and double pay*/ 
 	add r0, r0, r9 					/*Add to r0 triple pay for gross pay*/ 
-		
+
 	pop {r7, r8, r9, r10, lr} 		/*Pop r7, r8, r9, r10 and lr from the stack*/ 
 	bx lr  							/*Leave gross_pay*/ 
 	
 .global prog1
 prog1: 
 	push {lr}						/*Push lr to the stack*/
-	
+
+input_message:	
 	ldr r0, address_of_message1 	/*Load message1 to r0 as parameter of printf*/
 	bl printf						/*Call printf*/
 	
@@ -74,7 +76,11 @@ prog1:
 	ldr r0, address_of_input_hours 	/*Load address_of_input_hours to r0 as first parameter of scanf*/
 	mov r1, sp						/*Move top of the stack as second parameter of scanf (hours)*/
 	bl scanf 						/*Call scanf*/
-		
+	
+	ldr r0, [sp]					/*Load into r0 the Pay rate read by scanf*/
+	cmp r0, #60  					/*Check if hours are over 60 maximum*/
+	bgt input_message				/*If over 60 ask again for hours*/ 
+	
 	ldr r0, address_of_message2 	/*Load address_of_message2 to r0 as parameter of printf*/
 	bl printf 						/*Call printf*/
 	
@@ -90,8 +96,11 @@ prog1:
 	ldr r1, [sp] 					/*Load into r1 the hours read by scanf*/
 	add sp, sp, #+4 				/*Discard hours read by scanf*/
 	
+	cmp r1, #60 					/*Check if more than 60 hours*/ 
+	bgt 
+	
 	bl gross_pay 
- 	
+ 
 	mov r1, r0 						/*Move gross pay into r1 as second parameter of printf*/
 	
 	ldr r0, address_of_message3  	/*Load address_of_message3 to r0 as first parameter of printf*/

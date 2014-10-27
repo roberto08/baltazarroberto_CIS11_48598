@@ -62,11 +62,11 @@ add_pay:
 	
 end:	
 	pop {r7, r8, r9, r10, lr} 		/*Pop r7, r8, r9, r10 and lr from the stack*/ 
-	b output 							/*Leave gross_pay*/ 
+	bx lr  							/*Leave gross_pay*/ 
 	
 .global prog1
 prog1: 
-	push {r0, r1, lr}						/*Push lr to the stack*/
+	push {lr}						/*Push lr to the stack*/
 	
 	ldr r0, address_of_message1 	/*Load message1 to r0 as parameter of printf*/
 	bl printf						/*Call printf*/
@@ -91,15 +91,14 @@ prog1:
 	ldr r1, [sp] 					/*Load into r1 the hours read by scanf*/
 	add sp, sp, #+4 				/*Discard hours read by scanf*/
 	
-	bl gross_pay
-
-output: 	
+	bl gross_pay 
+ 	
 	mov r1, r0 						/*Move gross pay into r1 as second parameter of printf*/
 	
 	ldr r0, address_of_message3  	/*Load address_of_message3 to r0 as first parameter of printf*/
 	bl printf 						/*Call printf*/
 	
-	pop {r0, r1, lr} 						/*Pop lr to top of the stack*/
+	pop {lr} 						/*Pop lr to top of the stack*/
 	
 address_of_message1: .word message1
 address_of_message2: .word message2

@@ -51,11 +51,11 @@ max:
 	
 end_bill: 
 	pop {r1, r2, r3, r4, r5, lr} 	/*Pop r4, r5 and lr back to its original values*/ 
-	b end  							/*Exit function bill*/
+	bx lr  							/*Exit function bill*/
 	
 .global prog2
 prog2:
-	push {r0, r1, r2, r3, r4, r5, lr} 						/*Push lr to the stack*/ 
+	push {lr} 						/*Push lr to the stack*/ 
 	
 	ldr r0, address_of_message1		/*Load into r0 address_of_message1 as first parameter of printf*/
 	bl printf 						/*Call printf*/
@@ -147,7 +147,7 @@ end:
 	ldr r0, address_of_message6 	/*Move address_of_message6 to r0 as first parameter of printf*/
 	bl printf 						/*Call printf*/
 
-	pop {r0, r1, r2, r3, r4, r5, lr} 						/*Pop lr to top of the stack*/ 
+	pop {lr} 						/*Pop lr to top of the stack*/ 
 
 address_of_message1: .word message1 
 address_of_message2: .word message2 

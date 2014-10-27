@@ -52,8 +52,8 @@ end_bill:
 	pop {r1, r2, r3, r4, r5, lr} 	/*Pop r4, r5 and lr back to its original values*/ 
 	bx lr  							/*Exit function bill*/
 	
-.global prog2
-prog2:
+.global main
+main:
 	push {lr} 						/*Push lr to the stack*/ 
 	
 	ldr r0, address_of_message1		/*Load into r0 address_of_message1 as first parameter of printf*/
@@ -90,7 +90,7 @@ input_message:
 	
 	sub r0, r0, #48 
 	
-	cmp r0, #49 						/*Compare r0(user input) to a(97)*/
+	cmp r0, #1 						/*Compare r0(user input) to a(97)*/
 	beq input_a 					/*If equal branch to input_a*/
 	
 	cmp r0, #2 						/*Compare r0(user input) to b(98)*/
@@ -149,7 +149,7 @@ end:
 	bl printf 						/*Call printf*/
 
 	pop {lr} 						/*Pop lr to top of the stack*/ 
-	bal main
+	bx lr
 
 address_of_message1: .word message1 
 address_of_message2: .word message2 

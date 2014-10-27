@@ -31,17 +31,23 @@ main:
 	ldr r0, address_of_message4 	/*Load into r0 address_of_message4 as first parameter of printf*/ 
 	bl printf 						/*Call printf*/ 
 
+	sub sp, sp, #4 					/*Make room in the stack for input*/ 
+	
 choice_input: 
 	ldr r0, address_of_input 		/*Load into r0 input as first parameter of scanf*/ 
+	mov r1, sp 						/*Move stack to r0 as second parameter of scanf*/ 
 	bl scanf 						/*Call scanf*/ 
 	
-	cmp r1, #1
+	ldr r0, [sp] 					/*Load into r0 input read*/ 
+	add sp, sp, #+4 				/*Discard input from the stack*/ 
+	
+	cmp r0, #1
 	beq program1
 	
-	cmp r1, #2
+	cmp r0, #2
 	beq program2
 	
-	cmp r1, #3 
+	cmp r0, #3 
 	beq program3
 	bal end 
 	

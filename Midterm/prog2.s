@@ -81,7 +81,7 @@ input_message:
 	sub sp, sp, #4 					/*Make room in the stack for user input a, b, or c*/
 	
 	ldr r0, address_of_input_choice /*Move address_of_input to r0 as first parameter of scanf*/
-	mov r1, sp 						/*Set the top of stack as second parameter of scanf*/ 
+	mov r2, sp 						/*Set the top of stack as second parameter of scanf*/ 
 	bl scanf 						/*Call scanf*/
 	
 	ldr r0, [sp] 					/*Load the the top of the stack(user input) to r0*/

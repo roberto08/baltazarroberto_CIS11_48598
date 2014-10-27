@@ -21,36 +21,36 @@ input_choice: .asciz "%d"
 
 .text
 
-@	mov r0, #30  					/*Move $30 per month to r0*/
-@	mov r1, r11 						/*Move input hours by user to r1 saved in r5 earlier*/ 
-@	mov r2, #11 					/*Move first 11 hours access*/ 
-@	mov r3, #3 						/*Move $3 to r2 for additional hours*/ 
-@	mov r4, #22 					/*Move 22 as max hours to r4*/ 
-@	mov r5, #6  					/*Move $6 to r5 as max charge per hours*/ 
-	
+/*First parameter r0 = price per month*/ 
+/*Second parameter r1 = input hours*/ 
+/*Third parameter r2 = first hours of access*/ 
+/*Fourth parameter r3 = price per each additional hour*/ 
+/*Fifth parameter r4 = max hours*/ 
+/*Sixth parameter r5 = price per each additional past max*/ 
+/*r0 returns bill price*/ 
 bill:
-	push {r1, r2, r3, r4, r5, lr} 				/*Push lr, r5, and r5 to the stack*/ 
+	push {r1, r2, r3, r4, r5, lr} 	/*Push lr, r5, r4, r3, r2, and r1 to the stack*/ 
 	
-	cmp r1, r2  					/*Compare r1 and r2 for normal rate
-	bpl end_bill  					/*If normal rate end bill*/ 
+	cmp r1, r2  					/*Compare r1 and r2 for a normal rate*/
+	bpl end_bill  					/*If normal rate, branch to end_bill*/ 
 	
 	cmp r1, r4 						/*Compare r1 and r4 for extra charge*/ 
-	ble extra 						/*If extra go branch to extra*/ 
-	b max 							/*Other wise branh to max charge*/ 
+	ble extra 						/*If extra, branch to extra*/ 
+	b max 							/*Otherwise branh to max charge*/ 
 	
 extra:
 	sub r1, r1, r2 					/*Calculate extra hours to be charged*/ 
 	mla r0, r3, r1, r0 				/*Calculate extra charge*/ 
-	b end_bill 
+	b end_bill  					/*branch to end_bill*/
 	
 max:
 	sub r1, r1, r4 					/*Calculate extra hours to be charged*/
 	mla r0, r5, r1, r0 	 			/*Calculate extra charge*/ 
-	mov r1, r4  					/*Move r4 hours max to calculate secong extra charge*/ 
+	mov r1, r4  					/*Move r4 (hours) max to calculate secong extra charge*/ 
 	b extra   						/*branch to extra to calculate the full charge*/ 
 	
 end_bill: 
-	pop {r1, r2, r3, r4, r5, lr} 				/*Pop r4, r5 and lr back to its original values*/ 
+	pop {r1, r2, r3, r4, r5, lr} 	/*Pop r4, r5 and lr back to its original values*/ 
 	bx lr 							/*Exit function bill*/
 	
 .global main
@@ -70,12 +70,10 @@ main:
 	bl printf 						/*Call printf*/ 
 	
 	sub sp, sp, #4 					/*Make room in the stack for user input hours*/ 
+	
 	ldr r0, address_of_input_hours 	/*Load input as first parameter of scanf*/ 
 	mov r1, sp 						/*Move the stack to r1 as second parameter of scanf*/ 
 	bl scanf 						/*Call scanf*/ 
-	
-@	ldr r11, [sp] 					/*Load into r1 the input of hours*/ 
-@	add sp, sp, #+4 				/*Discard the input of hours from the stack*/ 
 
 input_message:	
 	ldr r0, address_of_message5 	/*Load into r0 address_of_message5 as first parameter of printf*/
@@ -89,55 +87,58 @@ input_message:
 	
 	ldr r0, [sp] 					/*Load the the top of the stack(user input) to r0*/
 	
-	add sp, sp, #+4 					/*Discard user input from the stack*/
+	add sp, sp, #+4 				/*Discard user input from the stack*/
 	
-	cmp r0, #1 					/*Compare r0(user input) to a(97)*/
+	cmp r0, #1 						/*Compare r0(user input) to a(97)*/
 	beq input_a 					/*If equal branch to input_a*/
 	
-	cmp r0, #2 					/*Compare r0(user input) to b(98)*/
+	cmp r0, #2 						/*Compare r0(user input) to b(98)*/
 	beq input_b 					/*If equal branch to input_b*/
 	
-	cmp r0, #3 					/*Compare r0(user input) to c(99)*/ 
+	cmp r0, #3 						/*Compare r0(user input) to c(99)*/ 
 	beq input_c 					/*If equal branch to input_c*/
 	
 	b input_message 				/*Other wise branch back to input_message*/
 
 input_a:  							/*set parameters to call function*/ 
 	mov r0, #30  					/*Move $30 per month to r0*/
-	ldr r1, [sp] 	
-	add sp, sp, #+4 
-@	mov r1, r11 						/*Move input hours by user to r1 saved in r5 earlier*/ 
+	
+	ldr r1, [sp] 					/*Load to r1 the input of hours*/
+	add sp, sp, #+4  				/*Discard the input of hours from the stack*/ 
+	
 	mov r2, #11 					/*Move first 11 hours access*/ 
 	mov r3, #3 						/*Move $3 to r2 for additional hours*/ 
 	mov r4, #22 					/*Move 22 as max hours to r4*/ 
 	mov r5, #6  					/*Move $6 to r5 as max charge per hours*/
-@	mov r6, #33 					/*move $33 for maximum charge*/ 
+	
 	bl bill
     b end 
 	
 input_b: 							/*set parameters to call function*/ 
-	mov r0, #35  					/*Move $30 per month to r0*/
-	ldr r1, [sp] 	
-	add sp, sp, #+4 	
-@	mov r1, r5 						/*Move input hours by user to r1 saved in r5 earlier*/ 
-	mov r2, #22 					/*Move first 11 hours access*/ 
-	mov r3, #2 						/*Move $3 to r2 for additional hours*/ 
-	mov r4, #44 					/*Move 22 as max hours to r4*/ 
-	mov r5, #4  					/*Move $6 to r5 as max charge per hours*/
-@	mov r6, #33 					/*move $33 for maximum charge*/ 
+	mov r0, #35  					/*Move $35 per month to r0*/
+	
+	ldr r1, [sp] 					/*Load to r1 the input of hours from the stack*/
+	add sp, sp, #+4 				/*Discard the input of hours from the stack*/
+	 
+	mov r2, #22 					/*Move first 22 hours access*/ 
+	mov r3, #2 						/*Move $2 to r2 for additional hours*/ 
+	mov r4, #44 					/*Move 44 as max hours to r4*/ 
+	mov r5, #4  					/*Move $4 to r5 as max charge per hours*/
+	
 	bl bill
     b end 
 	
 input_c: 							/*set parameters to call function*/ 
-	mov r0, #40  					/*Move $30 per month to r0*/
-	ldr r1, [sp] 	
-	add sp, sp, #+4 
-@	mov r1, r5 						/*Move input hours by user to r1 saved in r5 earlier*/ 
-	mov r2, #33 					/*Move first 11 hours access*/ 
-	mov r3, #1 						/*Move $3 to r2 for additional hours*/ 
-	mov r4, #66 					/*Move 22 as max hours to r4*/ 
-	mov r5, #2  					/*Move $6 to r5 as max charge per hours*/
-@	mov r6, #33 					/*move $33 for maximum charge*/ 
+	mov r0, #40  					/*Move $40 per month to r0*/
+	
+	ldr r1, [sp] 					/*Load to r1 the input of hours from the stack*/
+	add sp, sp, #+4  				/*Discard the input of hours from the stack*/ 
+	
+	mov r2, #33 					/*Move first 33 hours access*/ 
+	mov r3, #1 						/*Move $1 to r2 for additional hours*/ 
+	mov r4, #66 					/*Move 66 as max hours to r4*/ 
+	mov r5, #2  					/*Move $2 to r5 as max charge per hours*/
+	
 	bl bill
 
 end: 

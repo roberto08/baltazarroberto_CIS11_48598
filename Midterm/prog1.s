@@ -1,7 +1,7 @@
 /*Program develops gross pay for employees*/
 /*Pays straight time for 20 hours worked*/
 /*Pays double time for all hours over 20 but less than 40*/
-/*Pays triple time for hours over 40but less than 60 as maximum*/
+/*Pays triple time for hours over 40 but less than 60 as maximum*/
 
 .data 
  
@@ -16,58 +16,50 @@ pay_rate: .asciz "%d"
 message3: .asciz "Your gross pay is $%d \n"
 
 .text
+	
+/*first parameter r0 = pay rate*/ 
+/*second parameter r1 = hours*/ 
+gross_pay: 
+	push {r7, r8, r9, lr} 			/*Push lr, r9, r8, r7 to the stack*/ 
 
-multiplication:
-	push {lr} 						/*Push lr to the stack*/
+	mov r7, #0 						/*Clear r7 for first 20 hours paid*/ 
+	mov r8, #0 						/*Clear r8 for second 20 hours paid*/ 
+	mov r9, #0 						/*Clear r9 for third 20 hours paid*/ 
 	
-	mul r0, r1, r0 					/*Multiply hours * pay into r0 = gross pay*/
+	cmp r1, #20 					/*Compare hours input to first 20 hours*/ 
+	ble straight_pay 				/*If hours equal less than 20 branch to straight_pay*/
 	
-	pop {lr} 						/*Pop lr from the stack*/
-	bx lr 							/*Leave multiplication*/
+	cmp r1, #40 					/*Compare hours input to next 40 hours*/
+	ble double_pay 					/*If hours equal less than 40 branch to double_pay*/
 	
-rate:
-	push {lr}
+	cmp r1, #60 					/*Compare hours input to next 60 hours*/ 
+	ble triple_pay 					/*If hours equal less than 60 hours branch to triple_pay*/
 
-	mov r5, r0 			/*move pay rate to r5*/
-	mov r6, r1 			/*move hours to r6*/
-	mov r7, #0
-	mov r8, #0
-	mov r9, #0
+straight_pay:
+	mul r7, r1, r0 					/*Calculate straight pay*/ 
+	b add_pay 						/*Branch to add_pay*/ 
 	
-	cmp r6, #20 		/*if pay rate equal less than 20*/
-	ble straight
+double_pay:
+	sub r1, r1, #20 				/*Calculate double hours to be paid*/ 
+    mov r0, r0, lsl#1 				/*Calculate double pay rate*/
+	mul r8, r0, r1 					/*Calculate Double pay to r8*/
+	mov r1, #20 					/*Restore first 20 hours*/
+	b straight_pay 					/*Branch to straight_pay*/ 
 	
-	cmp r6, #40 		/*if pay rate equal less than 40*/
-	ble double
-	
-	cmp r6, #60
-	ble triple
-
-straight:
-	mul r7, r6, r5 		@calculate overtime pay
-	bl add_pay
-	
-double:
-	sub r6, r6, #20 	@double hours to be paid
-    mov r0, r0, lsl#1 		@double pay rate
-	mul r8, r0, r6 		@calculate overtime pay
-	mov r6, #20 		@restore first 20 hours
-	b straight
-	
-triple:
-	sub r6, r6, #40 	@triple hours to be paid
-    add r5, r5, r5, lsl#1 		@triple pay rate
-	mul r9, r0, r6 		@calculate overtime pay
-	mov r6, #40 		@restore first 40 hours
-    b double
+triple_pay:
+	sub r1, r1, #40 				/*Calculate triple hours to be paid*/
+    add r0, r0, r0, lsl#1 			/*Calculate triple pay rate*/ 
+	mul r9, r0, r1 					/*Calculate triple pay to r9*/ 
+	mov r1, #40 					/*restore first 40 hours*/ 
+    b double_pay					/*Branch to double_pay*/
 	
 add_pay:
-	add r0, r7, r8
-	add r0, r0, r9
+	add r0, r7, r8 					/*Add to r0 straight pay and double pay*/ 
+	add r0, r0, r9 					/*Add to r0 triple pay for gross pay*/ 
 	
 end:	
-	pop {lr}
-	bx lr
+	pop {r7, r8, r9, lr} 			/*Pop r7, r8, r9, lr from the stack*/ 
+	bx lr 							/*Leave gross_pay*/ 
 	
 .global main
 main: 
@@ -81,12 +73,7 @@ main:
 	mov r1, sp						/*Move top of the stack as second parameter of scanf (hours)*/
 	bl scanf 						/*Call scanf*/
 		
-@	ldr r0, [sp]  					/*load r0 with hours inputed*/
-@	bl rate 						/*Call rate*/
-@	sub sp, sp, #4 					/*Make room in stack for type of rate*/
-@	str r1, [sp] 					/*Push type of rate to stack*/
-	
-	ldr r0, address_of_message2 	/*Load message2 to r0 as parameter of printf*/
+	ldr r0, address_of_message2 	/*Load address_of_message2 to r0 as parameter of printf*/
 	bl printf 						/*Call printf*/
 	
 	sub sp, sp, #4 					/*Make room in the stack for pay rate input*/
@@ -97,18 +84,11 @@ main:
 
 	ldr r0, [sp]					/*Load into r0 the Pay rate read by scanf*/
 	add sp, sp, #+4 				/*Discard the pay rate read by scanf*/
-@	ldr r1, [sp]  					/*Load r1 with type of rate*/
-@	add sp, sp, #+4 				/*Discard type of rate*/
-@	bl multiplication 				/*Call multiplication*/
-	
-@	mov r1, r0 						/*Move final pay rate to r1*/
 	
 	ldr r1, [sp] 					/*Load into r1 the hours read by scanf*/
 	add sp, sp, #+4 				/*Discard hours read by scanf*/
 	
-	bl rate
-	
-@	bl multiplication 				/*Call multiplication*/
+	bl gross_pay
 	
 	mov r1, r0 						/*Move gross pay into r1 as second parameter of printf*/
 	

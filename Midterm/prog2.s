@@ -32,7 +32,7 @@ bill:
 	push {r1, r2, r3, r4, r5, lr} 	/*Push lr, r5, r4, r3, r2, and r1 to the stack*/ 
 	
 	cmp r1, r2  					/*Compare r1 and r2 for a normal rate*/
-	bpl end_bill  					/*If normal rate, branch to end_bill*/ 
+	ble end_bill  					/*If normal rate, branch to end_bill*/ 
 	
 	cmp r1, r4 						/*Compare r1 and r4 for extra charge*/ 
 	ble extra 						/*If extra, branch to extra*/ 

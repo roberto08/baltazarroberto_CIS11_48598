@@ -35,7 +35,6 @@ gross_pay:
 	
 	cmp r1, #60 					/*Compare hours input to next 60 hours*/ 
 	ble triple_pay 					/*If hours equal less than 60 hours branch to triple_pay*/
-	bgt restart 
 
 straight_pay:
 	mul r7, r1, r0 					/*Calculate straight pay*/ 

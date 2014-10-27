@@ -62,7 +62,7 @@ add_pay:
 	
 end:	
 	pop {r7, r8, r9, r10, lr} 		/*Pop r7, r8, r9, r10 and lr from the stack*/ 
-	b lr 							/*Leave gross_pay*/ 
+	bl lr 							/*Leave gross_pay*/ 
 	
 .global prog1
 prog1: 

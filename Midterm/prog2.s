@@ -88,7 +88,7 @@ input_message:
 	
 @	add sp, sp, #+4 				/*Discard user input from the stack*/ 
 	
-	cmp r0, #x61 						/*Compare r0(user input) to a(97)*/
+	cmp r0, #0x61 						/*Compare r0(user input) to a(97)*/
 	beq input_a 					/*If equal branch to input_a*/
 	
 	cmp r0, #2 						/*Compare r0(user input) to b(98)*/

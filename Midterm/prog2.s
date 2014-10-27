@@ -91,7 +91,7 @@ input_message:
 	
 	sub r0, r0, #48 
 	
-	cmp r0, #1 						/*Compare r0(user input) to a(97)*/
+	cmp r0, #a 						/*Compare r0(user input) to a(97)*/
 	beq input_a 					/*If equal branch to input_a*/
 	
 	cmp r0, #2 						/*Compare r0(user input) to b(98)*/

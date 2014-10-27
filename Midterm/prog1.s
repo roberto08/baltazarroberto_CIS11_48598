@@ -26,13 +26,13 @@ gross_pay:
 	mov r8, #0 						/*Clear r8 for second 20 hours paid*/ 
 	mov r9, #0 						/*Clear r9 for third 20 hours paid*/ 
 	
-	cmp #20, r1 					/*Compare hours input to first 20 hours*/ 
+	cmp r1, #20 					/*Compare hours input to first 20 hours*/ 
 	bge straight_pay 				/*If hours equal less than 20 branch to straight_pay*/
 	
-	cmp #40, r1 					/*Compare hours input to next 40 hours*/
+	cmp r1, #40 					/*Compare hours input to next 40 hours*/
 	bge double_pay 					/*If hours equal less than 40 branch to double_pay*/
 	
-	cmp #60, r1 					/*Compare hours input to next 60 hours*/ 
+	cmp r1, #60 					/*Compare hours input to next 60 hours*/ 
 	bge triple_pay 					/*If hours equal less than 60 hours branch to triple_pay*/
 
 straight_pay:

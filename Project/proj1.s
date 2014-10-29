@@ -18,7 +18,7 @@ main:
 	
 loop_rand: 						/* Create a 2 digit random number */
 	bl rand 					/* Call rand */
-	mov r1,r0,ASR #23 			/* In case random return is negative */
+	mov r1,r0,ASR #27 			/* In case random return is negative */
 @	mov r2,#90 					/* Move 90 to r2 */
 								/* We want rand()%90+10 so cal divMod with rand()%90 */
 

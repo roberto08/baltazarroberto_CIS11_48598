@@ -24,6 +24,8 @@ loop_rand: 						/* Create a 2 digit random number */
 		ldr r0, address_of_message 	/* Set &message2 as the first parameter of printf */
 		bl printf 					/* Call printf */
 		
+		mov r0, r1
+		
 	mov r2,#90 					/* Move 90 to r2 */
 								/* We want rand()%90+10 so cal divMod with rand()%90 */
 

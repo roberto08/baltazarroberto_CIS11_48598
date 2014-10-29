@@ -14,11 +14,16 @@ main:
 	mov r0,#0 					/* Set time(0) */
 	bl time 					/* Call time */
 	bl srand 					/* Call srand */
-	mov r4,#0 					/* Setup loop counter */
+@	mov r4,#0 					/* Setup loop counter */
 	
 loop_rand: 						/* Create a 2 digit random number */
 	bl rand 					/* Call rand */
+	
 	mov r1,r0,ASR #1 			/* In case random return is negative */
+	
+		ldr r0, address_of_message 	/* Set &message2 as the first parameter of printf */
+		bl printf 					/* Call printf */
+		
 	mov r2,#90 					/* Move 90 to r2 */
 								/* We want rand()%90+10 so cal divMod with rand()%90 */
 
@@ -28,8 +33,8 @@ loop_rand: 						/* Create a 2 digit random number */
 	ldr r0, address_of_message 	/* Set &message2 as the first parameter of printf */
 	bl printf 					/* Call printf */
 
-	add r4,#1
-	cmp r4,#20
+@	add r4,#1
+@	cmp r4,#20
 	blt loop_rand
 
 	pop {r4,lr} 				/* Pop the top of the stack and put it in lr */

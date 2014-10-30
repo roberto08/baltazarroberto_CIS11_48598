@@ -30,6 +30,7 @@ loop_rand: 						/* Create a 2 digit random number */
 								
 	bl divMod 					/* Call divMod function to get remainder */
 	add r1,#1 					/* Remainder in r1 so add 10 giving between 10 and 99 -> 2 digits */
+	mov r2, r1
 	ldr r0, address_of_message1 /* Set &message2 as the first parameter of printf */
 	bl printf 					/* Call printf */
 	
@@ -45,12 +46,14 @@ main:
 	push {lr} 					/* Push lr on top of the stack*/
 	
 	bl random_number 
+	mov r1, r2
 	
 	ldr r0, address_of_message1 
 	bl printf 
 	
 	mov r0, #11
 	bl random_number
+	mov r1, r2
 	
 	ldr r0, address_of_message2
 	bl printf

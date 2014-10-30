@@ -12,6 +12,7 @@ message2: .asciz "The Dealer cards: %d \n"
 random_number:
 	push {r4,lr} 				/* Push lr onto the top of the stack */
 	mov r0,#0 					/* Set time(0) */
+	mov r1, #0
 	bl time 					/* Call time */
 	bl srand 					/* Call srand */
 	mov r4,#0 					/* Setup loop counter */

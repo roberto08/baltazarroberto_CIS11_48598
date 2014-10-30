@@ -30,7 +30,6 @@ loop_rand: 						/* Create a 2 digit random number */
 								
 	bl divMod 					/* Call divMod function to get remainder */
 	add r1,#1 					/* Remainder in r1 so add 10 giving between 10 and 99 -> 2 digits */
-mov 
 	ldr r0, address_of_message1 /* Set &message2 as the first parameter of printf */
 	bl printf 					/* Call printf */
 	

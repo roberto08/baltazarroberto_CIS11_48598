@@ -21,7 +21,7 @@ loop_rand: 						/* Create a 2 digit random number */
 	
 	mov r1,r0,ASR #1 			/* In case random return is negative */
 		
-	mov r2,#6 					/* Move 90 to r2 */
+	mov r2,#22 					/* Move 90 to r2 */
 								/* We want rand()%90+10 so cal divMod with rand()%90 */
 								
 	bl divMod 					/* Call divMod function to get remainder */
@@ -31,7 +31,7 @@ loop_rand: 						/* Create a 2 digit random number */
 	bl printf 					/* Call printf */
 
 	add r4,#1
-	cmp r4,#20
+	cmp r4,#25
 	blt loop_rand
 
 	pop {r4,lr} 				/* Pop the top of the stack and put it in lr */

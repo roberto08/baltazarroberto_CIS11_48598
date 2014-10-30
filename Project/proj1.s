@@ -19,12 +19,12 @@ main:
 loop_rand: 						/* Create a 2 digit random number */
 	bl rand 					/* Call rand */
 	
-	mov r1,r0,ASR #1 			/* In case random return is negative */
-		
+@	mov r1,r0,ASR #4 			/* In case random return is negative */
+	add r1, r0, r0, asr#4	
 	mov r2,#11 					/* Move 90 to r2 */
 								/* We want rand()%90+10 so cal divMod with rand()%90 */
 								
-	bl divMod 					/* Call divMod function to get remainder */
+@	bl divMod 					/* Call divMod function to get remainder */
 	add r1,#1 					/* Remainder in r1 so add 10 giving between 10 and 99 -> 2 digits */
 
 	ldr r0, address_of_message 	/* Set &message2 as the first parameter of printf */

@@ -12,12 +12,11 @@ message2: .asciz "The Dealer cards: %d \n"
 random_number:
 	push {r4,lr} 				/* Push lr onto the top of the stack */
 	mov r0,#0 					/* Set time(0) */
-	mov r1, #0
 	bl time 					/* Call time */
 	bl srand 					/* Call srand */
 	mov r4,#0 					/* Setup loop counter */
 	
-loop_rand: 						/* Create a 2 digit random number */
+@loop_rand: 						/* Create a 2 digit random number */
 	bl rand 					/* Call rand */
 	
 	mov r1,r0,ASR #1 			/* In case random return is negative */
@@ -27,15 +26,12 @@ loop_rand: 						/* Create a 2 digit random number */
 								
 	bl divMod 					/* Call divMod function to get remainder */
 	add r1,#1 					/* Remainder in r1 so add 10 giving between 10 and 99 -> 2 digits */
-mov r9, r1
 	ldr r0, address_of_message1 /* Set &message2 as the first parameter of printf */
 	bl printf 					/* Call printf */
-mov r0, r9
-	add r4,#1
-	cmp r4,#5
-	blt loop_rand
-
-@	mov r0, r1 
+	
+@	add r4,#1
+@	cmp r4,#5
+@	blt loop_rand 
 
 	pop {r4,lr} 				/* Pop the top of the stack and put it in lr */
 	bx lr 						/* Leave main */
@@ -45,16 +41,10 @@ main:
 	push {lr} 					/* Push lr on top of the stack*/
 	
 	bl random_number 
-	mov r1, r0
+@	mov r1, r0
 	
 	ldr r0, address_of_message1 
 	bl printf 
-	
-	bl random_number
-	mov r1, r0
-	
-	ldr r0, address_of_message2
-	bl printf
 	
 	pop {lr} 					/* Pop to top of the stack and put it in lr*/
 	bx lr

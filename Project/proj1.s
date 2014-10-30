@@ -27,11 +27,11 @@ random_number:
 	bl divMod 					/* Call divMod function to get remainder */
 	add r1,#1 					/* Remainder in r1 so add 10 giving between 10 and 99 -> 2 digits */
 
-@	ldr r0, address_of_message 	/* Set &message2 as the first parameter of printf */
-@	bl printf 					/* Call printf */
+	ldr r0, address_of_message 	/* Set &message2 as the first parameter of printf */
+	bl printf 					/* Call printf */
 
 @	add r4,#1
-@	cmp r4,#20
+@	cmp r4,#2
 @	blt loop_rand
 
 	mov r0, r1 
@@ -41,7 +41,7 @@ random_number:
 
 .global main 
 main: 
-	push {lr} 					/* Push lr on top pf the stack*/
+	push {lr} 					/* Push lr on top of the stack*/
 	
 	bl random_number 
 	mov r1, r0

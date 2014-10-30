@@ -47,6 +47,12 @@ main:
 	ldr r0, address_of_message1 
 	bl printf 
 	
+	bl random_number
+	mov r1, r8
+	
+	ldr r0, address_of_message2
+	bl printf
+	
 	pop {lr} 					/* Pop to top of the stack and put it in lr*/
 	bx lr
 

@@ -15,6 +15,7 @@ random_number:
 	bl time 					/* Call time */
 	bl srand 					/* Call srand */
 	mov r4,#0 					/* Setup loop counter */
+	mov r8, #0
 	
 @loop_rand: 						/* Create a 2 digit random number */
 	bl rand 					/* Call rand */

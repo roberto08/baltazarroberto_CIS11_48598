@@ -45,13 +45,12 @@ main:
 	push {lr} 					/* Push lr on top of the stack*/
 	
 	bl random_number 
-	mov r0, #11
 	
 	ldr r0, address_of_message1 
 	bl printf 
 	
-	bl random_number
 	mov r0, #11
+	bl random_number
 	
 	ldr r0, address_of_message2
 	bl printf

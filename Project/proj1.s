@@ -17,7 +17,7 @@ random_number:
 	bl srand 					/* Call srand */
 	mov r4,#0 					/* Setup loop counter */
 	
-@loop_rand: 						/* Create a 2 digit random number */
+loop_rand: 						/* Create a 2 digit random number */
 	bl rand 					/* Call rand */
 	
 	mov r1,r0,ASR #1 			/* In case random return is negative */
@@ -31,9 +31,9 @@ mov r9, r1
 	ldr r0, address_of_message1 /* Set &message2 as the first parameter of printf */
 	bl printf 					/* Call printf */
 mov r0, r9
-@	add r4,#1
-@	cmp r4,#2
-@	blt loop_rand
+	add r4,#1
+	cmp r4,#5
+	blt loop_rand
 
 @	mov r0, r1 
 

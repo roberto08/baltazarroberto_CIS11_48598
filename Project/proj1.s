@@ -12,7 +12,7 @@ message2: .asciz "The Dealer cards: %d \n"
 random_number:
 	push {r4,lr} 				/* Push lr onto the top of the stack */
 	
-	cmp r4, #11
+	cmp r0, #11
 	beq loop_rand
 	
 	mov r0,#0 					/* Set time(0) */
@@ -30,6 +30,7 @@ loop_rand: 						/* Create a 2 digit random number */
 								
 	bl divMod 					/* Call divMod function to get remainder */
 	add r1,#1 					/* Remainder in r1 so add 10 giving between 10 and 99 -> 2 digits */
+mov 
 	ldr r0, address_of_message1 /* Set &message2 as the first parameter of printf */
 	bl printf 					/* Call printf */
 	
@@ -45,13 +46,13 @@ main:
 	push {lr} 					/* Push lr on top of the stack*/
 	
 	bl random_number 
-	mov r4, #11
+	mov r0, #11
 	
 	ldr r0, address_of_message1 
 	bl printf 
 	
 	bl random_number
-	mov r4, #11
+	mov r0, #11
 	
 	ldr r0, address_of_message2
 	bl printf

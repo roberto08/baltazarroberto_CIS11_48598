@@ -16,7 +16,7 @@ main:
 	bl srand 					/* Call srand */
 	mov r4,#0 					/* Setup loop counter */
 	
-@loop_rand: 						/* Create a 2 digit random number */
+loop_rand: 						/* Create a 2 digit random number */
 	bl rand 					/* Call rand */
 	
 	mov r1,r0,ASR #1 			/* In case random return is negative */

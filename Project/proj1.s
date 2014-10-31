@@ -42,6 +42,8 @@ loop_rand: 						/* Create a 2 digit random number */
 main: 
 	push {lr} 					/* Push lr on top of the stack*/
 	
+	bl random_number
+	
 	pop {lr} 					/* Pop to top of the stack and put it in lr*/
 	bx lr
 

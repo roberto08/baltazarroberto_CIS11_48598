@@ -14,13 +14,13 @@ message4: .asciz "The 4 random function returned %d\n"
 random_number:
 	push {r4,lr} 				/* Push lr onto the top of the stack */
 	
-@	cmp r1, #4
-@	beq loop_rand 
+	cmp r4, #0
+	beq loop_rand 
 	
 	mov r0,#0 					/* Set time(0) */
 	bl time 					/* Call time */
 	bl srand 					/* Call srand */
-#	mov r4,#0 					/* Setup loop counter */
+	mov r4,#0 					/* Setup loop counter */
 	
 loop_rand: 						/* Create a 2 digit random number */
 	bl rand 					/* Call rand */
@@ -35,9 +35,9 @@ loop_rand: 						/* Create a 2 digit random number */
 @	ldr r0, address_of_message1 /* Set &message2 as the first parameter of printf */
 @	bl printf 					/* Call printf */
 	
-@	add r4,#1
-@	cmp r4,#20
-@	blt loop_rand 
+	add r4, r4, #1
+	cmp r4,#20
+	blt loop_rand 
 
 	pop {r4,lr} 				/* Pop the top of the stack and put it in lr */
 	bx lr 						/* Leave main */
@@ -51,19 +51,19 @@ main:
 	ldr r0, address_of_message1
 	bl printf
 	
-@	mov r1, #4
+	mov r4, #0
 	bl random_number
 	
 	ldr r0, address_of_message2
 	bl printf
 	
-@	mov r1, #4
+	mov r4, #0
 	bl random_number
 	
 	ldr r0, address_of_message3
 	bl printf
 	
-@	mov r1, #4
+	mov r4, #0
 	bl random_number
 	
 	ldr r0, address_of_message4

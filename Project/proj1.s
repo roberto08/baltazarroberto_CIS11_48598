@@ -54,7 +54,7 @@ main:
 	ldr r0, address_of_message1
 	bl printf
 	
-	mov r1#4
+	mov r1, #4
 	bl random_number
 	
 	ldr r0, address_of_message1

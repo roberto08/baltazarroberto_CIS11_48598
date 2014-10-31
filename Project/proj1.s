@@ -1,7 +1,7 @@
 /*Project 1*/ 
 /*Mastermind*/
 /* -- randTest.s */
-
+/*erase*/
 .data
 
 message1: .asciz "The random function returned %d\n" 

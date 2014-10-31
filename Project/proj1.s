@@ -8,7 +8,8 @@ message1: .asciz "The 1 random function returned %d\n"
 message2: .asciz "The 2 random function returned %d\n" 
 message3: .asciz "The 3 random function returned %d\n" 
 message4: .asciz "The 4 random function returned %d\n" 
-@erase 
+message5: .asciz "The code is %d %d %d %d\n" 
+
 .text
 
 random_number:
@@ -46,27 +47,52 @@ loop_rand: 						/* Create a 2 digit random number */
 main: 
 	push {lr} 					/* Push lr on top of the stack*/
 	
+	mov r8, #0
+get_code:
+@	bl random_number
+	
+	sub sp, sp, #4
+	mov r1, sp
 	bl random_number
 	
-	ldr r0, address_of_message1
-	bl printf
+	add r8, r8, #
+	cmp r8, #4
+	blt get_code
 	
-	mov r4, #4
-	bl random_number
+@	ldr r0, address_of_message1
+@	bl printf
 	
-	ldr r0, address_of_message2
-	bl printf
+@	mov r4, #4
+@	bl random_number
 	
-	mov r4, #4
-	bl random_number
+@	ldr r0, address_of_message2
+@	bl printf
 	
-	ldr r0, address_of_message3
-	bl printf
+@	mov r4, #4
+@	bl random_number
 	
-	mov r4, #4
-	bl random_number
+@	ldr r0, address_of_message3
+@	bl printf
 	
-	ldr r0, address_of_message4
+@	mov r4, #4
+@	bl random_number
+	
+@	ldr r0, address_of_message4
+@	bl printf
+
+	ldr r1, [sp]
+	add sp, sp, #+4
+	
+	ldr r2, [sp}
+	add sp, sp, #+4
+	
+	ldr r3, [sp]
+	add sp, sp, #+4
+	
+	ldr r4, [sp]
+	add sp, sp, #+4
+	
+	ldr r0, address_of_message5
 	bl printf
 	
 	pop {lr} 					/* Pop to top of the stack and put it in lr*/
@@ -76,6 +102,7 @@ address_of_message1: .word message1
 address_of_message2: .word message2
 address_of_message3: .word message3
 address_of_message4: .word message4
+address_of_message5: .word message5
 
 /*External Functions*/
 .global printf

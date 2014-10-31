@@ -25,13 +25,13 @@ loop_rand: 						/* Create a 2 digit random number */
 								/* We want rand()%90+10 so cal divMod with rand()%90 */
 								
 	bl divMod 					/* Call divMod function to get remainder */
-@	add r1,#1 					/* Remainder in r1 so add 10 giving between 10 and 99 -> 2 digits */
-	ldr r0, address_of_message1 /* Set &message2 as the first parameter of printf */
-	bl printf 					/* Call printf */
+	add r1,#1 					/* Remainder in r1 so add 10 giving between 10 and 99 -> 2 digits */
+@	ldr r0, address_of_message1 /* Set &message2 as the first parameter of printf */
+@	bl printf 					/* Call printf */
 	
-	add r4,#1
-	cmp r4,#20
-	blt loop_rand 
+@	add r4,#1
+@	cmp r4,#20
+@	blt loop_rand 
 
 	pop {r4,lr} 				/* Pop the top of the stack and put it in lr */
 	bx lr 						/* Leave main */
@@ -41,6 +41,12 @@ main:
 	push {lr} 					/* Push lr on top of the stack*/
 	
 	bl random_number
+	
+	ldr r0, address_of_message1
+	bl printf
+	
+	bl random_number
+	bl printf
 	
 	pop {lr} 					/* Pop to top of the stack and put it in lr*/
 	bx lr

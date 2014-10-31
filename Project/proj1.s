@@ -8,7 +8,7 @@ message1: .asciz "The 1 random function returned %d\n"
 message2: .asciz "The 2 random function returned %d\n" 
 message3: .asciz "The 3 random function returned %d\n" 
 message4: .asciz "The 4 random function returned %d\n" 
-
+@erase 
 .text
 
 random_number:

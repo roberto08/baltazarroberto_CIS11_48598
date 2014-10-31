@@ -50,27 +50,35 @@ main:
 	mov r8, #0
 get_code:
 	bl random_number
-	
-	ldr r0, address_of_message1
-	bl printf
-	
+
+	sub sp, sp, #4
+	str r1, [sp]
 	mov r4, #4
-	bl random_number
+	add r8, r8, #1
+	cmp r8, #4
+	blt get_code
 	
-	ldr r0, address_of_message2
-	bl printf
+@	ldr r0, address_of_message1
+@	bl printf
 	
-	mov r4, #4
-	bl random_number
+@	mov r4, #4
+@	bl random_number
 	
-	ldr r0, address_of_message3
-	bl printf
+@	ldr r0, address_of_message2
+@	bl printf
 	
-	mov r4, #4
-	bl random_number
+@	mov r4, #4
+@	bl random_number
 	
-	ldr r0, address_of_message4
-	bl printf
+@	ldr r0, address_of_message3
+@	bl printf
+	
+@	mov r4, #4
+@	bl random_number
+	
+@	ldr r0, address_of_message4
+@	bl printf
+
 	
 	pop {lr} 					/* Pop to top of the stack and put it in lr*/
 	bx lr

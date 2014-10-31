@@ -23,7 +23,7 @@ loop_rand: 						/* Create a 2 digit random number */
 	
 	mov r1,r0,ASR #1 			/* In case random return is negative */
 	
-	mov r2,#90 					/* Move 90 to r2 */
+	mov r2,#9 					/* Move 90 to r2 */
 								/* We want rand()%90+10 so cal divMod with rand()%90 */
 								
 	bl divMod 					/* Call divMod function to get remainder */

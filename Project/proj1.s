@@ -4,15 +4,18 @@
 
 .data
 
-message1: .asciz "The random function returned %d\n" 
+message1: .asciz "The 1 random function returned %d\n" 
+message2: .asciz "The 2 random function returned %d\n" 
+message3: .asciz "The 3 random function returned %d\n" 
+message4: .asciz "The 4 random function returned %d\n" 
 
 .text
 
 random_number:
 	push {r4,lr} 				/* Push lr onto the top of the stack */
 	
-	cmp r1, #4
-	beq loop_rand 
+@	cmp r1, #4
+@	beq loop_rand 
 	
 	mov r0,#0 					/* Set time(0) */
 	bl time 					/* Call time */
@@ -48,22 +51,31 @@ main:
 	ldr r0, address_of_message1
 	bl printf
 	
-	mov r1, #4
+@	mov r1, #4
 	bl random_number
 	
-	ldr r0, address_of_message1
+	ldr r0, address_of_message2
 	bl printf
 	
-	mov r1, #4
+@	mov r1, #4
 	bl random_number
 	
-	ldr r0, address_of_message1
+	ldr r0, address_of_message3
+	bl printf
+	
+@	mov r1, #4
+	bl random_number
+	
+	ldr r0, address_of_message4
 	bl printf
 	
 	pop {lr} 					/* Pop to top of the stack and put it in lr*/
 	bx lr
 
 address_of_message1: .word message1
+address_of_message2: .word message2
+address_of_message3: .word message3
+address_of_message4: .word message4
 
 /*External Functions*/
 .global printf

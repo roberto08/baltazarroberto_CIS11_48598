@@ -46,6 +46,13 @@ main:
 	bl printf
 	
 	bl random_number
+	
+	ldr r0, address_of_message1
+	bl printf
+	
+	bl random_number
+	
+	ldr r0, address_of_message1
 	bl printf
 	
 	pop {lr} 					/* Pop to top of the stack and put it in lr*/

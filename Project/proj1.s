@@ -55,7 +55,7 @@ get_code:
 	mov r1, sp
 	bl random_number
 	
-	add r8, r8, #
+	add r8, r8, #1
 	cmp r8, #4
 	blt get_code
 	
@@ -83,7 +83,7 @@ get_code:
 	ldr r1, [sp]
 	add sp, sp, #+4
 	
-	ldr r2, [sp}
+	ldr r2, [sp]
 	add sp, sp, #+4
 	
 	ldr r3, [sp]

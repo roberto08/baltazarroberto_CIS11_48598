@@ -11,10 +11,13 @@ message1: .asciz "The random function returned %d\n"
 random_number:
 	push {r4,lr} 				/* Push lr onto the top of the stack */
 	
+	cmp r1, #4
+	beq loop_rand 
+	
 	mov r0,#0 					/* Set time(0) */
 	bl time 					/* Call time */
 	bl srand 					/* Call srand */
-	mov r4,#0 					/* Setup loop counter */
+#	mov r4,#0 					/* Setup loop counter */
 	
 loop_rand: 						/* Create a 2 digit random number */
 	bl rand 					/* Call rand */
@@ -45,11 +48,13 @@ main:
 	ldr r0, address_of_message1
 	bl printf
 	
+	mov r1, #4
 	bl random_number
 	
 	ldr r0, address_of_message1
 	bl printf
 	
+	mov r1#4
 	bl random_number
 	
 	ldr r0, address_of_message1

@@ -10,8 +10,6 @@ message1: .asciz "The random function returned %d\n"
 
 random_number:
 	push {r4,lr} 				/* Push lr onto the top of the stack */
-
-	beq loop_rand
 	
 	mov r0,#0 					/* Set time(0) */
 	bl time 					/* Call time */

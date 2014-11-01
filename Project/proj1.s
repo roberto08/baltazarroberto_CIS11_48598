@@ -58,8 +58,6 @@ get_code:
 	cmp r8, #4
 	ble get_code
 	
-	add sp, sp, #+4
-	
 	ldr r1, [sp]
 	add sp, sp, #+4
 	
@@ -74,6 +72,8 @@ get_code:
 	
 	ldr r0, address_of_message5
 	bl printf
+	
+	add sp, sp, #+4
 	
 @	ldr r0, address_of_message1
 @	bl printf

@@ -58,6 +58,21 @@ get_code:
 	cmp r8, #4
 	blt get_code
 	
+	ldr r1, [sp]
+	add sp, sp, #+4
+	
+	ldr r2, [sp]
+	add sp, sp, #+4
+	
+	ldr r3, [sp]
+	add sp, sp, #+4
+	
+	ldr r4, [sp] 
+	add sp, sp, #+4
+	
+	ldr r0, address_of_message5
+	bl printf
+	
 @	ldr r0, address_of_message1
 @	bl printf
 	

@@ -15,7 +15,7 @@ message5: .asciz "The code is %d %d %d %d\n"
 random_number:
 	push {r4,lr} 				/* Push lr onto the top of the stack */
 	
-	cmp r4, #5
+	cmp r4, #4
 	beq loop_rand 
 	
 	mov r0,#0 					/* Set time(0) */
@@ -53,10 +53,10 @@ get_code:
 
 	sub sp, sp, #4
 	str r1, [sp]
-	mov r4, #5
+	mov r4, #4
 	add r8, r8, #1
 	cmp r8, #4
-	blt get_code
+	ble get_code
 	
 	ldr r1, [sp]
 	add sp, sp, #+4

@@ -6,7 +6,7 @@ message2: .asciz "Your code is %d %d %d %d %d \n"
 .text
 
 random_number:
-	push {r0, r2, r3, r4, r5, lr} 	/*Push lr, r4, and ,r2 onto the top of the stack*/
+	push {r2, r3, lr} 	/*Push lr, r4, and ,r2 onto the top of the stack*/
 	
 	cmp r4, #4 					/*Test to see if this is the first time random is being called*/
 	beq loop_rand  				/*If second time or more jump to loop_rand*/
@@ -31,12 +31,12 @@ loop_rand: 						/*Create a 2 digit random number*/
 
 	@mov r0, r1
 	
-	pop {r0, r2, r3, r4, r5, lr} 	/*Pop the top of the stack and put it in lr*/
+	pop {r2, r3, lr} 	/*Pop the top of the stack and put it in lr*/
 	bx lr 						/*Leave main*/
 
 .global main 
 main: 
-	push {r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, lr} /*Push lr on top of the stack*/
+	push {r0, r1, r2, r3, r4, r5, r6, r7, r8, lr} /*Push lr on top of the stack*/
 
 	bl random_number			/*Call the random number generator*/
 	sub sp, sp, #4				/*Make room in the stack for number returned*/
@@ -57,15 +57,6 @@ main:
 	sub sp, sp, #4				/*Make room in the stack for the number returned*/
 	str r1, [sp]				/*Store the number in the stack*/
 	
-	mov r4, #4					/*Move 4 to r4 to reset loop counter on random function*/
-	bl random_number			/*Call the random number generator*/
-	sub sp, sp, #4				/*Make room in the stack for the number returned*/
-	str r1, [sp]				/*Store the number in the stack*/
-	
-
-	ldr r9, [sp] 				/*Load random number to r8*/
-	add sp, sp, #+4				/*Discard the number from the stack*/
-	
 	ldr r8, [sp] 				/*Load random number to r8*/
 	add sp, sp, #+4				/*Discard the number from the stack*/
 	
@@ -82,12 +73,11 @@ main:
 	mov r2, r6					/*Move correct answer to r2*/
 	mov r3, r7					/*Move correct answer to r3*/
 	mov r4, r8					/*Move correct answer to r4*/
-	mov r5, r9
 	
 	ldr r0, address_of_message2 /*Print out the correct answer*/
 	bl printf
 	
-	pop {r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, lr} /* Pop to top of the stack and put it in lr*/
+	pop {r0, r1, r2, r3, r4, r5, r6, r7, r8, lr} /* Pop to top of the stack and put it in lr*/
 	bx lr
 
 address_of_message2: .word message2

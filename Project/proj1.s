@@ -3,7 +3,7 @@
 
 .data
 
-message1: .asciz "Type in your 4 digit code: \n "
+message1: .asciz "Type in your 4 digit code:\n "
 input1: .asciz "%d"
 input2: .asciz "%d"
 input3: .asciz "%d"
@@ -48,8 +48,8 @@ main:
 	push {lr} 					/*Push lr on top of the stack*/
 
 	bl random_number			/*Call the random number generator*/
-	sub sp, sp, #4				/*Make room in the stack for number returned*/
-	str r0, [sp]				/*Store number in the stack*/
+	@sub sp, sp, #4				/*Make room in the stack for number returned*/
+	@str r0, [sp]				/*Store number in the stack*/
 	
 	mov r4, #4 					/*Move 4 to r4 to test for only rand in the function*/
 	bl random_number			/*Call the random number generator*/
@@ -61,6 +61,11 @@ main:
 	sub sp, sp, #4				/*Make room in the stack for the number returned*/
 	str r0, [sp]				/*Store the number in the stack*/
 
+	mov r4, #4					/*Move 4 to r4 to test for only rand in the function*/
+	bl random_number			/*Call the random number generator*/
+	sub sp, sp, #4				/*Make room in the stack for the number returned*/
+	str r0, [sp]				/*Store the number in the stack*/
+	
 	mov r4, #4					/*Move 4 to r4 to test for only rand in the function*/
 	bl random_number			/*Call the random number generator*/
 	sub sp, sp, #4				/*Make room in the stack for the number returned*/
@@ -106,7 +111,6 @@ user_input:
 	cmp r10, #4 				/*Test to see if only gettin user input*/
 	beq compare_digits
 		
-	add sp, sp, #+4	
 	ldr r8, [sp] 				/*Load random number to r8*/
 	add sp, sp, #+4				/*Discard the number from the stack*/
 	
@@ -119,9 +123,8 @@ user_input:
 	ldr r5, [sp]				/*Load random number to r5*/
 	add sp, sp, #+4				/*Discard the number from the stack*/
 	
-	
 	mov r11, #0
-	mov r12, #0
+	mov r12, #4
 compare_digits:	
 	cmp r1, r5 					/*Compare user input and random number*/
 	addeq r11, r11, #1  		/*If Equal add 1 to r11 to test for right answer*/
@@ -146,9 +149,9 @@ compare_digits:
 	cmp r11, #4 				/*Compare r11 to check if all correct answer*/
 	beq print_out_win 			/*If all correct branch to win*/
 	
-	add r12, r12, #1 			/*Update the loop*/
-	cmp r12, #5
-	blt prepare_for_loop 		/*Check if any more tries left*/
+	subs r12, r12, #1 			/*Update the loop*/
+	@cmp r12, #5
+	bgt prepare_for_loop 		/*Check if any more tries left*/
 	b print_out_answer			/*If all tries gone branch to print_out_answer*/
 	
 prepare_for_loop:	

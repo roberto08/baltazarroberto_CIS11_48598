@@ -42,17 +42,17 @@ main:
 	sub sp, sp, #4				/*Make room in the stack for number returned*/
 	str r0, [sp]				/*Store number in the stack*/
 	
-	mov r4, #4 					/*Move 4 to r4 to test for only rand in the function*/
+@	mov r4, #4 					/*Move 4 to r4 to test for only rand in the function*/
 	bl random_number			/*Call the random number generator*/
 	sub sp, sp, #4				/*Make room in the stack for number returned*/
 	str r0, [sp] 				/*Store the number in the stack*/
 	
-	mov r4, #4					/**Move 4 to r4 to test for only rand in the function*/
+@	mov r4, #4					/**Move 4 to r4 to test for only rand in the function*/
 	bl random_number 			/*Call the random number generator*/
 	sub sp, sp, #4				/*Make room in the stack for the number returned*/
 	str r0, [sp]				/*Store the number in the stack*/
 
-	mov r4, #4					/*Move 4 to r4 to test for only rand in the function*/
+@	mov r4, #4					/*Move 4 to r4 to test for only rand in the function*/
 	bl random_number			/*Call the random number generator*/
 	sub sp, sp, #4				/*Make room in the stack for the number returned*/
 	str r0, [sp]				/*Store the number in the stack*/

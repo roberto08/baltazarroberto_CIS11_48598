@@ -70,7 +70,7 @@ main:
 	add sp, sp, #+4
 	
 	ldr r1, [sp]
-	add sp, sp, #+4
+@	add sp, sp, #+4
 	
 	mov r8, #0
 get_code:

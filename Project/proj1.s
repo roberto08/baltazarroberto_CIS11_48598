@@ -5,7 +5,7 @@
 .data
 
 message1: .asciz "Mastermind: Type in your 4 digit code:\n "
-input1: .asciz "%d"
+input1: .asciz " %d"
 input2: .asciz "%d"
 input3: .asciz "%d"
 input4: .asciz "%d\n"
@@ -16,7 +16,7 @@ message4: .asciz "Congratulations!!! the code is %d %d %d %d\n"
 .text
 
 random_number:
-	push {r2, r4, lr} 			/*Push lr, r4, and ,r2 onto the top of the stack*/
+	push {r1, r2, r4, lr} 			/*Push lr, r4, and ,r2 onto the top of the stack*/
 	
 	cmp r4, #4 					/*Test to see if this is the first time random is being called*/
 	beq loop_rand  				/*If second time or more jump to loop_rand*/
@@ -41,7 +41,7 @@ loop_rand: 						/*Create a 2 digit random number*/
 
 	mov r0, r1
 	
-	pop {r2, r4, lr} 			/*Pop the top of the stack and put it in lr*/
+	pop {r1, r2, r4, lr} 			/*Pop the top of the stack and put it in lr*/
 	bx lr 						/*Leave main*/
 
 .global main 
@@ -67,10 +67,10 @@ main:
 	sub sp, sp, #4				/*Make room in the stack for the number returned*/
 	str r0, [sp]				/*Store the number in the stack*/
 	
-	mov r4, #4					/*Move 4 to r4 to test for only rand in the function*/
-	bl random_number			/*Call the random number generator*/
-	sub sp, sp, #4				/*Make room in the stack for the number returned*/
-	str r0, [sp]				/*Store the number in the stack*/
+@	mov r4, #4					/*Move 4 to r4 to test for only rand in the function*/
+@	bl random_number			/*Call the random number generator*/
+@	sub sp, sp, #4				/*Make room in the stack for the number returned*/
+@	str r0, [sp]				/*Store the number in the stack*/
 	
 	mov r10, #0 				/*Setup loop counter*/
 user_input:	

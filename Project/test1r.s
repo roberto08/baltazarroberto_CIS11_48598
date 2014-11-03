@@ -6,7 +6,7 @@ message2: .asciz "Your code is %d %d %d %d\n"
 .text
 
 random_number:
-	push {r1, r2, r3, r4, lr} 	/*Push lr, r4, and ,r2 onto the top of the stack*/
+	push {r0, r2, r3, r4, lr} 	/*Push lr, r4, and ,r2 onto the top of the stack*/
 	
 	cmp r4, #4 					/*Test to see if this is the first time random is being called*/
 	beq loop_rand  				/*If second time or more jump to loop_rand*/
@@ -29,9 +29,9 @@ loop_rand: 						/*Create a 2 digit random number*/
 	@cmp r4,#23
 	@blt loop_rand
 
-	mov r0, r1
+	@mov r0, r1
 	
-	pop {r1, r2, r3, r4, lr} 	/*Pop the top of the stack and put it in lr*/
+	pop {r0, r2, r3, r4, lr} 	/*Pop the top of the stack and put it in lr*/
 	bx lr 						/*Leave main*/
 
 .global main 
@@ -40,22 +40,25 @@ main:
 
 	bl random_number			/*Call the random number generator*/
 	sub sp, sp, #4				/*Make room in the stack for number returned*/
-	str r0, [sp]				/*Store number in the stack*/
+	str r1, [sp]				/*Store number in the stack*/
 	
+	mov r0, #0
 	mov r4, #4 					/*Move 4 to r4 to reset loop counter on random function*/
 	bl random_number			/*Call the random number generator*/
 	sub sp, sp, #4				/*Make room in the stack for number returned*/
-	str r0, [sp] 				/*Store the number in the stack*/
+	str r1, [sp] 				/*Store the number in the stack*/
 	
+	mov r0, #0
 	mov r4, #4					/*Move 4 to r4 to reset loop counter on random function*/
 	bl random_number 			/*Call the random number generator*/
 	sub sp, sp, #4				/*Make room in the stack for the number returned*/
-	str r0, [sp]				/*Store the number in the stack*/
+	str r1, [sp]				/*Store the number in the stack*/
 
+	mov r0, #0
 	mov r4, #4					/*Move 4 to r4 to reset loop counter on random function*/
 	bl random_number			/*Call the random number generator*/
 	sub sp, sp, #4				/*Make room in the stack for the number returned*/
-	str r0, [sp]				/*Store the number in the stack*/
+	str r1, [sp]				/*Store the number in the stack*/
 	
 	ldr r8, [sp] 				/*Load random number to r8*/
 	add sp, sp, #+4				/*Discard the number from the stack*/

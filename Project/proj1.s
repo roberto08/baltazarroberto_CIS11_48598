@@ -52,8 +52,8 @@ get_code:
 	str r1, [sp]
 	mov r4, #4
 	add r8, r8, #1
-	cmp r8, #4
-	blt get_code
+	cmp r8, #3
+	ble get_code
 
 code:
 	ldr r1, [sp]

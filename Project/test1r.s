@@ -6,7 +6,7 @@ message2: .asciz "Your code is %d %d %d %d \n"
 .text
 
 random_number:
-	push {r2, r3, lr} 	/*Push lr, r4, and ,r2 onto the top of the stack*/
+	push {r2, r3, r4, lr} 		/*Push lr, r4, and ,r2 onto the top of the stack*/
 	
 	cmp r4, #4 					/*Test to see if this is the first time random is being called*/
 	beq loop_rand  				/*If second time or more jump to loop_rand*/
@@ -21,17 +21,15 @@ loop_rand: 						/*Create a 2 digit random number*/
 	
 	mov r1,r0,ASR #1 			/*In case random return is negative*/
 	
-	mov r2,#10 					/*Move 10 to r2*/
+	mov r2,#10 					/*Move 10 to r2 so random number ranges from 0 to 9*/
 
 	bl divMod 					/*Call divMod function to get remainder*/
 	
 	add r4, r4, #1 				/*Update the loop counter*/
 	cmp r4,#23
 	blt loop_rand
-
-	@mov r0, r1
 	
-	pop {r2, r3, lr} 	/*Pop the top of the stack and put it in lr*/
+	pop {r2, r3, r4, lr} 		/*Pop the top of the stack and put it in lr*/
 	bx lr 						/*Leave main*/
 
 .global main 
@@ -69,10 +67,10 @@ main:
 	ldr r5, [sp]				/*Load random number to r5*/
 	add sp, sp, #+4				/*Discard the number from the stack*/
 	 
-	mov r1, r5					/*Move correct answer to r1*/
-	mov r2, r6					/*Move correct answer to r2*/
-	mov r3, r7					/*Move correct answer to r3*/
-	mov r4, r8					/*Move correct answer to r4*/
+	mov r1, r8					/*Move correct answer to r1*/
+	mov r2, r7					/*Move correct answer to r2*/
+	mov r3, r6					/*Move correct answer to r3*/
+	mov r4, r5					/*Move correct answer to r4*/
 	
 	ldr r0, address_of_message2 /*Print out the correct answer*/
 	bl printf

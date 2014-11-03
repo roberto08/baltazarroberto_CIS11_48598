@@ -3,7 +3,7 @@
 
 .data
 
-message1: .asciz "Type in your 4 digit code: "
+message1: .asciz "Type in your 4 digit code: \n "
 input1: .asciz "%d"
 input2: .asciz "%d"
 input3: .asciz "%d"
@@ -106,6 +106,7 @@ user_input:
 	cmp r10, #4 				/*Test to see if only gettin user input*/
 	beq compare_digits
 		
+	add sp, sp, #+4	
 	ldr r8, [sp] 				/*Load random number to r8*/
 	add sp, sp, #+4				/*Discard the number from the stack*/
 	

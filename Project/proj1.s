@@ -53,6 +53,7 @@ user_inputs:
 	sub sp, sp, #4
 	ldr r0, address_of_message2
 	mov r1, sp
+	bl scanf 
 	subs r2, r2, #1
 	blt user_inputs
 	

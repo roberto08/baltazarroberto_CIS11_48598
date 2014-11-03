@@ -39,8 +39,8 @@ main:
 	push {r0, r1, r2, r3, r4, lr} /*Push lr on top of the stack*/
 
 	bl random_number			/*Call the random number generator*/
-@	sub sp, sp, #4				/*Make room in the stack for number returned*/
-@	str r0, [sp]				/*Store number in the stack*/
+	sub sp, sp, #4				/*Make room in the stack for number returned*/
+	str r0, [sp]				/*Store number in the stack*/
 	
 	mov r4, #4 					/*Move 4 to r4 to reset loop counter on random function*/
 	bl random_number			/*Call the random number generator*/
@@ -73,6 +73,8 @@ main:
 	
 	ldr r5, [sp]				/*Load random number to r5*/
 	add sp, sp, #+4				/*Discard the number from the stack*/
+	
+	add sp, sp, #+4
 	 
 	mov r1, r5					/*Move correct answer to r1*/
 	mov r2, r6					/*Move correct answer to r2*/

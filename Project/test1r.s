@@ -14,7 +14,7 @@ random_number:
 	mov r0,#0 					/*Set time(0)*/
 	bl time 					/*Call time*/
 	bl srand 					/*Call srand*/
-	@mov r4,#0 					/*Setup loop counter*/
+	mov r4,#0 					/*Setup loop counter*/
 	
 loop_rand: 						/*Create a 2 digit random number*/
 	bl rand 					/*Call rand*/
@@ -25,9 +25,9 @@ loop_rand: 						/*Create a 2 digit random number*/
 
 	bl divMod 					/*Call divMod function to get remainder*/
 	
-	@add r4, r4, #1 				/*Update the loop counter*/
-	@cmp r4,#23
-	@blt loop_rand
+	add r4, r4, #1 				/*Update the loop counter*/
+	cmp r4,#23
+	blt loop_rand
 
 	@mov r0, r1
 	

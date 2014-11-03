@@ -146,7 +146,7 @@ compare_digits:
 	beq print_out_win 			/*If all correct branch to win*/
 	
 	add r12, r12, #1 			/*Update the loop*/
-	cmp r12, #3
+	cmp r12, #4
 	blt prepare_for_loop 		/*Check if any more tries left*/
 	b print_out_answer			/*If all tries gone branch to print_out_answer*/
 	

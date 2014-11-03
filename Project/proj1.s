@@ -80,16 +80,30 @@ main:
 @	ldr r1, [sp]
 @	add sp, sp, #+4
 
-	mov r8, #0
-get_code:
+@	mov r8, #0
+@get_code:
 	bl random_number
-
 	sub sp, sp, #4
 	str r1, [sp]
+@	mov r4, #4
+@	add r8, r8, #1
+@	cmp r8, #4
+@	ble get_code
+
 	mov r4, #4
-	add r8, r8, #1
-	cmp r8, #4
-	ble get_code
+	bl random_number
+	sub sp, sp, #4
+	str r1, [sp]
+	
+	mov r4, #4
+	bl random_number
+	sub sp, sp, #4
+	str r1, [sp]
+
+	mov r4, #4
+	bl random_number
+	sub sp, sp, #4
+	str r1, [sp]
 
 	ldr r8, [sp]
 	add sp, sp, #+4
@@ -102,9 +116,7 @@ get_code:
 	
 	ldr r5, [sp] 
 	add sp, sp, #+4
-	
-	add sp, sp, #+4
-	
+		
 	ldr r4, [sp]
 	add sp, sp, #+4
 	

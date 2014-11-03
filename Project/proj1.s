@@ -82,7 +82,7 @@ get_code:
 compare_digits:	
 	cmp r1, r5
 	addeq r11, r11, #1
-	mov r1, #0x58
+	mov r1, #0x58 @letter
 	
 	cmp r2, r6
 	addeq r11, r11, #1

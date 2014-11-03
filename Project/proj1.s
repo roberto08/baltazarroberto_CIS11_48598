@@ -124,7 +124,7 @@ user_input:
 	add sp, sp, #+4				/*Discard the number from the stack*/
 	
 	mov r11, #0
-	mov r12, #4
+	mov r12, #0
 compare_digits:	
 	cmp r1, r5 					/*Compare user input and random number*/
 	addeq r11, r11, #1  		/*If Equal add 1 to r11 to test for right answer*/
@@ -149,9 +149,9 @@ compare_digits:
 	cmp r11, #4 				/*Compare r11 to check if all correct answer*/
 	beq print_out_win 			/*If all correct branch to win*/
 	
-	subs r12, r12, #1 			/*Update the loop*/
-	@cmp r12, #5
-	bgt prepare_for_loop 		/*Check if any more tries left*/
+	add r12, r12, #1 			/*Update the loop*/
+	cmp r12, #5
+	blt prepare_for_loop 		/*Check if any more tries left*/
 	b print_out_answer			/*If all tries gone branch to print_out_answer*/
 	
 prepare_for_loop:	

@@ -34,45 +34,45 @@ main:
 	push {r0, r1, r2, r3, r4, lr} 					/*Push lr on top of the stack*/
 
 	bl random_number			/*Call the random number generator*/
-@	sub sp, sp, #4				/*Make room in the stack for number returned*/
-@	str r0, [sp]				/*Store number in the stack*/
-	mov r1, r0
+	sub sp, sp, #4				/*Make room in the stack for number returned*/
+	str r0, [sp]				/*Store number in the stack*/
+@	mov r1, r0
 	
 	mov r4, #4 					/*Move 4 to r4 to test for only rand in the function*/
 	bl random_number			/*Call the random number generator*/
-@	sub sp, sp, #4				/*Make room in the stack for number returned*/
-@	str r0, [sp] 				/*Store the number in the stack*/
-	mov r2, r0
+	sub sp, sp, #4				/*Make room in the stack for number returned*/
+	str r0, [sp] 				/*Store the number in the stack*/
+@	mov r2, r0
 	
 	mov r4, #4					/**Move 4 to r4 to test for only rand in the function*/
 	bl random_number 			/*Call the random number generator*/
-@	sub sp, sp, #4				/*Make room in the stack for the number returned*/
-@	str r0, [sp]				/*Store the number in the stack*/
-	mov r3, r0
+	sub sp, sp, #4				/*Make room in the stack for the number returned*/
+	str r0, [sp]				/*Store the number in the stack*/
+@	mov r3, r0
 
 	mov r4, #4					/*Move 4 to r4 to test for only rand in the function*/
 	bl random_number			/*Call the random number generator*/
-@	sub sp, sp, #4				/*Make room in the stack for the number returned*/
-@	str r0, [sp]				/*Store the number in the stack*/
-	mov r4, r0
+	sub sp, sp, #4				/*Make room in the stack for the number returned*/
+	str r0, [sp]				/*Store the number in the stack*/
+@	mov r4, r0
 	
 		
-@	ldr r8, [sp] 				/*Load random number to r8*/
-@	add sp, sp, #+4				/*Discard the number from the stack*/
+	ldr r8, [sp] 				/*Load random number to r8*/
+	add sp, sp, #+4				/*Discard the number from the stack*/
 	
-@	ldr r7, [sp]				/*Load random number to r*/
-@	add sp, sp, #+4				/*Discard the number from the stack*/
+	ldr r7, [sp]				/*Load random number to r*/
+	add sp, sp, #+4				/*Discard the number from the stack*/
 	
-@	ldr r6, [sp]				/*Load random number to r6*/
-@	add sp, sp, #+4				/*Discard the number from the stack*/
+	ldr r6, [sp]				/*Load random number to r6*/
+	add sp, sp, #+4				/*Discard the number from the stack*/
 	
-@	ldr r5, [sp]				/*Load random number to r5*/
-@	add sp, sp, #+4				/*Discard the number from the stack*/
+	ldr r5, [sp]				/*Load random number to r5*/
+	add sp, sp, #+4				/*Discard the number from the stack*/
 	 
-@	mov r1, r5					/*Move correct answer to r1*/
-@	mov r2, r6					/*Move correct answer to r2*/
-@	mov r3, r7					/*Move correct answer to r3*/
-@	mov r4, r8					/*Move correct answer to r4*/
+	mov r1, r5					/*Move correct answer to r1*/
+	mov r2, r6					/*Move correct answer to r2*/
+	mov r3, r7					/*Move correct answer to r3*/
+	mov r4, r8					/*Move correct answer to r4*/
 	
 	ldr r0, address_of_message2 /*Print out the correct answer*/
 	bl printf

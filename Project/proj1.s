@@ -44,15 +44,25 @@ loop_rand: 						/* Create a 2 digit random number */
 main: 
 	push {lr} 					/* Push lr on top of the stack*/
 	
-@	sub sp, sp, #16
+	sub sp, sp, #16
 	ldr r0, address_of_message1
-	mov r1, #0
-	mov r2, #0
-	mov r3, #0
-	mov r4, #0
+	mov r1, sp
+	mov r2, sp
+	mov r3, sp
+	mov r4, sp
 	bl scanf
 	
-@	add sp, sp, #+4
+	ldr r4, [sp]
+	add sp, sp, #+4
+
+	ldr r3, [sp]
+	add sp, sp, #+4
+	
+	ldr r2, [sp]
+	add sp, sp, #+4
+	
+	ldr r1, [sp]
+	add sp, sp, #+4
 	
 	mov r8, #0
 get_code:

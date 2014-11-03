@@ -50,10 +50,14 @@ main:
 	
 	sub sp, sp, #16
 	ldr r0, address_of_message2
-	mov r1, sp
-	mov r2, sp
-	mov r3, sp
 	mov r4, sp
+	add r3, r4, #4
+	add r2, r4, #4
+	add r1, r4, #4
+@	mov r1, sp
+@	mov r2, sp
+@	mov r3, sp
+@	mov r4, sp
 	bl scanf
 	
 	ldr r4, [sp]

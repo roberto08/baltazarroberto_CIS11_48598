@@ -4,16 +4,13 @@
 
 .data
 
-message1: .asciz "The 1 random function returned %d\n" 
-message2: .asciz "The 2 random function returned %d\n" 
-message3: .asciz "The 3 random function returned %d\n" 
-message4: .asciz "The 4 random function returned %d\n" 
+message1: .asciz "Type in your 4 digit code: %d %d %d %d\n"
 message5: .asciz "The code is %d %d %d %d\n" 
 
 .text
 
 random_number:
-	push {r4,lr} 				/* Push lr onto the top of the stack */
+	push {r2,r4,lr} 				/* Push lr onto the top of the stack */
 	
 	cmp r4, #4
 	beq loop_rand 
@@ -40,7 +37,7 @@ loop_rand: 						/* Create a 2 digit random number */
 	cmp r4,#20
 	blt loop_rand 
 
-	pop {r4,lr} 				/* Pop the top of the stack and put it in lr */
+	pop {r2,r4,lr} 				/* Pop the top of the stack and put it in lr */
 	bx lr 						/* Leave main */
 
 .global main 
@@ -55,9 +52,10 @@ get_code:
 	str r1, [sp]
 	mov r4, #4
 	add r8, r8, #1
-	cmp r8, #4
+	cmp r8, #3
 	ble get_code
-	
+
+code:
 	ldr r1, [sp]
 	add sp, sp, #+4
 	
@@ -100,10 +98,6 @@ get_code:
 	pop {lr} 					/* Pop to top of the stack and put it in lr*/
 	bx lr
 
-address_of_message1: .word message1
-address_of_message2: .word message2
-address_of_message3: .word message3
-address_of_message4: .word message4
 address_of_message5: .word message5
 
 /*External Functions*/

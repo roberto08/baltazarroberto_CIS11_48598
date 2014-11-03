@@ -5,7 +5,10 @@
 .data
 
 message1: .asciz "Type in your 4 digit code: "
-message2: .asciz "%d"
+input1: .asciz "%d"
+input2: .asciz "%d"
+input3: .asciz "%d"
+input4: .asciz "%d\n"
 message5: .asciz "\nYour code is %d %d %d %d\n" 
 
 .text
@@ -30,9 +33,6 @@ loop_rand: 						/* Create a 2 digit random number */
 								/* We want rand()%90+10 so cal divMod with rand()%90 */
 								
 	bl divMod 					/* Call divMod function to get remainder */
-@	add r1,#1 					/* Remainder in r1 so add 10 giving between 10 and 99 -> 2 digits */
-@	ldr r0, address_of_message1 /* Set &message2 as the first parameter of printf */
-@	bl printf 					/* Call printf */
 	
 	add r4, r4, #1
 	cmp r4,#20
@@ -48,14 +48,25 @@ main:
 	ldr r0, address_of_message1
 	bl printf
 	
-	mov r2, #4
-user_inputs:
 	sub sp, sp, #4
-	ldr r0, address_of_message2
+	ldr r0, address_of_input1
 	mov r1, sp
 	bl scanf 
-	subs r2, r2, #1
-	blt user_inputs
+		
+	sub sp, sp, #4
+	ldr r0, address_of_input2
+	mov r1, sp
+	bl scanf 
+	
+	sub sp, sp, #4
+	ldr r0, address_of_input3
+	mov r1, sp
+	bl scanf
+	
+	sub sp, sp, #4
+	ldr r0, address_of_input4
+	mov r1, sp
+	bl scanf
 	
 	ldr r4, [sp]
 	add sp, sp, #+4
@@ -157,7 +168,10 @@ print_out_answer:
 	bx lr
 
 address_of_message1: .word message1
-address_of_message2: .word message2
+address_of_input1: .word input1
+address_of_input2: .word input2
+address_of_input3: .word input3
+address_of_input4: .word input4
 address_of_message5: .word message5
 
 /*External Functions*/

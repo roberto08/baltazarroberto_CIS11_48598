@@ -126,22 +126,22 @@ user_input:
 	mov r11, #0
 	mov r12, #4
 compare_digits:	
-	cmp r1, r8 					/*Compare user input and random number*/
+	cmp r1, r5 					/*Compare user input and random number*/
 	addeq r11, r11, #1  		/*If Equal add 1 to r11 to test for right answer*/
 	@addne r12, r12, #1
 	movne r1, #11 @letter 		/*If not equal move 11 to r1 indicating wrong guess*/
 	
-	cmp r2, r7					/*Compare user input and random number*/
+	cmp r2, r6					/*Compare user input and random number*/
 	addeq r11, r11,	#1			/*If Equal add 1 to r11 to test for right answer*/
 	@addne r12, r12, #1
 	movne r2, #11				/*If not equal move 11 to r1 indicating wrong guess*/
 	
-	cmp r3, r6					/*Compare user input and random number*/
+	cmp r3, r7					/*Compare user input and random number*/
 	addeq r11, r11, #1			/*If Equal add 1 to r11 to test for right answer*/
 	@addne r12, r12, #1
 	movne r3, #11				/*If not equal move 11 to r1 indicating wrong guess*/
 	
-	cmp r4, r5					/*Compare user input and random number*/
+	cmp r4, r8					/*Compare user input and random number*/
 	addeq r11, r11, #1			/*If Equal add 1 to r11 to test for right answer*/
 	@addne r12, r12, #1
 	movne r4, #11				/*If not equal move 11 to r1 indicating wrong guess*/

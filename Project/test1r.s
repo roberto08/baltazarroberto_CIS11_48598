@@ -36,31 +36,27 @@ loop_rand: 						/*Create a 2 digit random number*/
 
 .global main 
 main: 
-	push {r0, r1, r2, r3, r4, r5, r6, r7, r8, lr} /*Push lr on top of the stack*/
+	push {r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, lr} /*Push lr on top of the stack*/
 
 	bl random_number			/*Call the random number generator*/
 	sub sp, sp, #4				/*Make room in the stack for number returned*/
 	str r1, [sp]				/*Store number in the stack*/
 	
-	mov r0, #0
 	mov r4, #4 					/*Move 4 to r4 to reset loop counter on random function*/
 	bl random_number			/*Call the random number generator*/
 	sub sp, sp, #4				/*Make room in the stack for number returned*/
 	str r1, [sp] 				/*Store the number in the stack*/
 	
-	mov r0, #0
 	mov r4, #4					/*Move 4 to r4 to reset loop counter on random function*/
 	bl random_number 			/*Call the random number generator*/
 	sub sp, sp, #4				/*Make room in the stack for the number returned*/
 	str r1, [sp]				/*Store the number in the stack*/
 
-	mov r0, #0
 	mov r4, #4					/*Move 4 to r4 to reset loop counter on random function*/
 	bl random_number			/*Call the random number generator*/
 	sub sp, sp, #4				/*Make room in the stack for the number returned*/
 	str r1, [sp]				/*Store the number in the stack*/
 	
-	mov r0, #0
 	mov r4, #4					/*Move 4 to r4 to reset loop counter on random function*/
 	bl random_number			/*Call the random number generator*/
 	sub sp, sp, #4				/*Make room in the stack for the number returned*/
@@ -91,7 +87,7 @@ main:
 	ldr r0, address_of_message2 /*Print out the correct answer*/
 	bl printf
 	
-	pop {r0, r1, r2, r3, r4, r5, r6, r7, r8, lr} /* Pop to top of the stack and put it in lr*/
+	pop {r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, lr} /* Pop to top of the stack and put it in lr*/
 	bx lr
 
 address_of_message2: .word message2

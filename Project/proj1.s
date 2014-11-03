@@ -45,7 +45,7 @@ main:
 	push {lr} 					/* Push lr on top of the stack*/
 	
 @	sub sp, sp, #16
-	ldr ro, address_of_message1
+	ldr r0, address_of_message1
 @	mov r1, sp
 @	mov r2, sp
 @	mov r3, sp
@@ -79,22 +79,22 @@ get_code:
 	
 	add sp, sp, #+4
 	
-compare_digits	
+compare_digits:	
 	cmp r1, r5
 	addeq r11, r11, #1
-	mov r1, 0x58
+	mov r1, #0x58
 	
 	cmp r2, r6
 	addeq r11, r11, #1
-	mov r2, 0x58
+	mov r2, #0x58
 	
 	cmp r3, r7
 	addeq r11, r11, #1
-	mov r3, 0x58
+	mov r3, #0x58
 	
 	cmp r8, r9
 	addeq r11, r11, #1
-	mov r4, 0x58
+	mov r4, #0x58
 	
 	ldr r0, address_of_message5
 	bl printf

@@ -68,17 +68,17 @@ main:
 	mov r1, sp
 	bl scanf
 	
-	ldr r4, [sp]
-	add sp, sp, #+4
+@	ldr r4, [sp]
+@	add sp, sp, #+4
 	
-	ldr r3, [sp]
-	add sp, sp, #+4
+@	ldr r3, [sp]
+@	add sp, sp, #+4
 	
-	ldr r2, [sp]
-	add sp, sp, #+4
+@	ldr r2, [sp]
+@	add sp, sp, #+4
 	
-	ldr r1, [sp]
-	add sp, sp, #+4
+@	ldr r1, [sp]
+@	add sp, sp, #+4
 
 	mov r8, #0
 get_code:
@@ -91,19 +91,32 @@ get_code:
 	cmp r8, #4
 	ble get_code
 
-	ldr r5, [sp]
-	add sp, sp, #+4
-	
-	ldr r6, [sp]
+	ldr r8, [sp]
 	add sp, sp, #+4
 	
 	ldr r7, [sp]
 	add sp, sp, #+4
 	
-	ldr r8, [sp] 
+	ldr r6, [sp]
+	add sp, sp, #+4
+	
+	ldr r5, [sp] 
 	add sp, sp, #+4
 	
 	add sp, sp, #+4
+	
+	ldr r4, [sp]
+	add sp, sp, #+4
+	
+	ldr r3, [sp]
+	add sp, sp, #+4
+	
+	ldr r2, [sp]
+	add sp, sp, #+4
+	
+	ldr r1, [sp]
+	add sp, sp, #+4
+	
 	
 	mov r11, #0
 	mov r12, #10

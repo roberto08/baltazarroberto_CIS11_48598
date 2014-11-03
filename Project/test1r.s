@@ -62,6 +62,8 @@ main:
 	sub sp, sp, #4				/*Make room in the stack for the number returned*/
 	str r0, [sp]				/*Store the number in the stack*/
 		
+	add sp, sp, #+4
+	
 	ldr r8, [sp] 				/*Load random number to r8*/
 	add sp, sp, #+4				/*Discard the number from the stack*/
 	
@@ -73,8 +75,6 @@ main:
 	
 	ldr r5, [sp]				/*Load random number to r5*/
 	add sp, sp, #+4				/*Discard the number from the stack*/
-	
-	add sp, sp, #+4
 	 
 	mov r1, r5					/*Move correct answer to r1*/
 	mov r2, r6					/*Move correct answer to r2*/

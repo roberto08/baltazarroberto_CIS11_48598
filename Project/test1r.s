@@ -67,10 +67,10 @@ main:
 	ldr r5, [sp]				/*Load random number to r5*/
 	add sp, sp, #+4				/*Discard the number from the stack*/
 	 
-	mov r1, r8					/*Move correct answer to r1*/
-	mov r2, r7					/*Move correct answer to r2*/
-	mov r3, r6					/*Move correct answer to r3*/
-	mov r4, r5					/*Move correct answer to r4*/
+	mov r1, r7					/*Move correct answer to r1*/
+	mov r2, r5					/*Move correct answer to r2*/
+	mov r3, r8					/*Move correct answer to r3*/
+	mov r4, r6					/*Move correct answer to r4*/
 	
 	ldr r0, address_of_message2 /*Print out the correct answer*/
 	bl printf

@@ -48,25 +48,25 @@ main:
 	ldr r0, address_of_message1
 	bl printf
 	
-@	sub sp, sp, #16
+	sub sp, sp, #16
 	ldr r0, address_of_message2
-@	mov r1, sp
-@	mov r2, sp
-@	mov r3, sp
-@	mov r4, sp
+	mov r1, sp
+	mov r2, sp
+	mov r3, sp
+	mov r4, sp
 	bl scanf
 	
-@	ldr r4, [sp]
-@	add sp, sp, #+4
+	ldr r4, [sp]
+	add sp, sp, #+4
 
-@	ldr r3, [sp]
-@	add sp, sp, #+4
+	ldr r3, [sp]
+	add sp, sp, #+4
 	
-@	ldr r2, [sp]
-@	add sp, sp, #+4
+	ldr r2, [sp]
+	add sp, sp, #+4
 	
-@	ldr r1, [sp]
-@	add sp, sp, #+4
+	ldr r1, [sp]
+	add sp, sp, #+4
 	
 	mov r8, #0
 get_code:

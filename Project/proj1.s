@@ -1,5 +1,6 @@
 /*Project 1*/ 
 /*Mastermind*/
+/*To run: as -o proj1.o proj1.s, as -o divfun.o divfun.s, gcc -o proj1 proj1.o divfun.o*/
 
 .data
 

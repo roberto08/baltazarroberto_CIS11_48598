@@ -103,7 +103,7 @@ compare_digits:
 	movne r4, #0x58
 	
 	cmp r11, #4
-	beq to print_out_answer
+	beq print_out_answer
 	
 	subs r12, r12, #1
 	blt compare_digits

@@ -3,7 +3,7 @@
 
 .data
 
-message1: .asciz "Type in your 4 digit code:\n "
+message1: .asciz "Mastermind: Type in your 4 digit code:\n "
 input1: .asciz "%d"
 input2: .asciz "%d"
 input3: .asciz "%d"
@@ -190,9 +190,3 @@ address_of_input4: .word input4
 address_of_message2: .word message2
 address_of_message3: .word message3
 address_of_message4: .word message4
-
-/*External Functions*/
-.global printf
-.global time
-.global srand
-.global rand

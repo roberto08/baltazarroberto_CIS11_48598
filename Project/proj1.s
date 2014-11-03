@@ -52,7 +52,7 @@ get_code:
 	str r1, [sp]
 	mov r4, #4
 	add r8, r8, #1
-	cmp r8, #3
+	cmp r8, #4
 	blt get_code
 
 code:
@@ -71,7 +71,7 @@ code:
 	ldr r0, address_of_message5
 	bl printf
 	
-@	add sp, sp, #+4
+	add sp, sp, #+4
 	
 @	ldr r0, address_of_message1
 @	bl printf

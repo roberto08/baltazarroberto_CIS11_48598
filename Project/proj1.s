@@ -38,74 +38,33 @@ loop_rand: 						/*Create a 2 digit random number*/
 	cmp r4,#20
 	blt loop_rand 
 
+	mov r0, r1
+	
 	pop {r2, r4, lr} 			/*Pop the top of the stack and put it in lr*/
 	bx lr 						/*Leave main*/
 
 .global main 
 main: 
 	push {lr} 					/*Push lr on top of the stack*/
-	
-@	ldr r0, address_of_message1
-@	bl printf
-	
-@	sub sp, sp, #4
-@	ldr r0, address_of_input1
-@	mov r1, sp
-@	bl scanf 
-		
-@	sub sp, sp, #4
-@	ldr r0, address_of_input2
-@	mov r1, sp
-@	bl scanf 
-	
-@	sub sp, sp, #4
-@	ldr r0, address_of_input3
-@	mov r1, sp
-@	bl scanf
-	
-@	sub sp, sp, #4
-@	ldr r0, address_of_input4
-@	mov r1, sp
-@	bl scanf
-	
-@	ldr r4, [sp]
-@	add sp, sp, #+4
-	
-@	ldr r3, [sp]
-@	add sp, sp, #+4
-	
-@	ldr r2, [sp]
-@	add sp, sp, #+4
-	
-@	ldr r1, [sp]
-@	add sp, sp, #+4
-
-@	mov r8, #0
-@get_code:
 
 	bl random_number			/*Call the random number generator*/
 	sub sp, sp, #4				/*Make room in the stack for number returned*/
-	str r1, [sp]				/*Store number in the stack*/
+	str r0, [sp]				/*Store number in the stack*/
 	
-@	mov r4, #4
-@	add r8, r8, #1
-@	cmp r8, #4
-@	ble get_code
-
 	mov r4, #4 					/*Move 4 to r4 to test for only rand in the function*/
 	bl random_number			/*Call the random number generator*/
 	sub sp, sp, #4				/*Make room in the stack for number returned*/
-	str r1, [sp] 				/*Store the number in the stack*/
+	str r0, [sp] 				/*Store the number in the stack*/
 	
 	mov r4, #4					/**Move 4 to r4 to test for only rand in the function*/
 	bl random_number 			/*Call the random number generator*/
 	sub sp, sp, #4				/*Make room in the stack for the number returned*/
-	str r1, [sp]				/*Store the number in the stack*/
+	str r0, [sp]				/*Store the number in the stack*/
 
 	mov r4, #4					/*Move 4 to r4 to test for only rand in the function*/
 	bl random_number			/*Call the random number generator*/
 	sub sp, sp, #4				/*Make room in the stack for the number returned*/
-	str r1, [sp]				/*Store the number in the stack*/
+	str r0, [sp]				/*Store the number in the stack*/
 	
 	mov r10, #0 				/*Setup loop counter*/
 user_input:	
@@ -186,8 +145,9 @@ compare_digits:
 	cmp r11, #4 				/*Compare r11 to check if all correct answer*/
 	beq print_out_win 			/*If all correct branch to win*/
 	
-	subs r12, r12, #1 			/*Update the loop*/
-	bgt prepare_for_loop 		/*Check if any more tries left*/
+	add r12, r12, #1 			/*Update the loop*/
+	cmp r12, #3
+	blt prepare_for_loop 		/*Check if any more tries left*/
 	b print_out_answer			/*If all tries gone branch to print_out_answer*/
 	
 prepare_for_loop:	
@@ -213,31 +173,6 @@ print_out_win:
 	ldr r0, address_of_message4 /*Print out win message*/
 	bl printf
 	
-@	add sp, sp, #+4
-	
-	
-	
-@	ldr r0, address_of_message1
-@	bl printf
-	
-@	mov r4, #4
-@	bl random_number
-	
-@	ldr r0, address_of_message2
-@	bl printf
-	
-@	mov r4, #4
-@	bl random_number
-	
-@	ldr r0, address_of_message3
-@	bl printf
-	
-@	mov r4, #4
-@	bl random_number
-	
-@	ldr r0, address_of_message4
-@	bl printf
-
 end_game:
 	pop {lr} 					/* Pop to top of the stack and put it in lr*/
 	bx lr

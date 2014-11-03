@@ -116,7 +116,7 @@ compare_digits:
 	beq print_out_answer
 	
 	subs r12, r12, #1
-	blt compare_digits
+@	blt compare_digits
 	
 print_out_answer:
 	ldr r0, address_of_message5

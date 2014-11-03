@@ -71,7 +71,7 @@ code:
 	ldr r0, address_of_message5
 	bl printf
 	
-	add sp, sp, #+4
+@	add sp, sp, #+4
 	
 @	ldr r0, address_of_message1
 @	bl printf

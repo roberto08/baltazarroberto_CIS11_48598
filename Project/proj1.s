@@ -5,7 +5,7 @@
 .data
 
 message1: .asciz "Type in your 4 digit code: %d %d %d %d\n"
-message5: .asciz "The code is %d %d %d %d\n" 
+message5: .asciz "Your code is %d %d %d %d\n" 
 
 .text
 
@@ -52,7 +52,7 @@ main:
 @	mov r4, sp  
 	bl scanf
 	
-	add sp, sp, #+4
+@	add sp, sp, #+4
 	
 	mov r8, #0
 get_code:
@@ -79,23 +79,36 @@ get_code:
 	
 	add sp, sp, #+4
 	
+	mov r11, #0
+	mov r12, #10
 compare_digits:	
 	cmp r1, r5
 	addeq r11, r11, #1
-	mov r1, #0x58 @letter
+	@addne r12, r12, #1
+	movne r1, #0x58 @letter
 	
 	cmp r2, r6
-	addeq r11, r11, #1
-	mov r2, #0x58
+	addeq r11, r11,	#1
+	@addne r12, r12, #1
+	movne r2, #0x58
 	
 	cmp r3, r7
 	addeq r11, r11, #1
-	mov r3, #0x58
+	@addne r12, r12, #1
+	movne r3, #0x58
 	
 	cmp r8, r9
 	addeq r11, r11, #1
-	mov r4, #0x58
+	@addne r12, r12, #1
+	movne r4, #0x58
 	
+	cmp r11, #4
+	beq to print_out_answer
+	
+	subs r12, r12, #1
+	blt compare_digits
+	
+print_out_answer
 	ldr r0, address_of_message5
 	bl printf
 	

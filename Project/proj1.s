@@ -52,7 +52,7 @@ get_code:
 	str r1, [sp]
 	mov r4, #4
 	add r8, r8, #1
-	cmp r8, #3
+	cmp r8, #4
 	ble get_code
 
 code:

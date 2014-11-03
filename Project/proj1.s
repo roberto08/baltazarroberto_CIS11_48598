@@ -53,7 +53,7 @@ main:
 	mov r4, sp
 	add r3, r4, #4
 	add r2, r4, #4
-	add r1, r4, #4
+@	add r1, r4, #4
 @	mov r1, sp
 @	mov r2, sp
 @	mov r3, sp

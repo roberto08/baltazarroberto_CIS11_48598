@@ -60,6 +60,16 @@ main:
 	sub sp, sp, #4				/*Make room in the stack for the number returned*/
 	str r1, [sp]				/*Store the number in the stack*/
 	
+	mov r0, #0
+	mov r4, #4					/*Move 4 to r4 to reset loop counter on random function*/
+	bl random_number			/*Call the random number generator*/
+	sub sp, sp, #4				/*Make room in the stack for the number returned*/
+	str r1, [sp]				/*Store the number in the stack*/
+	
+
+	ldr r9, [sp] 				/*Load random number to r8*/
+	add sp, sp, #+4				/*Discard the number from the stack*/
+	
 	ldr r8, [sp] 				/*Load random number to r8*/
 	add sp, sp, #+4				/*Discard the number from the stack*/
 	
@@ -76,6 +86,7 @@ main:
 	mov r2, r6					/*Move correct answer to r2*/
 	mov r3, r7					/*Move correct answer to r3*/
 	mov r4, r8					/*Move correct answer to r4*/
+	mov r5, r9
 	
 	ldr r0, address_of_message2 /*Print out the correct answer*/
 	bl printf

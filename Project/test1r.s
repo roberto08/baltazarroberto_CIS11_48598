@@ -26,7 +26,7 @@ loop_rand: 						/*Create a 2 digit random number*/
 	bl divMod 					/*Call divMod function to get remainder*/
 	
 	add r4, r4, #1 				/*Update the loop counter*/
-	cmp r4,#20
+	cmp r4,#23
 	blt loop_rand
 
 	mov r0, r1
@@ -41,26 +41,21 @@ main:
 	bl random_number			/*Call the random number generator*/
 	sub sp, sp, #4				/*Make room in the stack for number returned*/
 	str r0, [sp]				/*Store number in the stack*/
-@	mov r1, r0
 	
-	mov r4, #4 					/*Move 4 to r4 to test for only rand in the function*/
+	mov r4, #4 					/*Move 4 to r4 to reset loop counter on random function*/
 	bl random_number			/*Call the random number generator*/
 	sub sp, sp, #4				/*Make room in the stack for number returned*/
 	str r0, [sp] 				/*Store the number in the stack*/
-@	mov r2, r0
 	
-	mov r4, #4					/**Move 4 to r4 to test for only rand in the function*/
+	mov r4, #4					/*Move 4 to r4 to reset loop counter on random function*/
 	bl random_number 			/*Call the random number generator*/
 	sub sp, sp, #4				/*Make room in the stack for the number returned*/
 	str r0, [sp]				/*Store the number in the stack*/
-@	mov r3, r0
 
-	mov r4, #4					/*Move 4 to r4 to test for only rand in the function*/
+	mov r4, #4					/*Move 4 to r4 to reset loop counter on random function*/
 	bl random_number			/*Call the random number generator*/
 	sub sp, sp, #4				/*Make room in the stack for the number returned*/
 	str r0, [sp]				/*Store the number in the stack*/
-@	mov r4, r0
-	
 		
 	ldr r8, [sp] 				/*Load random number to r8*/
 	add sp, sp, #+4				/*Discard the number from the stack*/

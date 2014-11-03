@@ -177,8 +177,8 @@ print_out_win:
 	ldr r0, address_of_message4 /*Print out win message*/
 	bl printf
 	
-	add sp, sp, #+4
 end_game:
+	add sp, sp, #+4
 	pop {lr} 					/* Pop to top of the stack and put it in lr*/
 	bx lr
 

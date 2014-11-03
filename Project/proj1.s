@@ -120,7 +120,7 @@ user_input:
 	
 	
 	mov r11, #0
-	mov r12, #10
+	mov r12, #0
 compare_digits:	
 	cmp r1, r5 					/*Compare user input and random number*/
 	addeq r11, r11, #1  		/*If Equal add 1 to r11 to test for right answer*/

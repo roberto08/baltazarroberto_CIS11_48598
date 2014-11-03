@@ -4,8 +4,8 @@
 
 .data
 
-message1: .asciz "Type in your 4 digit code: %d %d %d %d\n"
-@message5: .asciz "The code is %d %d %d %d\n" 
+@message1: .asciz "Type in your 4 digit code: %d %d %d %d\n"
+message5: .asciz "The code is %d %d %d %d\n" 
 
 .text
 
@@ -68,8 +68,8 @@ code:
 	ldr r4, [sp] 
 	add sp, sp, #+4
 	
-@	ldr r0, address_of_message5
-@	bl printf
+	ldr r0, address_of_message5
+	bl printf
 	
 @	add sp, sp, #+4
 	

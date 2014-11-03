@@ -6,7 +6,7 @@ message2: .asciz "Your code is %d %d %d %d\n"
 .text
 
 random_number:
-	push {r1, r2, r3, r4, lr} 		/*Push lr, r4, and ,r2 onto the top of the stack*/
+	push {r1, r2, r3, r4, lr} 	/*Push lr, r4, and ,r2 onto the top of the stack*/
 	
 	cmp r4, #4 					/*Test to see if this is the first time random is being called*/
 	beq loop_rand  				/*If second time or more jump to loop_rand*/
@@ -14,6 +14,7 @@ random_number:
 	mov r0,#0 					/*Set time(0)*/
 	bl time 					/*Call time*/
 	bl srand 					/*Call srand*/
+	mov r4,#0 					/*Setup loop counter*/
 	
 loop_rand: 						/*Create a 2 digit random number*/
 	bl rand 					/*Call rand*/
@@ -23,10 +24,14 @@ loop_rand: 						/*Create a 2 digit random number*/
 	mov r2,#10 					/*Move 10 to r2*/
 
 	bl divMod 					/*Call divMod function to get remainder*/
+	
+	add r4, r4, #1 				/*Update the loop counter*/
+	cmp r4,#20
+	blt loop_rand
 
 	mov r0, r1
 	
-	pop {r1, r2, r3, r4, lr} 		/*Pop the top of the stack and put it in lr*/
+	pop {r1, r2, r3, r4, lr} 	/*Pop the top of the stack and put it in lr*/
 	bx lr 						/*Leave main*/
 
 .global main 

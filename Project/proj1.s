@@ -5,7 +5,7 @@
 .data
 
 message1: .asciz "Type in your 4 digit code: %d %d %d %d\n"
-message5: .asciz "The code is %d %d %d %d\n" 
+@message5: .asciz "The code is %d %d %d %d\n" 
 
 .text
 

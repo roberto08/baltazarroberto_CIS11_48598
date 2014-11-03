@@ -5,8 +5,8 @@
 .data
 
 message1: .asciz "Type in your 4 digit code: "
-message2: .asciz "%d %d %d %d\n"
-message5: .asciz "Your code is %d %d %d %d\n" 
+message2: .asciz "%d"
+message5: .asciz "\nYour code is %d %d %d %d\n" 
 
 .text
 
@@ -48,21 +48,17 @@ main:
 	ldr r0, address_of_message1
 	bl printf
 	
-	sub sp, sp, #16
+	mov r2, #4
+user_inputs:
+	sub sp, sp, #4
 	ldr r0, address_of_message2
-	mov r4, sp
-	add r3, r4, #4
-	add r2, r4, #4
-@	add r1, r4, #4
-@	mov r1, sp
-@	mov r2, sp
-@	mov r3, sp
-@	mov r4, sp
-	bl scanf
+	mov r1, sp
+	subs r2, r2, #1
+	blt user_inputs
 	
 	ldr r4, [sp]
 	add sp, sp, #+4
-
+	
 	ldr r3, [sp]
 	add sp, sp, #+4
 	
@@ -70,8 +66,8 @@ main:
 	add sp, sp, #+4
 	
 	ldr r1, [sp]
-@	add sp, sp, #+4
-	
+	add sp, sp, #+4
+
 	mov r8, #0
 get_code:
 	bl random_number

@@ -4,7 +4,8 @@
 
 .data
 
-message1: .asciz "Type in your 4 digit code: %d %d %d %d\n"
+message1: .asciz "Type in your 4 digit code: "
+message2: .asciz "%d %d %d %d\n"
 message5: .asciz "Your code is %d %d %d %d\n" 
 
 .text
@@ -44,25 +45,28 @@ loop_rand: 						/* Create a 2 digit random number */
 main: 
 	push {lr} 					/* Push lr on top of the stack*/
 	
-	sub sp, sp, #16
 	ldr r0, address_of_message1
-	mov r1, sp
-	mov r2, sp
-	mov r3, sp
-	mov r4, sp
+	bl printf
+	
+@	sub sp, sp, #16
+	ldr r0, address_of_message2
+@	mov r1, sp
+@	mov r2, sp
+@	mov r3, sp
+@	mov r4, sp
 	bl scanf
 	
-	ldr r4, [sp]
-	add sp, sp, #+4
+@	ldr r4, [sp]
+@	add sp, sp, #+4
 
-	ldr r3, [sp]
-	add sp, sp, #+4
+@	ldr r3, [sp]
+@	add sp, sp, #+4
 	
-	ldr r2, [sp]
-	add sp, sp, #+4
+@	ldr r2, [sp]
+@	add sp, sp, #+4
 	
-	ldr r1, [sp]
-	add sp, sp, #+4
+@	ldr r1, [sp]
+@	add sp, sp, #+4
 	
 	mov r8, #0
 get_code:
@@ -116,7 +120,7 @@ compare_digits:
 	beq print_out_answer
 	
 	subs r12, r12, #1
-@	blt compare_digits
+	blt compare_digits
 	
 print_out_answer:
 	ldr r0, address_of_message5
@@ -152,6 +156,7 @@ print_out_answer:
 	bx lr
 
 address_of_message1: .word message1
+address_of_message2: .word message2
 address_of_message5: .word message5
 
 /*External Functions*/

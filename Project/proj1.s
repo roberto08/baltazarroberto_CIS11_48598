@@ -122,6 +122,7 @@ user_input:
 	
 	ldr r5, [sp]				/*Load random number to r5*/
 	add sp, sp, #+4				/*Discard the number from the stack*/
+	add sp, sp, #+4
 	
 	mov r11, #0
 	mov r12, #4

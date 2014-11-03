@@ -122,7 +122,6 @@ user_input:
 	
 	ldr r5, [sp]				/*Load random number to r5*/
 	add sp, sp, #+4				/*Discard the number from the stack*/
-	add sp, sp, #+4
 	
 	mov r11, #0
 	mov r12, #4
@@ -178,6 +177,7 @@ print_out_win:
 	ldr r0, address_of_message4 /*Print out win message*/
 	bl printf
 	
+	add sp, sp, #+4
 end_game:
 	pop {lr} 					/* Pop to top of the stack and put it in lr*/
 	bx lr

@@ -1,7 +1,7 @@
 
 .data
 
-message2: .asciz "Your code is %d %d %d %d\n" 
+message2: .asciz "Your code is %d %d %d %d %d \n" 
 
 .text
 

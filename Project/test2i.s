@@ -17,10 +17,10 @@ message2: .asciz "Your code is %d %d \n"
 main: 
 	push {lr} 					/*Push lr on top of the stack*/
 	
-	mov r1, #1
-	mov r2, #2
-	mov r3, #3
-	mov r4, #4
+	mov r1, #6
+	mov r2, #7
+	mov r3, #8
+	mov r4, #9
 	
 	ldr r0, address_of_message2 /*Print out the correct answer*/
 	bl printf

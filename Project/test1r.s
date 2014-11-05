@@ -36,24 +36,30 @@ loop_rand: 						/*Create a 2 digit random number*/
 main: 
 	push {r0, r1, r2, r3, r4, r5, r6, r7, r8, lr} /*Push lr on top of the stack*/
 
+	mov r5, #0
+rand_num:
 	bl random_number			/*Call the random number generator*/
 	sub sp, sp, #4				/*Make room in the stack for number returned*/
 	str r1, [sp]				/*Store number in the stack*/
+	mov r4, #4
+	add r5, r5, #1
+	cmp r5, #4
+	blt rand_num
 	
-	mov r4, #4 					/*Move 4 to r4 to reset loop counter on random function*/
-	bl random_number			/*Call the random number generator*/
-	sub sp, sp, #4				/*Make room in the stack for number returned*/
-	str r1, [sp] 				/*Store the number in the stack*/
+@	mov r4, #4 					/*Move 4 to r4 to reset loop counter on random function*/
+@	bl random_number			/*Call the random number generator*/
+@	sub sp, sp, #4				/*Make room in the stack for number returned*/
+@	str r1, [sp] 				/*Store the number in the stack*/
 	
-	mov r4, #4					/*Move 4 to r4 to reset loop counter on random function*/
-	bl random_number 			/*Call the random number generator*/
-	sub sp, sp, #4				/*Make room in the stack for the number returned*/
-	str r1, [sp]				/*Store the number in the stack*/
+@	mov r4, #4					/*Move 4 to r4 to reset loop counter on random function*/
+@	bl random_number 			/*Call the random number generator*/
+@	sub sp, sp, #4				/*Make room in the stack for the number returned*/
+@	str r1, [sp]				/*Store the number in the stack*/
 
-	mov r4, #4					/*Move 4 to r4 to reset loop counter on random function*/
-	bl random_number			/*Call the random number generator*/
-	sub sp, sp, #4				/*Make room in the stack for the number returned*/
-	str r1, [sp]				/*Store the number in the stack*/
+@	mov r4, #4					/*Move 4 to r4 to reset loop counter on random function*/
+@	bl random_number			/*Call the random number generator*/
+@	sub sp, sp, #4				/*Make room in the stack for the number returned*/
+@	str r1, [sp]				/*Store the number in the stack*/
 	
 	ldr r8, [sp] 				/*Load random number to r8*/
 	add sp, sp, #+4				/*Discard the number from the stack*/

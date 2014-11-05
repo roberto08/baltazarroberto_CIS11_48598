@@ -25,9 +25,9 @@ user_input:
 	mov r1, sp 					/*Set the stack as the second parameter of scanf*/ 
 	bl scanf 					/*Call scanf*/
 	
-	add r4, r4, #1
-	cmp r4, #4
-	blt user_input
+	add r4, r4, #1 				/*Update loop counter*/
+	cmp r4, #4					/*Check for the four inputs*/
+	blt user_input				/*If negative, loop back to user_input*/
 		
 @	sub sp, sp, #4 				/*Make room in the stack for user input*/
 @	ldr r0, address_of_input 	/*Load address_of_input2 to r0 as first parameter of scanf*/

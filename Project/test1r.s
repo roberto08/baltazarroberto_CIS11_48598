@@ -41,10 +41,10 @@ rand_num:
 	bl random_number			/*Call the random number generator*/
 	sub sp, sp, #4				/*Make room in the stack for number returned*/
 	str r1, [sp]				/*Store number in the stack*/
-	mov r4, #4
-	add r5, r5, #1
-	cmp r5, #4
-	blt rand_num
+	mov r4, #4 					/*Move 4 to r4 for test in rand function*/
+	add r5, r5, #1 				/*Update loop counter*/
+	cmp r5, #4 					/*Chech for four number*/
+	blt rand_num				/*If negative, continue to get number*/
 	
 @	mov r4, #4 					/*Move 4 to r4 to reset loop counter on random function*/
 @	bl random_number			/*Call the random number generator*/

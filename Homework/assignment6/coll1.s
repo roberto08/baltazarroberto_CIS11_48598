@@ -43,7 +43,7 @@ time: .asciz "time ran: %d\n"
  mov r0, #0
  bl time
  
- mov r1, r0
+ @mov r1, r0
  ldr r0, address_of_time
  bl printf 
 	 

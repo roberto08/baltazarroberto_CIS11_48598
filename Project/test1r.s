@@ -73,8 +73,8 @@ main:
 	ldr r0, address_of_message2 /*Print out the correct answer*/
 	bl printf
 	
-	mov r3, r7					/*Move correct answer to r3*/
-	mov r4, r8					/*Move correct answer to r4*/
+	mov r1, r7					/*Move correct answer to r3*/
+	mov r2, r8					/*Move correct answer to r4*/
 
 	ldr r0, address_of_message3 /*Print out the correct answer*/
 	bl printf

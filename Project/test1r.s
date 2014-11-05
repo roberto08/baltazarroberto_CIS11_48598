@@ -1,7 +1,7 @@
 .data
 
 message2: .asciz "Your code is %d %d " 
-message3: .asciz "%d %d\n*/
+message3: .asciz "%d %d\n"
 
 .text
 

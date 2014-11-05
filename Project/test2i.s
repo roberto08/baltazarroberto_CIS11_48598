@@ -36,9 +36,9 @@ user_input:
 	mov r1, sp 					/*Set the stack as the second parameter of scanf*/
 	bl scanf 					/*Call scanf*/
 	
-	sub sp, sp, #4 				/*Make room in the stack for user input*/
+	@sub sp, sp, #4 				/*Make room in the stack for user input*/
 	ldr r0, address_of_input4 	/*Load address_of_input4 to r0 as first parameter of scanf*/
-	mov r1, sp 					/*Set the stack as the second parameter of scanf*/
+	@mov r1, sp 					/*Set the stack as the second parameter of scanf*/
 	bl scanf 					/*Call scanf*/
 
 	ldr r4, [sp] 				/*Load user input4 to r4*/
@@ -50,8 +50,8 @@ user_input:
 	ldr r2, [sp]				/*Load user input2 to r2*/
 	add sp, sp, #+4				/*Discard the input from the stack*/
 	
-	ldr r1, [sp] 				/*Load user input1 to r1*/
-	add sp, sp, #+4				/*Discard the input from the stack*/
+	@ldr r1, [sp] 				/*Load user input1 to r1*/
+	@add sp, sp, #+4				/*Discard the input from the stack*/
 
 	ldr r0, address_of_message2 /*Print out the correct answer*/
 	bl printf

@@ -4,12 +4,12 @@
 
 .data
 
-message1: .asciz "Mastermind: Type in your 4 digit code: "
+message1: .asciz "Mastermind: Type in your 4 digit code:"
 input1: .asciz "%d"
 input2: .asciz "%d"
 input3: .asciz "%d"
 input4: .asciz "%d\n"
-message2: .asciz "Your code is %d %d %d %d\n" 
+message2: .asciz "Your code is %d %d %d %d \n" 
 
 .text
 
@@ -17,17 +17,16 @@ message2: .asciz "Your code is %d %d %d %d\n"
 main: 
 	push {lr} 					/*Push lr on top of the stack*/
 	
-	mov r1, #6
-	mov r2, #7
-	mov r3, #8
-	mov r4, #9
+	mov r1, #1
+	mov r2, #2
+	mov r5, #3
+	mov r6, #4
 	
 	ldr r0, address_of_message2 /*Print out the correct answer*/
 	bl printf
 	
-	@mov r1, r3
-	mov r1, r4
-	
+	mov r1, r5
+	mov r2, r6
 	ldr r0, address_of_message2 /*Print out the correct answer*/
 	bl printf
 	

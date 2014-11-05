@@ -16,20 +16,7 @@ message2: .asciz "Your code is %d %d\n"
 .global main 
 main: 
 	push {lr} 					/*Push lr on top of the stack*/
-	
-	mov r1, #1
-	mov r2, #2
-	mov r3, #3
-	mov r4, #4
-	
-	ldr r0, address_of_message2 /*Print out the correct answer*/
-	bl printf
-	
-	mov r1, r3
-	mov r2, r4
-	ldr r0, address_of_message2 /*Print out the correct answer*/
-	bl printf
-	
+
 user_input:	
 	ldr r0, address_of_message1	/*Load address_of_message1 as first parameter of printf*/
 	bl printf 					/*Call printf*/
@@ -54,10 +41,10 @@ user_input:
 	mov r1, sp 					/*Set the stack as the second parameter of scanf*/
 	bl scanf 					/*Call scanf*/
 
-	ldr r4, [sp] 				/*Load user input4 to r4*/
+	ldr r8, [sp] 				/*Load user input4 to r4*/
 	add sp, sp, #+4 			/*Discard the input from the stack*/
 	
-	ldr r3, [sp]				/*Load user input3 to r3*/
+	ldr r7, [sp]				/*Load user input3 to r3*/
 	add sp, sp, #+4				/*Discard the input from the stack*/
 	
 	ldr r2, [sp]				/*Load user input2 to r2*/
@@ -68,7 +55,12 @@ user_input:
 
 	ldr r0, address_of_message2 /*Print out the correct answer*/
 	bl printf
-
+	
+	mov r2, r8
+	mov r1, r7 
+	ldr r0, address_of_message2 /*Print out the correct answer*/
+	bl printf
+	
 	pop {lr} 					/* Pop to top of the stack and put it in lr*/
 	bx lr
 

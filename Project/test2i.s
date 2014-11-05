@@ -25,6 +25,14 @@ main:
 	ldr r0, address_of_message2 /*Print out the correct answer*/
 	bl printf
 	
+	mov r3, #3
+	mov r4, #4
+	mov r1, #1
+	mov r2, #2
+	
+	ldr r0, address_of_message2 /*Print out the correct answer*/
+	bl printf
+	
 user_input:	
 	ldr r0, address_of_message1	/*Load address_of_message1 as first parameter of printf*/
 	bl printf 					/*Call printf*/

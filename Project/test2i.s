@@ -5,10 +5,7 @@
 .data
 
 message1: .asciz "Mastermind: Type in your 4 digit code:"
-input1: .asciz "%d"
-@input2: .asciz "%d"
-@input3: .asciz "%d"
-@input4: .asciz "%d\n"
+input: .asciz "%d"
 message2: .asciz "Your code is %d %d " 
 message3: .asciz "%d %d\n"
 
@@ -23,22 +20,22 @@ user_input:
 	bl printf 					/*Call printf*/
 	
 	sub sp, sp, #4 				/*Make room in the stack for user input*/
-	ldr r0, address_of_input1 	/*Load address_of_input1 to r0 as first parameter of scanf*/
+	ldr r0, address_of_input 	/*Load address_of_input1 to r0 as first parameter of scanf*/
 	mov r1, sp 					/*Set the stack as the second parameter of scanf*/ 
 	bl scanf 					/*Call scanf*/
 		
 	sub sp, sp, #4 				/*Make room in the stack for user input*/
-	ldr r0, address_of_input1 	/*Load address_of_input2 to r0 as first parameter of scanf*/
+	ldr r0, address_of_input 	/*Load address_of_input2 to r0 as first parameter of scanf*/
 	mov r1, sp 					/*Set the stack as the second parameter of scanf*/
 	bl scanf 					/*Call scanf*/
 	
 	sub sp, sp, #4 				/*Make room in the stack for user input*/
-	ldr r0, address_of_input1 	/*Load address_of_input3 to r0 as first parameter of scanf*/
+	ldr r0, address_of_input 	/*Load address_of_input3 to r0 as first parameter of scanf*/
 	mov r1, sp 					/*Set the stack as the second parameter of scanf*/
 	bl scanf 					/*Call scanf*/
 	
 	sub sp, sp, #4 				/*Make room in the stack for user input*/
-	ldr r0, address_of_input1 	/*Load address_of_input4 to r0 as first parameter of scanf*/
+	ldr r0, address_of_input 	/*Load address_of_input4 to r0 as first parameter of scanf*/
 	mov r1, sp 					/*Set the stack as the second parameter of scanf*/
 	bl scanf 					/*Call scanf*/
 
@@ -66,9 +63,6 @@ user_input:
 	bx lr
 
 address_of_message1: .word message1
-address_of_input1: .word input1
-@address_of_input2: .word input2
-@address_of_input3: .word input3
-@address_of_input4: .word input4
+address_of_input: .word input
 address_of_message2: .word message2
 address_of_message3: .word message3

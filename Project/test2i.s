@@ -19,14 +19,14 @@ main:
 	
 	mov r1, #1
 	mov r2, #2
-	mov r5, #3
-	mov r6, #4
+	mov r3, #3
+	mov r4, #4
 	
 	ldr r0, address_of_message2 /*Print out the correct answer*/
 	bl printf
 	
-	mov r1, r5
-	mov r2, r6
+	mov r1, r3
+	mov r2, r4
 	ldr r0, address_of_message2 /*Print out the correct answer*/
 	bl printf
 	

@@ -48,7 +48,7 @@ user_input:
 	add sp, sp, #+4				/*Discard the input from the stack*/
 	
 	ldr r2, [sp]				/*Load user input2 to r2*/
-	@add sp, sp, #+4				/*Discard the input from the stack*/
+	add sp, sp, #+4				/*Discard the input from the stack*/
 	
 	ldr r1, [sp] 				/*Load user input1 to r1*/
 	add sp, sp, #+4				/*Discard the input from the stack*/

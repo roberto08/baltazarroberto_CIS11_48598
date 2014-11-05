@@ -1,9 +1,14 @@
 /* -- collatz02.s */
 .data
+
 message: .asciz "Type a number: " 
 scan_format : .asciz "%d"
 message2: .asciz "Length of the Hailstone sequence for %d is %d\n"
+
+time: .asciz "time ran: %d \n" 
+
 .text
+
  collatz:
      /* r0 contains the first argument */
      /* Only r0, r1 and r2 are modified,
@@ -33,6 +38,14 @@ message2: .asciz "Length of the Hailstone sequence for %d is %d\n"
 
  .global main
  main:
+ 
+ mov r0, #0
+ bl time
+ 
+ mov r1, r0
+ ldr r0, address_of_time
+ bl printf 
+ 
      push {lr}                       /* keep lr */
      sub sp, sp, #4                  /* make room for 4 bytes in the stack */
                                          /* The stack is already 8 byte aligned */
@@ -65,3 +78,5 @@ message2: .asciz "Length of the Hailstone sequence for %d is %d\n"
 address_of_message: .word message 
 address_of_scan_format: .word scan_format
 address_of_message2: .word message2
+
+address_of_time: .word time

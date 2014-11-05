@@ -37,8 +37,8 @@ collatz2_end:
 
  .global main
  main:
-     push {lr}                       /* keep lr */
-     sub sp, sp, #4                  /* make room for 4 bytes in the stack */
+    push {lr}                       /* keep lr */
+    sub sp, sp, #4                  /* make room for 4 bytes in the stack */
                                          /* The stack is already 8 byte aligned */
 										 
 	mov r0, #0

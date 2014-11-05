@@ -5,7 +5,7 @@
 .data
 
 message1: .asciz "Mastermind: Type in your 4 digit code: "
-input: .asciz "%d %d"
+input: .asciz "%d"
 message2: .asciz "Your code is %d %d " 
 message3: .asciz "%d %d\n"
 
@@ -14,6 +14,9 @@ message3: .asciz "%d %d\n"
 .global main 
 main: 
 	push {lr} 					/*Push lr on top of the stack*/
+	
+	ldr r0, address_of_message1
+	bl printf
 	
 	mov r4, #0
 user_input:	

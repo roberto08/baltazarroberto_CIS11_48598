@@ -27,7 +27,7 @@ user_input:
 	bl scanf
 	
 	ldr r0, address_of_input
-	mov r2, sp
+	mov r2, sp, #4
 	add r1, r2, #4
 	bl scanf
 	

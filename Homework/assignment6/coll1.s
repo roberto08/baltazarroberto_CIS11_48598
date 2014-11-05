@@ -38,14 +38,14 @@ time: .asciz "time ran: %d\n"
 
  .global main
  main:
-     push {lr}                       /* keep lr */
+    push {lr}                       /* keep lr */
 	 
- mov r0, #0
- bl time
+	mov r0, #0
+	bl time
  
- @mov r1, r0
- ldr r0, address_of_time
- bl printf 
+	@mov r1, r0
+	ldr r0, address_of_time
+	bl printf 
 	 
      sub sp, sp, #4                  /* make room for 4 bytes in the stack */
                                          /* The stack is already 8 byte aligned */

@@ -4,9 +4,9 @@
 
 .data
 
-message1: .asciz "Mastermind: Type in your 4 digit code:"
+message1: .asciz "Mastermind: Type in your 4 digit code: "
 input: .asciz "%d"
-message2: .asciz "Your code is %d %d %d %d " 
+message2: .asciz "Your code is %d %d " 
 message3: .asciz "%d %d\n"
 
 .text

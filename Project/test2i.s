@@ -71,3 +71,4 @@ address_of_input2: .word input2
 address_of_input3: .word input3
 address_of_input4: .word input4
 address_of_message2: .word message2
+address_of_message3: .word message3

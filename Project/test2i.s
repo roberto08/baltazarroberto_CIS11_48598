@@ -9,7 +9,7 @@ input1: .asciz "%d"
 input2: .asciz "%d"
 input3: .asciz "%d"
 input4: .asciz "%d\n"
-message2: .asciz "Your code is %d %d %d %d \n" 
+message2: .asciz "Your code is %d %d \n" 
 
 .text
 

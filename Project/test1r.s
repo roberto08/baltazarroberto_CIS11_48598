@@ -1,7 +1,8 @@
 
 .data
 
-message2: .asciz "Your code is %d %d %d %d \n" 
+message2: .asciz "Your code is %d %d " 
+message3: .asciz "%d %d\n*/
 
 .text
 
@@ -69,14 +70,18 @@ main:
 	 
 	mov r1, r5					/*Move correct answer to r1*/
 	mov r2, r6					/*Move correct answer to r2*/
-	mov r3, r7					/*Move correct answer to r3*/
-	mov r4, r8					/*Move correct answer to r4*/
 	
 	ldr r0, address_of_message2 /*Print out the correct answer*/
+	bl printf
+	
+	mov r3, r7					/*Move correct answer to r3*/
+	mov r4, r8					/*Move correct answer to r4*/
+
+	ldr r0, address_of_message3 /*Print out the correct answer*/
 	bl printf
 	
 	pop {r0, r1, r2, r3, r4, r5, r6, r7, r8, lr} /* Pop to top of the stack and put it in lr*/
 	bx lr
 
 address_of_message2: .word message2
-
+address_of_message3: .word message3

@@ -5,7 +5,7 @@ message: .asciz "Type a number: "
 scan_format : .asciz "%d"
 message2: .asciz "Length of the Hailstone sequence for %d is %d\n"
 
-time: .asciz "time ran: %d \n" 
+time: .asciz "time ran: %d\n" 
 
 .text
 
@@ -42,7 +42,7 @@ time: .asciz "time ran: %d \n"
  mov r0, #0
  bl time
  
- mov r1, r0
+ @mov r1, r0
  ldr r0, address_of_time
  bl printf 
  

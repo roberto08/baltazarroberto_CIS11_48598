@@ -28,6 +28,7 @@ user_input:
 	
 	ldr r0, address_of_input
 	mov r2, sp
+	add r2, r2, #8
 	add r1, r2, #12
 	bl scanf
 	

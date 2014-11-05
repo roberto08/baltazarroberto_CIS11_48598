@@ -55,11 +55,6 @@ user_input:
 
 	ldr r0, address_of_message2 /*Print out the correct answer*/
 	bl printf
-	
-	mov r1, r3
-	mov r2, r4
-	ldr r0, address_of_message2
-	bl printf
 
 	pop {lr} 					/* Pop to top of the stack and put it in lr*/
 	bx lr

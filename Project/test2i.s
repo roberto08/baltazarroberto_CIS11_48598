@@ -14,28 +14,17 @@ message3: .asciz "%d %d\n"
 .global main 
 main: 
 	push {lr} 					/*Push lr on top of the stack*/
-
+	
+	mov r4, #0
 user_input:	
-	ldr r0, address_of_message1	/*Load address_of_message1 as first parameter of printf*/
-	bl printf 					/*Call printf*/
+	sub sp, sp, #4 				/*Make room in the stack for user input*/
+	ldr r0, address_of_input 	/*Load address_of_input1 to r0 as first parameter of scanf*/
+	mov r1, sp 					/*Set the stack as the second parameter of scanf*/ 
+	bl scanf 					/*Call scanf*/
 	
-	sub sp, sp, #16
-	
-	ldr r0, address_of_input
-	mov r2, sp
-	add r1, r2, #8
-	bl scanf
-	
-	ldr r0, address_of_input
-	mov r2, sp
-	add r2, r2, #12
-	add r1, r2, #16
-	bl scanf
-	
-@	sub sp, sp, #4 				/*Make room in the stack for user input*/
-@	ldr r0, address_of_input 	/*Load address_of_input1 to r0 as first parameter of scanf*/
-@	mov r1, sp 					/*Set the stack as the second parameter of scanf*/ 
-@	bl scanf 					/*Call scanf*/
+	add r4, r4, #1
+	cmp r4, #4
+	blt user_input
 		
 @	sub sp, sp, #4 				/*Make room in the stack for user input*/
 @	ldr r0, address_of_input 	/*Load address_of_input2 to r0 as first parameter of scanf*/

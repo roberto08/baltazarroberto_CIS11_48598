@@ -1,4 +1,3 @@
-
 .data
 
 message2: .asciz "Your code is %d %d " 

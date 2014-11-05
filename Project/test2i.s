@@ -23,13 +23,13 @@ user_input:
 	
 	ldr r0, address_of_input
 	mov r2, sp
-	add r1, r2, #4
+	add r1, r2, #8
 	bl scanf
 	
 	ldr r0, address_of_input
 	mov r2, sp
-	add r2, r2, #8
-	add r1, r2, #12
+	add r2, r2, #12
+	add r1, r2, #16
 	bl scanf
 	
 @	sub sp, sp, #4 				/*Make room in the stack for user input*/

@@ -9,7 +9,8 @@ input1: .asciz "%d"
 input2: .asciz "%d"
 input3: .asciz "%d"
 input4: .asciz "%d\n"
-message2: .asciz "Your code is %d %d\n" 
+message2: .asciz "Your code is %d %d " 
+message3: .asciz "%d %d\n"
 
 .text
 
@@ -58,7 +59,7 @@ user_input:
 	
 	mov r2, r8
 	mov r1, r7 
-	ldr r0, address_of_message2 /*Print out the correct answer*/
+	ldr r0, address_of_message3 /*Print out the correct answer*/
 	bl printf
 	
 	pop {lr} 					/* Pop to top of the stack and put it in lr*/

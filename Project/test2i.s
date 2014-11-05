@@ -5,7 +5,7 @@
 .data
 
 message1: .asciz "Mastermind: Type in your 4 digit code:\n "
-input1: .asciz " %d"
+input1: .asciz "%d"
 input2: .asciz "%d"
 input3: .asciz "%d"
 input4: .asciz "%d\n"

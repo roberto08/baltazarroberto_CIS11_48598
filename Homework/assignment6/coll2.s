@@ -41,7 +41,7 @@ collatz2_end:
      sub sp, sp, #4                  /* make room for 4 bytes in the stack */
                                          /* The stack is already 8 byte aligned */
 										 
-	mov 0, #0
+	mov r0, #0
 	bl time
 	
 	ldr r0, address_of_time

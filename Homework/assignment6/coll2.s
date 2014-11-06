@@ -3,7 +3,7 @@
 message: .asciz "Type a number: " 
 scan_format : .asciz "%d"
 message2: .asciz "Length of the Hailstone sequence for %d is %d\n"
-time: .asciz "the time is %d\n"
+time_ran: .asciz "the time is %d\n"
 .text
  
 collatz2:
@@ -54,18 +54,30 @@ collatz2_end:
      mov r1, sp                      /* second parameter of scanf:
                                             address of the top of the stack */
      bl scanf                        /* call scanf */
+	 
+	 mov r0, #0
+	 bl time
+	 mov r8, r1
 
      ldr r0, [sp]                    /* first parameter of collatz:
                                             the value stored (by scanf) in the top of the stack */
+
      bl collatz2                      /* call collatz */
 
 	 mov r2, r0                      /* third parameter of printf:
-
-	 mov r2, r0                      /* third parameter of printf:
 											the result of collatz */
+											
+	mov r0, #0
+	 bl time
+	 mov r9, r1										
+											
 	ldr r1, [sp]                    /* second parameter of printf:
 											the value stored (by scanf) in the top of the stack */
 	ldr r0, address_of_message2     /* first parameter of printf: &address_of_message2 */
+	bl printf
+	
+	sub r1, r9, r8
+	ldr r0, address_of_time_ran
 	bl printf
 	
 	add sp, sp, #4
@@ -75,4 +87,4 @@ collatz2_end:
 address_of_message: .word message 
 address_of_scan_format: .word scan_format
 address_of_message2: .word message2
-address_of_time: .word time
+address_of_time_ran: .word time_ran

@@ -39,13 +39,6 @@ time_ran: .asciz "time ran: %d\n"
  main:
     push {lr}                       /* keep lr */
 	 
-@	mov r0, #0
-@	bl time
-	
-@	mov r1, r0
-@	ldr r0, address_of_time
-@	bl printf 
-	 
      sub sp, sp, #4                  /* make room for 4 bytes in the stack */
                                          /* The stack is already 8 byte aligned */
 
@@ -68,13 +61,6 @@ time_ran: .asciz "time ran: %d\n"
 	ldr r1, [sp]                    /* second parameter of printf:
 											the value stored (by scanf) in the top of the stack */
 	ldr r0, address_of_message2     /* first parameter of printf: &address_of_message2 */
-	bl printf
-	
-	mov r0, #0
-	bl time
-	
-	mov r1, r0
-	ldr r0, address_of_time
 	bl printf
 
 	add sp, sp, #4

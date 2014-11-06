@@ -40,12 +40,6 @@ collatz2_end:
     push {lr}                       /* keep lr */
     sub sp, sp, #4                  /* make room for 4 bytes in the stack */
                                          /* The stack is already 8 byte aligned */
-										 
-	mov r0, #0
-	bl time
-	
-	ldr r0, address_of_time
-	bl printf
 
      ldr r0, address_of_message      /* first parameter of printf: &message */
      bl printf                       /* call printf */

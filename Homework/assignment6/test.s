@@ -5,7 +5,6 @@ time: .asciz "the time is %d\n"
 
  .global main
  main:
-    push {lr}                       /* keep lr */
 	
 	mov r0, #0
 	bl time
@@ -14,7 +13,6 @@ time: .asciz "the time is %d\n"
 	ldr r0, address_of_time
 	bl printf
 
-	pop {lr}
 	bx lr
 
 address_of_time: .word time

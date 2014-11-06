@@ -4,8 +4,7 @@
 message: .asciz "Type a number: " 
 scan_format : .asciz "%d"
 message2: .asciz "Length of the Hailstone sequence for %d is %d\n"
-
-time: .asciz "time ran: %d\n" 
+time_ran: .asciz "time ran: %d\n" 
 
 .text
 

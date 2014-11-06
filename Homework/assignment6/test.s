@@ -1,6 +1,6 @@
 /* -- collatz02.s */
 .data
-time: .asciz "the time is %c\n"
+time_ran: .asciz "the time is %c\n"
 .text
 
  .global main
@@ -10,9 +10,9 @@ time: .asciz "the time is %c\n"
 	bl time
 	
 	mov r1, r0
-	ldr r0, address_of_time
+	ldr r0, address_of_time_ran
 	bl printf
 
 	bx lr
 
-address_of_time: .word time
+address_of_time_ran: .word time_ran

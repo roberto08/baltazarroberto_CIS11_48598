@@ -11,7 +11,7 @@ collatz2:
 	push {r4}
 	sub sp, sp, #4  /* Make sure the stack is 8 byte aligned */
 	mov r4, r0
-	mov r3, #4194304 
+	mov r3, #4194304000000 
 collatz_repeat:
 	mov r1, r4                 /* r1 ? r0 */
 	mov r0, #0                 /* r0 ? 0 */

@@ -70,7 +70,7 @@ collatz2_end:
 	ldr r0, address_of_message2     /* first parameter of printf: &address_of_message2 */
 	bl printf
 	
-	sub r1, r9, r0
+	sub r0, r9, r8
 	ldr r0, address_of_time_ran
 	bl printf
 	

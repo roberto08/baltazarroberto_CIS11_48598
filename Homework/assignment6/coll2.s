@@ -11,7 +11,7 @@ collatz2:
 	push {r4}
 	sub sp, sp, #4  /* Make sure the stack is 8 byte aligned */
 	mov r4, r0
-	mov r3, #419430400 
+	mov r3, #4194304 
 collatz_repeat:
 	mov r1, r4                 /* r1 ? r0 */
 	mov r0, #0                 /* r0 ? 0 */
@@ -51,7 +51,7 @@ collatz2_end:
 	 
 	 mov r0, #0
 	 bl time
-	 mov r8, r1
+	 mov r8, r0
 
      ldr r0, [sp]                    /* first parameter of collatz:
                                             the value stored (by scanf) in the top of the stack */
@@ -70,7 +70,7 @@ collatz2_end:
 	ldr r0, address_of_message2     /* first parameter of printf: &address_of_message2 */
 	bl printf
 	
-	sub r1, r9, r8
+	sub r1, r9, r0
 	ldr r0, address_of_time_ran
 	bl printf
 	

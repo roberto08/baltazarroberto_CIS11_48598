@@ -1,6 +1,6 @@
 /* -- collatz02.s */
 .data
-time_ran: .asciz "the time is %c\n"
+time_ran: .asciz "the time is %d\n"
 .text
 
  .global main

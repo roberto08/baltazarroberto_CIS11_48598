@@ -71,4 +71,4 @@ address_of_message: .word message
 address_of_scan_format: .word scan_format
 address_of_message2: .word message2
 
-address_of_time: .word time
+address_of_time_ran: .word time_ran

@@ -21,8 +21,8 @@ collatz2_loop:
 	and r2, r1, #1             /* r2 ? r1 & 1 */
 	cmp r2, #0                 /* compare r2 and 0 */
 	moveq r1, r1, ASR #1       /* if r2 == 0, r1 ? r1 >> 1. This is r1 ? r1/2 */
-	addne r1, r1, r1, LSL #1   /* if r2 != 0, r1 ? r1 + (r1 << 1). This is r1 ? 3*r1
-*/
+	addne r1, r1, r1, LSL #1   /* if r2 != 0, r1 ? r1 + (r1 << 1). This is r1 ? 3*r1*/
+	
 	addne r1, r1, #1           /* if r2 != 0, r1 ? r1 + 1. */
 	collatz2_end_loop:
 	add r0, r0, #1             /* r0 ? r0 + 1 */

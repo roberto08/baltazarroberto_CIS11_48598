@@ -1,0 +1,19 @@
+/*How to syscall 4 to write a string*/
+
+.global start
+_start:
+
+	mov r7, #4			@syscall number
+	mov r0, #1			@stdout is monitor
+	mov r2, #19			@string is 19 chars long
+	ldr r1, =string 	@string located at string
+	swi 0
+	
+_exit:
+
+	mov r7, #1 			@exit syscall
+	swi 0
+	
+.data
+string:
+.ascii "Hello World String\n"

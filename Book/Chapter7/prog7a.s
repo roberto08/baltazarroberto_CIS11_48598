@@ -1,6 +1,6 @@
 /*How to syscall 4 to write a string*/
 
-.global start
+.global _start
 _start:
 
 	mov r7, #4			@syscall number

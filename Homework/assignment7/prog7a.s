@@ -21,13 +21,13 @@ main:
 	ldr r0, address_of_message1 		/*Load first parameter of printf to r0*/
 	bl printf 							/*Call printf*/ 
 	
-@	sub sp, sp, #4 						/*Make room in the stack for fahrenheit input*/
+	sub sp, sp, #4 						/*Make room in the stack for fahrenheit input*/
 	ldr r0, address_of_inputf 			/*Load address and first parameter of scanf to r0*/
-@	mov r1, sp 							/*Move the stack to r1 as second parameter of scanf*/
+	mov r1, sp 							/*Move the stack to r1 as second parameter of scanf*/
 	bl scanf
 
-@	ldr r1, [sp] 						/*Load the input read to r1*/
-@	add sp, sp, #4 						/*Discard the number read from the stack*/
+	ldr r1, [sp] 						/*Load the input read to r1*/
+	add sp, sp, #4 						/*Discard the number read from the stack*/
 	
 	ldr r0, address_of_message2 		/*Load first parameter of printf to r0*/
 	bl printf 							/*Call printf*/

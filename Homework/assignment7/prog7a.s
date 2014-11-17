@@ -7,7 +7,7 @@ message1: .asciz "Type in a number to convert to Celsius: "
 
 inputf: .asciz "%d \n"
 
-messsage2: .asciz "The converion to Celsius is: %d \n" 
+message2: .asciz "The converion to Celsius is: %d \n" 
 
 .text
 

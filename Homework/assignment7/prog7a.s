@@ -29,6 +29,14 @@ main:
 	ldr r1, [sp] 						/*Load the input read to r1*/
 	add sp, sp, #4 						/*Discard the number read from the stack*/
 	
+	sub r1, r1, #32 					/*Subtract fahrenheit input - 32*/
+	mov r2, #9 							/*Move 9 to r2*/
+	
+	bl divfun 							/*Call division function*/
+	
+	mov r2, r1 							/*Move division to r2 as third parameter of scanf*/
+	mov r1, r0 							/*Move remainder to r1 as second parameter of scanf*/
+	
 	ldr r0, address_of_message2 		/*Load first parameter of printf to r0*/
 	bl printf 							/*Call printf*/
 	

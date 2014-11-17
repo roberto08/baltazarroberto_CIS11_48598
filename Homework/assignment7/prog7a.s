@@ -25,6 +25,8 @@ main:
 	ldr r0, address_of_inputf 			/*Load address and first parameter of scanf to r0*/
 	bl scanf
 	
+	ldr r1, address_of_inputf
+	
 	ldr r0, address_of_message2 		/*Load first parameter of printf to r0*/
 	bl printf 							/*Call printf*/
 	

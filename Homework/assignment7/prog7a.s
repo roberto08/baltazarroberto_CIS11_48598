@@ -30,6 +30,10 @@ main:
 	add sp, sp, #4 						/*Discard the number read from the stack*/
 	
 	sub r1, r1, #32 					/*Subtract fahrenheit input - 32*/
+	
+	mov r2, #5 							/*Move 5 to r2 to use multiplication*/
+	mul r1, r2, r1 						/*Multiply subtracted input by 5*/
+	
 	mov r2, #9 							/*Move 9 to r2*/
 	
 	bl divfun 							/*Call division function*/

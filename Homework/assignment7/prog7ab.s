@@ -7,7 +7,7 @@ message1: .asciz "Type in a number to convert to Celsius: "
 
 inputf: .asciz "%d"
 
-message2: .asciz "The converion to Celsius is: %d with remainder %d \n" 
+message2: .asciz "The converion to Celsius is: %d\n" 
 
 .text
 
@@ -16,7 +16,7 @@ tempconversion:
 	
 	Sub r1, r1, #32 					/*Subtract 32 from temperature input*/
 	
-	ldr r3, #0x8e38f 					/*Move 5/9 to r2*/
+	mov r3, #0x0008e38f 					/*Move 5/9 to r2*/
 	mov r2, r1, lsr#20 					/*rotate right 20 bits to turn into integer*/
 	
 	mul r1, r2, r1 						/*Multiply (f-32)*5/9*/ 

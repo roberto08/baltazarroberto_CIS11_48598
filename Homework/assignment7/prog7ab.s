@@ -16,7 +16,7 @@ tempconversion:
 	
 	Sub r1, r1, #32 					/*Subtract 32 from temperature input*/
 	
-	mov r3, #0ffffffff 					/*Move 5/9 to r2*/
+	mov r3, #0xffffffff 					/*Move 5/9 to r2*/
 	mov r2, r3, lsr#20 					/*rotate right 20 bits to turn into integer*/
 	
 	mul r1, r2, r1 						/*Multiply (f-32)*5/9*/ 

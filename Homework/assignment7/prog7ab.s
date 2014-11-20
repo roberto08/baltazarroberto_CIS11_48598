@@ -19,7 +19,7 @@ tempconversion:
 	ldr r0, =0x8e38f					/*Move 5/9 to r2*/
 	mov r2, r0, asr#20 					/*Rotate right 20 bits to turn into integer*/
 	
-	mul r1, r2, r1 						/*Multiply (f-32)*5/9*/
+	mul r0, r1, r2 						/*Multiply (f-32)*5/9*/
 
 @	mov r2, r0, asr#20 					/*Rotate right 20 bits to turn into integer*/
 	
@@ -56,7 +56,7 @@ main:
 	bl tempconversion 					/*Call function to convert to Celsius*/
 	
 @	mov r2, r1 							/*Move division to r2 as third parameter of scanf*/
-@	mov r1, r0 							/*Move remainder to r1 as second parameter of scanf*/
+	mov r1, r0 							/*Move remainder to r1 as second parameter of scanf*/
 	
 	ldr r0, address_of_message2 		/*Load first parameter of printf to r0*/
 	bl printf 							/*Call printf*/

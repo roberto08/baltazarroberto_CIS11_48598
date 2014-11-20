@@ -11,23 +11,23 @@ message2: .asciz "The converion to Celsius is: %d\n"
 .text
 
 tempconversion:
-	push {r0, r2, lr} 				/*Push r2, r3, and lr to the stack*/
+	push {r0, r2, lr} 					/*Push r2, r3, and lr to the stack*/
 	
 	Sub r1, r1, #32 					/*Subtract 32 from temperature input*/
 	
 	ldr r0, =0x8e38f					/*Move 5/9 to r2*/
 	
-	mul r1, r0, r1 						/*Multiply (f-32)*5/9*/
+	mul r0, r1, r0 						/*Multiply (f-32)*5/9*/
 
-	mov r2, r0, asr#20 					/*Rotate right 20 bits to turn into integer*/
+	mov r1, r0, asr#20 					/*Rotate right 20 bits to turn into integer*/
 	
-	pop {r0, r2, lr} 				/*Pop r2, r3 and lr from the stack*/
+	pop {r0, r2, lr} 					/*Pop r2, r3 and lr from the stack*/
 	bx lr 								/*End function and return to main*/
 
 .global main
 main: 
 
-	push {r0, r1, lr} 							/*Push lr to the stack*/
+	push {r0, r1, lr} 					/*Push lr to the stack*/
 	
 	ldr r0, address_of_message1 		/*Load first parameter of printf to r0*/
 	bl printf 							/*Call printf*/ 

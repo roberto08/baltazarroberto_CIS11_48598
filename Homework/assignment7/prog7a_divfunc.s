@@ -1,5 +1,5 @@
 /*program 7a*/
-/*  https://github.com/ml1150258/LehrMark_CSC11_48598  */
+/*Program converts Fahrenheit to Celsius degrees*/
 
 .data
 
@@ -11,7 +11,6 @@ message2: .asciz "The converion to Celsius is: %d with remainder %d \n"
 
 .text
 
-@.global scaleright
 scaleright:
 	push {lr} 				/* Push lr onto the stack */
 	dowhile_r1_lt_r2: 		/* Shift right until just under the remainder */
@@ -22,7 +21,6 @@ scaleright:
 	pop {lr} 				/* Pop lr from the stack */
 	bx lr 					/* Leave scaleRight */
 
-@.global addsub
 addsub:
 	push {lr} 				/* Push lr onto the stack */
 	dowhile_r3_ge_1:
@@ -34,7 +32,6 @@ addsub:
 	pop {lr} 				/* Pop lr from the stack */
 	bx lr 					/* Leave addSub */
 
-@.global scaleleft
 scaleleft:
 	push {lr} 				/* Push lr onto the stack */
 	dowhile_r1_ge_r2: 		/* Scale left till overshoot with remainder */
@@ -47,7 +44,6 @@ scaleleft:
 	pop {lr} 				/* Pop lr from the stack */
 	bx lr 					/* Leave addSub */
 
-@.global divfunction
 divfunction:
 	push {lr} 				/* Push lr onto the stack */
 							/* Determine the quotient and remainder */

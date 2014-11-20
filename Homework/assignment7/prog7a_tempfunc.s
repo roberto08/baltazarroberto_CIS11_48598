@@ -1,5 +1,6 @@
 /*program 7a*/
-/*Program onverts Fahrenheit to Celsius degrees*/
+/*Program converts Fahrenheit to Celsius degrees*/
+/*Uses a temperature conversion function*/
 
 .data
 

@@ -12,7 +12,7 @@ message2: .asciz "The converion to Celsius is: %d with remainder %d \n"
 .text
 
 @.global scaleright
-scaleRight:
+scaleright:
 	push {lr} 				/* Push lr onto the stack */
 	dowhile_r1_lt_r2: 		/* Shift right until just under the remainder */
 	mov r3,r3,ASR #1; 		/* Division counter */

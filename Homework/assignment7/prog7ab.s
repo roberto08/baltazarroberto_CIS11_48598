@@ -12,19 +12,17 @@ message2: .asciz "The converion to Celsius is: %d\n"
 .text
 
 tempconversion:
-	push {r2, r3, lr} 					/*Push r2, r3, and lr to the stack*/
+	push {r0, r2, r3, lr} 				/*Push r2, r3, and lr to the stack*/
 	
 	Sub r1, r1, #32 					/*Subtract 32 from temperature input*/
 	
 	ldr r0, =0x8e38f					/*Move 5/9 to r2*/
-	mov r2, r3, lsr#20 					/*rotate right 20 bits to turn into integer*/
+	mov r2, r3, lsr#20 					/*Rotate right 20 bits to turn into integer*/
 	
-	mul r1, r2, r1 						/*Multiply (f-32)*5/9*/ 
+	mul r1, r0, r2 						/*Multiply (f-32)*5/9*/ 
 	
-	pop {r2, r3, lr} 					/*Pop r2, r3 and lr from the stack*/
-	bx lr 
-
-
+	pop {r0, r2, r3, lr} 				/*Pop r2, r3 and lr from the stack*/
+	bx lr 								/*End function and return to main*/
 
 .global main
 main: 
@@ -51,7 +49,7 @@ main:
 	
 @	bl divfun 							/*Call division function*/
 
-	bl tempconversion
+	bl tempconversion 					/*Call function to convert to Celsius*/
 	
 @	mov r2, r1 							/*Move division to r2 as third parameter of scanf*/
 @	mov r1, r0 							/*Move remainder to r1 as second parameter of scanf*/
@@ -59,8 +57,8 @@ main:
 	ldr r0, address_of_message2 		/*Load first parameter of printf to r0*/
 	bl printf 							/*Call printf*/
 	
-	pop {lr}
-	bx lr
+	pop {lr} 							/*Pop lr from the stack*/
+	bx lr 								/*End main*/
 	
 address_of_message1: .word message1
 address_of_message2: .word message2

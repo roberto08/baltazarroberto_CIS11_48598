@@ -17,13 +17,13 @@ tempconversion:
 	Sub r1, r1, #32 					/*Subtract 32 from temperature input*/
 	
 	ldr r0, =0x8e38f					/*Move 5/9 to r2*/
-	mov r2, r0, asr#20 					/*Rotate right 20 bits to turn into integer*/
-	
-	mul r0, r1, r2 						/*Multiply (f-32)*5/9*/
-
 @	mov r2, r0, asr#20 					/*Rotate right 20 bits to turn into integer*/
 	
-@	mov r1, r2
+	mul r0, r1, r0 						/*Multiply (f-32)*5/9*/
+
+	mov r2, r0, asr#20 					/*Rotate right 20 bits to turn into integer*/
+	
+	mov r0, r2
 	
 	pop {r2, r3, lr} 				/*Pop r2, r3 and lr from the stack*/
 	bx lr 								/*End function and return to main*/

@@ -26,8 +26,8 @@ square:
 	add r1, r1, r2 		/*Add integer*/
 	
 	add r0, r0, #1 		/*Update the counter*/
-	cmp r2, r0			/*Compare, if not zero update the square*/
-	bgt update_square
+	cmp r0, r2			/*Compare, if not zero update the square*/
+	blt update_square
 
 	pop {r0,r2,lr} 		/*pop r0, r2, and lr from the stack*/
 	bx lr				/*Return to main*/

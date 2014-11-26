@@ -19,7 +19,7 @@ square:
 
 	push {r0,r2,lr} 	/*Push r0, r2, and lr to the stack*/
  	
-	mov r0, #0 			/*Set up counter*/
+	mov r0, #1 			/*Set up counter*/
 	mov r2, r1 			/*Make a copy of the integer*/
 	
  update_square:

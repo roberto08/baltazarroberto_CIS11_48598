@@ -3,7 +3,7 @@
 
 .data
 
-message1: .asciz "Enter the velocity and radius to calculate drag:\n"
+message1: .asciz "Enter the velocity and radius to calculate drag: "
 
 message2: .asciz "The calculation for drag is: %d\n" 
 
@@ -27,7 +27,7 @@ square:
 	
 	sub r0, r0, #1 		/*Update the counter*/
 	cmp r0, #0 			/*Compare, if not zero update the square*/
-	bne update_square
+	bgt update_square
 
 	pop {r0,r2,lr} 		/*pop r0, r2, and lr from the stack*/
 	bx lr				/*Return to main*/

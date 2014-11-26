@@ -19,14 +19,14 @@ square:
 
 	push {r0,r2,lr} 	/*Push r0, r2, and lr to the stack*/
  	
-	mov r0, r1 			/*Set up counter*/
+	mov r0, #0 			/*Set up counter*/
 	mov r2, r1 			/*Make a copy of the integer*/
 	
  update_square:
 	add r1, r1, r2 		/*Add integer*/
 	
-	sub r0, r0, #1 		/*Update the counter*/
-	cmp r0, #0 			/*Compare, if not zero update the square*/
+	add r0, r0, #1 		/*Update the counter*/
+	cmp r2, r0			/*Compare, if not zero update the square*/
 	bgt update_square
 
 	pop {r0,r2,lr} 		/*pop r0, r2, and lr from the stack*/

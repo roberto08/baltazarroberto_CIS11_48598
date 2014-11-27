@@ -53,11 +53,11 @@ drag:
 	bl square
 	mov r12, r1 		/*Move squared radius to r12*/
 	
-	mul r3, r5, r11 	/*Multiply velocity times density*/
+@	mul r3, r5, r11 	/*Multiply velocity times density*/
 	
-	mov r0, r3, lsr#20
+@	mov r0, r3, lsr#20
 	
-	mov r1, r0, asr#1 	/*Multiply times 1/2 previous answer*/
+@	mov r1, r0, asr#1 	/*Multiply times 1/2 previous answer*/
 	
 	mul r3, r6, r12 	/*Multiply pi times radius*/
 	
@@ -65,7 +65,7 @@ drag:
 	
 	mul r3, r0, r8 		/*Multiply previous answer times 1/144*/
 	
-	mov r0, r3, asr#16
+	mov r0, r3, asr#12
 	
 	mul r3, r7, r0 		/*Multiply previous answer times drag*/
 	

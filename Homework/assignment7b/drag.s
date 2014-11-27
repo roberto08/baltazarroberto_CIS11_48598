@@ -94,10 +94,10 @@ main:
 	mov r1, sp 			/*Move the stack to r1 as second parameter of scanf*/
 	bl scanf
 
-	ldr r1, [sp] 		/*Load velocity the input read to r1*/
+	ldr r2, [sp] 		/*Load velocity the input read to r1*/
 	add sp, sp, #4 		/*Discard the number read from the stack*/
 	
-	ldr r2, [sp] 		/*Load radius the input read to r2*/
+	ldr r1, [sp] 		/*Load radius the input read to r2*/
 	add sp, sp, #4 		/*Discard the number read from the stack*/
 	
 	bl drag 			/*Call the drag function*/

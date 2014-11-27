@@ -41,9 +41,9 @@ drag:
 	
 	mov r11, r1 		/*Move velocity to r11*/
 	mov r12, r2 		/*Move radius to r12*/
-	ldr r5, =0x9b5 		/*Load into r3 the value of density*/	
-	ldr r6, =0x3243f 	/*Load into r4 the value of pi*/
-	ldr r7, =0x666 		/*Load into r5 the value of drag*/
+	ldr r5, =0x9b5 		/*Load into r5 the value of density*/	
+	ldr r6, =0x3243f 	/*Load into r6 the value of pi*/
+	ldr r7, =0x666 		/*Load into r7 the value of drag*/
 	ldr r8, =0x1c7 		/*Load into r8 the value of 1/144*/
 
 	bl square
@@ -67,11 +67,11 @@ drag:
 	
 	mov r0, r3, asr#12
 	
-	mul r3, r7, r0 		/*Multiply previous answer times drag*/
+	mul r3, r0, r7 		/*Multiply previous answer times drag*/
 	
-	mov r0, r3, asr#12
-	
-	mul r1, r0, r1 		/*Multiply both answers in r1 and r0 to r1*/
+	mov r1, r3, asr#12
+
+@	mul r1, r0, r1 		/*Multiply both answers in r1 and r0 to r1*/
 	
 	pop {r0,r2,r5,r6,r7,r11,r12,lr} 			/*Pop lr to the stack*/
 	bx lr 				/*Return to main*/

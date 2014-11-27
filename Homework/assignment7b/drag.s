@@ -64,7 +64,7 @@ drag:
 	
 	mul r3, r0, r7 		/*Multiply previous answer times drag*/
 	
-	mov r1, r3, asr#12
+	mov r1, r3, asr#16
 
 @	mul r1, r0, r1 		/*Multiply both answers in r1 and r0 to r1*/
 	

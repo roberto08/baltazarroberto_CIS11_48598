@@ -46,11 +46,11 @@ drag:
 	ldr r7, =0x666 		/*Load into r5 the value of drag*/
 
 	bl square
-	mov r10, r1 		/*Move squared velocity to r10*/
+	mov r11, r1 		/*Move squared velocity to r11*/
 	
 	mov r1, r12 		/*Move radius to r1*/
 	bl square
-	mov r12, r1 		/*Move squared radius to r11*/
+	mov r12, r1 		/*Move squared radius to r12*/
 	
 	mul r3, r5, r11 	/*Multiply velocity times density*/
 	

@@ -37,7 +37,7 @@ drag:
 /*Drag=(1/2)*e*v^2*A(pi*r^2)*Cd
 /*Receives two parameters in r1 (velocity) and r2 (radius) and returns calculation in r1*/
 
-	push {r0,r2,r5,r6,r7,r11,r12,lr} 			/*Push lr to the stack*/
+	push {r0,r2,r3,r5,r6,r7,r11,r12,lr} 			/*Push lr to the stack*/
 	
 	mov r11, r1 		/*Move velocity to r11*/
 	mov r12, r2 		/*Move radius to r12*/
@@ -68,7 +68,7 @@ drag:
 
 @	mul r1, r0, r1 		/*Multiply both answers in r1 and r0 to r1*/
 	
-	pop {r0,r2,r5,r6,r7,r11,r12,lr} 			/*Pop lr to the stack*/
+	pop {r0,r2,r3,r5,r6,r7,r11,r12,lr} 			/*Pop lr to the stack*/
 	bx lr 				/*Return to main*/
 	
 .global main

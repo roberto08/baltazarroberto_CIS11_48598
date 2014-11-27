@@ -58,15 +58,15 @@ drag:
 	
 	mov r1, r0, asr#1 	/*Multiply times 1/2 previous answer*/
 	
-@	mul r3, r6, r12 	/*Multiply pi times radius*/
+	mul r3, r6, r12 	/*Multiply pi times radius*/
 	
-@	mov r0, r3, asr#20
+	mov r0, r3, asr#20
 	
-@	mul r3, r0, r7 		/*Multiply previous answer times drag*/
+	mul r3, r0, r7 		/*Multiply previous answer times drag*/
 	
-@	mov r0, r3, asr#12
+	mov r0, r3, asr#12
 
-@	mul r1, r0, r1 		/*Multiply both answers in r1 and r0 to r1*/
+	mul r1, r0, r1 		/*Multiply both answers in r1 and r0 to r1*/
 	
 	pop {r0,r2,r3,r5,r6,r7,r11,r12,lr} 			/*Pop lr to the stack*/
 	bx lr 				/*Return to main*/

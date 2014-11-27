@@ -54,7 +54,7 @@ drag:
 	
 	mul r3, r5, r11 	/*Multiply velocity times density*/
 	
-	mov r1, r3, asr#20
+	mov r1, r3, lsr#20
 	
 @	mov r1, r0, asr#1 	/*Multiply times 1/2 previous answer*/
 	

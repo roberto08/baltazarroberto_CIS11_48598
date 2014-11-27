@@ -37,9 +37,10 @@ drag:
 /*Drag=(1/2)*e*v^2*A(pi*r^2)*Cd
 /*Receives two parameters in r1 (velocity) and r2 (radius) and returns calculation in r1*/
 
-	push {r0,r2,r5,r6,r7,r10,r11,lr} 			/*Push lr to the stack*/
+	push {r0,r2,r5,r6,r7,r11,r12,lr} 			/*Push lr to the stack*/
 	
-	mov r11, r2 		/*Move radius to r11*/
+	mov r11, r1 		/*Move velocity to r11*/
+	mov r12, r2 		/*Move radius to r12*/
 	ldr r5, =0x9b5 		/*Load into r3 the value of density*/	
 	ldr r6, =0x324 		/*Load into r4 the value of pi*/
 	ldr r7, =0x666 		/*Load into r5 the value of drag*/
@@ -47,27 +48,27 @@ drag:
 	bl square
 	mov r10, r1 		/*Move squared velocity to r10*/
 	
-	mov r1, r11 		/*Move radius to r1*/
+	mov r1, r12 		/*Move radius to r1*/
 	bl square
-	mov r11, r1 		/*Move squared radius to r11*/
+	mov r12, r1 		/*Move squared radius to r11*/
 	
-	mul r3, r5, r10 	/*Multiply velocity times density*/
+	mul r3, r5, r11 	/*Multiply velocity times density*/
 	
-	mov r0, r3, asr#20
+	mov r1, r3, asr#20
 	
-	mov r1, r0, asr#1 	/*Multiply times 1/2 previous answer*/
+@	mov r1, r0, asr#1 	/*Multiply times 1/2 previous answer*/
 	
-	mul r3, r6, r11 	/*Multiply pi times radius*/
+@	mul r3, r6, r11 	/*Multiply pi times radius*/
 	
-	mov r0, r3, asr#20
+@	mov r0, r3, asr#20
 	
-	mul r3, r7, r0 		/*Multiply previous answer times drag*/
+@	mul r3, r7, r0 		/*Multiply previous answer times drag*/
 	
-	mov r0, r3, asr#12
+@	mov r0, r3, asr#12
 	
-	mul r1, r0, r1 		/*Multiply both answers in r1 and r0 to r1*/
+@	mul r1, r0, r1 		/*Multiply both answers in r1 and r0 to r1*/
 	
-	pop {r0,r2,r5,r6,r7,r10,r11,lr} 			/*Pop lr to the stack*/
+	pop {r0,r2,r5,r6,r7,r11,r12,lr} 			/*Pop lr to the stack*/
 	bx lr 				/*Return to main*/
 	
 .global main
@@ -95,8 +96,6 @@ main:
 	add sp, sp, #4 		/*Discard the number read from the stack*/
 	
 	bl drag 			/*Call the drag function*/
-	
-@	bl square 			/*Call the square function*/
 	
 	ldr r0, address_of_message2 		/*Load into r0 address_of_message2 as parameter*/
 	bl printf

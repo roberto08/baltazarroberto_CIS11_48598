@@ -62,6 +62,8 @@ drag:
 	
 	mov r0, r3, asr#20
 	
+	mov r3, r0, asr#16 	/*Multiply Area calculation times 1/4*/
+	
 	mul r3, r7, r0 		/*Multiply previous answer times drag*/
 	
 	mov r0, r3, asr#12

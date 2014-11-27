@@ -22,7 +22,7 @@ tempconversion:
 	
 	ldr r0, =0x8e38f					/*Move 5/9 to r2*/
 	
-	mov r3, r0, asr#20 					/*Rotate right 20 bits to turn into integer*/
+	mov r3, r0, lsr#20 					/*Rotate right 20 bits to turn into integer*/
 	
 	mul r0, r1, r3 						/*Multiply (f-32)*5/9*/
 	

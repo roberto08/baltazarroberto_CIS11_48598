@@ -66,7 +66,9 @@ drag:
 	
 	mov r0, r3, asr#12
 
-	mul r1, r0, r1 		/*Multiply both answers in r1 and r0 to r1*/
+	mul r3, r1, r0 		/*Multiply both answers in r1 and r0 to r1*/
+	
+	mov r1, r3
 	
 	pop {r0,r2,r3,r5,r6,r7,r11,r12,lr} 			/*Pop lr to the stack*/
 	bx lr 				/*Return to main*/
